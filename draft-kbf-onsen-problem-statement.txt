@@ -32,8 +32,8 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://sbarguil.github.io/ONSEN_Problem_Statement/draft-todo-
-   yourname-protocol.html.  Status information for this document may be
+   https://sbarguil.github.io/ONSEN_Problem_Statement/draft-kbf-onsen-
+   problem-statement.html.  Status information for this document may be
    found at https://datatracker.ietf.org/doc/draft-kbf-onsen-problem-
    statement/.
 
@@ -93,11 +93,9 @@ Table of Contents
    5.  Evidence from the IAB NEMOPS Workshop
    6.  Operator Experiences
    7.  Security Considerations
-   8.  IANA Considerations
-   9.  References
-     9.1.  Normative References
-     9.2.  Informative References
-   Acknowledgments
+   8.  References
+     8.1.  Normative References
+     8.2.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -105,7 +103,7 @@ Table of Contents
    The IETF has produced several YANG data models that are instrumental
    for automating the provisioning and delivery of connectivity
    services, as described in [RFC8969].  These include models such as
-   L3SM [RFC8299], L3NM [RFC9182], L2SM [RFC8466], L2NM [RFC9291],
+   L3SM { {RFC8299}}, L3NM [RFC9182], L2SM [RFC8466], L2NM{ {RFC9291}},
    Network Slice Service [RFC9543], and Service Attachment Points (SAPs)
    [RFC9408].
 
@@ -115,6 +113,18 @@ Table of Contents
    operational in nature.  They are not confined to a specific
    technology or service type, but recur across abstraction domains and
    deployment environments.
+
+   In addition, despite the availability of numerous YANG data models,
+   the continuous growth of YANG data models for multiple purposes such
+   as configuration, assurance, and fault management — published under
+   the effort to make these models coexist in a common framework under
+   the IETF umbrella — operators continue to face significant challenges
+   in operationalizing YANG-based service APIs in a consistent,
+   scalable, and interoperable manner.  The usage of these APIs remains
+   fragmented (used partially) and difficult to automate end-to-end.  In
+   practice, APIs generated from similar YANG models often differ in
+   service semantics, complicating integration across systems, vendors,
+   and deployment environments.
 
    The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
    Group is chartered to address this problem space by focusing on the
@@ -189,7 +199,7 @@ Table of Contents
    This section identifies the core operational problems that motivate
    the ONSEN Working Group.  Each problem is described in terms of its
    operational impact and why it cannot be resolved by implementing
-   automation of the existing LxNS/LxSM models in their current forms.
+   automation of the existing LxNM/LxSM models in their current forms.
 
 4.1.  Fragmented Operational Lifecycles
 
@@ -383,21 +393,11 @@ Table of Contents
 
 7.  Security Considerations
 
-   TODO Security
+   TODO S
 
-   The problems identified in this document are operational in nature.
-   To the extent that addressing them involves defining new or updated
-   YANG data models, API interfaces, or operational guidance, the
-   security implications of those outputs will be addressed in the
-   respective solution documents.
+8.  References
 
-8.  IANA Considerations
-
-   This document has no IANA actions.
-
-9.  References
-
-9.1.  Normative References
+8.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -408,7 +408,7 @@ Table of Contents
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
 
-9.2.  Informative References
+8.2.  Informative References
 
    [NEMOPS]   "IAB Workshop Report: Next Era of Network Management
               Operations (NEMOPS)", n.d.,
@@ -450,14 +450,6 @@ Table of Contents
               Framework for Network Slices in Networks Built from IETF
               Technologies", RFC 9543, DOI 10.17487/RFC9543, March 2024,
               <https://www.rfc-editor.org/rfc/rfc9543>.
-
-Acknowledgments
-
-   TODO acknowledge.
-
-   The editors thank all contributors to the ONSEN Working Group
-   discussions and the authors of draft-xie-onsen-problem-statement for
-   their prior work documenting the problem space.
 
 Authors' Addresses
 
