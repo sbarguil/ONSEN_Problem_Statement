@@ -23,7 +23,7 @@ venue:
   mail: onsen@ietf.org
   arch: https://mailarchive.ietf.org/arch/browse/onsen/
   github: sbarguil/ONSEN_Problem_Statement
-  latest: https://example.com/LATEST
+  latest: "https://sbarguil.github.io/ONSEN_Problem_Statement/draft-todo-yourname-protocol.html"
 
 author:
  -
