@@ -22,14 +22,24 @@ venue:
   type: Working Group
   mail: onsen@ietf.org
   arch: https://mailarchive.ietf.org/arch/browse/onsen/
-  github: USER/REPO
+  github: sbarguil/ONSEN_Problem_Statement
   latest: https://example.com/LATEST
 
 author:
  -
+<<<<<<< Updated upstream
     fullname: "samier barguil"
     organization: Your Organization Here
     email: "samir.barguil@gmail.com"
+=======
+    fullname: Samier Barguil
+    organization: Nokia
+    email: samier.barguil_giraldo@nokia.com
+ -
+    fullname: Kris Lambrechts
+    organization: NetEdge
+    email: kris@netedge.plus
+>>>>>>> Stashed changes
 
 normative:
   RFC2119:
