@@ -36,8 +36,6 @@ author:
     email: kris@netedge.plus
 
 normative:
-  RFC2119:
-  RFC8174:
 
 informative:
   RFC8299:
@@ -361,8 +359,7 @@ Key points to elaborate:
   over time or to correlate operational state across abstraction
   layers.
 
-- [Additional operator-reported challenges to be added here from
-  contributors.]
+- Additional operator-reported challenges to be added here from contributors.
 
 
 # Operator Experiences
@@ -370,7 +367,7 @@ Key points to elaborate:
 TODO
 
 This section documents operational problems reported directly by
-network operators.  [To be populated by operator contributors.]
+network operators.  To be populated by operator contributors.
 
 
 # Security Considerations
