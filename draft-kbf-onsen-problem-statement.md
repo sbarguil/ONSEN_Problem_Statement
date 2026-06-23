@@ -71,8 +71,6 @@ document does not propose solutions, protocols, or new data models.
 
 # Introduction
 
-TODO Introduction
-
 The IETF has produced several YANG data models that are instrumental
 for automating the provisioning and delivery of connectivity
 services, as described in {{RFC8969}}.  These include models such as
