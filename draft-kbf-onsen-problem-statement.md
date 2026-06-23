@@ -3,7 +3,7 @@ title: "ONSEN Problem Statement"
 abbrev: "ONSEN Problem Statement"
 category: info
 
-docname: draft-kbf-onsen-problem-statement-00-latest
+docname: draft-kbf-onsen-problem-statement-latest
 submissiontype: IETF
 number:
 date:
