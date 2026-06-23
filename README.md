@@ -1,13 +1,13 @@
-<!-- regenerate: on (set to off if you edit this file) -->
+<!-- regenerate: off -->
 
-# TODO - Your title
+# ONSEN Problem Statement
 
-This is the working area for the individual Internet-Draft, "TODO - Your title".
+This is the working area for the individual Internet-Draft, "ONSEN Problem Statement".
 
-* [Editor's Copy](https://sbarguil.github.io/ONSEN_Problem_Statement/#go.draft-todo-yourname-protocol.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-todo-yourname-protocol)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-todo-yourname-protocol)
-* [Compare Editor's Copy to Individual Draft](https://sbarguil.github.io/ONSEN_Problem_Statement/#go.draft-todo-yourname-protocol.diff)
+* [Editor's Copy](https://sbarguil.github.io/ONSEN_Problem_Statement/#go.draft-kbf-onsen-problem-statement.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-kbf-onsen-problem-statement)
+* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-kbf-onsen-problem-statement)
+* [Compare Editor's Copy to Individual Draft](https://sbarguil.github.io/ONSEN_Problem_Statement/#go.draft-kbf-onsen-problem-statement.diff)
 
 
 ## Contributing
@@ -28,4 +28,3 @@ $ make
 
 Command line usage requires that you have the necessary software installed.  See
 [the instructions](https://github.com/martinthomson/i-d-template/blob/main/doc/SETUP.md).
-
