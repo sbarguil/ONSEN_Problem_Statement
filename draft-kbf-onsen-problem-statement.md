@@ -23,7 +23,7 @@ venue:
   mail: onsen@ietf.org
   arch: https://mailarchive.ietf.org/arch/browse/onsen/
   github: sbarguil/ONSEN_Problem_Statement
-  latest: "https://sbarguil.github.io/ONSEN_Problem_Statement/draft-todo-yourname-protocol.html"
+  latest: "https://sbarguil.github.io/ONSEN_Problem_Statement/draft-kbf-onsen-problem-statement.html"
 
 author:
  -
@@ -34,8 +34,6 @@ author:
     fullname: Kris Lambrechts
     organization: NetEdge
     email: kris@netedge.plus
-
-normative:
 
 informative:
   RFC8299:
@@ -71,29 +69,41 @@ document does not propose solutions, protocols, or new data models.
 
 # Introduction
 
-The IETF has produced several YANG data models that are instrumental
-for automating the provisioning and delivery of connectivity
-services, as described in {{RFC8969}}.  These include models such as
-L3SM {{RFC8299}}, L3NM {{RFC9182}}, L2SM {{RFC8466}}, L2NM
-{{RFC9291}}, Network Slice Service {{RFC9543}}, and Service
-Attachment Points (SAPs) {{RFC9408}}.
+The IETF has produced several YANG data models that are instrumental for
+automating the provisioning and delivery of connectivity services, as
+described in {{RFC8969}}.  These include models such as L3SM {
+{RFC8299}}, L3NM {{RFC9182}}, L2SM {{RFC8466}}, L2NM{
+{RFC9291}}, Network Slice Service {{RFC9543}}, and Service Attachment
+Points (SAPs) {{RFC9408}}.
 
 While these abstractions are widely deployed, operators report
-persistent challenges in operationalizing them.  As highlighted by
-the IAB NEMOPS Workshop {{NEMOPS}}, these challenges are systemic
-and operational in nature.  They are not confined to a specific
-technology or service type, but recur across abstraction domains and
+persistent challenges in operationalizing them.  As highlighted by the
+IAB NEMOPS Workshop {{NEMOPS}}, these challenges are systemic and
+operational in nature.  They are not confined to a specific technology
+or service type, but recur across abstraction domains and deployment
+environments. 
+
+In addition, despite the availability of numerous YANG data models, the
+continuous growth of YANG data models for multiple purposes such as
+configuration, assurance, and fault management — published under the
+effort to make these models coexist in a common framework under the
+IETF umbrella — operators continue to face significant challenges in
+operationalizing YANG-based service APIs in a consistent, scalable, and
+interoperable manner. The usage of these APIs remains fragmented
+(used partially) and difficult to automate end-to-end. In practice,
+APIs generated from similar YANG models often differ in service
+semantics, complicating integration across systems, vendors, and
 deployment environments.
 
-The Operationalizing Network and SErvice abstractioNs (ONSEN)
-Working Group is chartered to address this problem space by focusing
-on the operational aspects of network and service abstractions.  It
-aims to make it easier to implement and use the IETF's service and
-network abstractions, with the goal of improving network automation,
+The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
+Group is chartered to address this problem space by focusing on the
+operational aspects of network and service abstractions.  It aims to
+make it easier to implement and use the IETF's service and network
+abstractions, with the goal of improving network automation,
 operational efficiency, and interoperability.
 
-This document defines the problem space for ONSEN.  It does not
-propose solutions, protocols, or new data models.
+This document defines the problem space for ONSEN.  It does not propose
+solutions, protocols, or new data models.
 
 
 # Conventions and Definitions
@@ -168,7 +178,7 @@ TODO Introduction to problem areas section.
 This section identifies the core operational problems that motivate
 the ONSEN Working Group.  Each problem is described in terms of its
 operational impact and why it cannot be resolved by implementing
-automation of the existing LxNS/LxSM models in their current forms.
+automation of the existing LxNM/LxSM models in their current forms.
 
 
 ## Fragmented Operational Lifecycles
@@ -370,27 +380,4 @@ network operators.  To be populated by operator contributors.
 
 # Security Considerations
 
-TODO Security
-
-The problems identified in this document are operational in nature.
-To the extent that addressing them involves defining new or updated
-YANG data models, API interfaces, or operational guidance, the
-security implications of those outputs will be addressed in the
-respective solution documents.
-
-
-# IANA Considerations
-
-This document has no IANA actions.
-
-
---- back
-
-# Acknowledgments
-{:numbered="false"}
-
-TODO acknowledge.
-
-The editors thank all contributors to the ONSEN Working Group
-discussions and the authors of draft-xie-onsen-problem-statement
-for their prior work documenting the problem space.
+TODO S
