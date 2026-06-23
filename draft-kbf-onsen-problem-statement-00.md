@@ -27,11 +27,6 @@ venue:
 
 author:
  -
-<<<<<<< Updated upstream
-    fullname: "samier barguil"
-    organization: Your Organization Here
-    email: "samir.barguil@gmail.com"
-=======
     fullname: Samier Barguil
     organization: Nokia
     email: samier.barguil_giraldo@nokia.com
