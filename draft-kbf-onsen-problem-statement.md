@@ -81,7 +81,7 @@ persistent challenges in operationalizing them.  As highlighted by the
 IAB NEMOPS Workshop {{NEMOPS}}, these challenges are systemic and
 operational in nature.  They are not confined to a specific technology
 or service type, but recur across abstraction domains and deployment
-environments. 
+environments.
 
 In addition, despite the availability of numerous YANG data models, the
 continuous growth of YANG data models for multiple purposes such as
