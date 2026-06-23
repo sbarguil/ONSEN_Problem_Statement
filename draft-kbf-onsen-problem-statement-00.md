@@ -3,7 +3,7 @@ title: "ONSEN Problem Statement"
 abbrev: "ONSEN Problem Statement"
 category: info
 
-docname: draft-kbf-onsen-problem-statement-latest
+docname: draft-kbf-onsen-problem-statement-00-latest
 submissiontype: IETF
 number:
 date:
@@ -27,9 +27,9 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
+    fullname: "samier barguil"
     organization: Your Organization Here
-    email: your.email@example.com
+    email: "samir.barguil@gmail.com"
 
 normative:
   RFC2119:
