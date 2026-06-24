@@ -208,7 +208,7 @@ from a technology-independent perspective.
 
   - Intended Configuration Provision: Maps high-level service views into
     detailed device settings such as VRF definitions, IP layers, and
-    QoS features. 
+    QoS features.
   - Configuration Validation: Ensures the intended configuration
     successfully takes effect in the operational datastore.
   - Monitoring & Fault Diagnostics: Aggregates operational states to
