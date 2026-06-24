@@ -243,7 +243,7 @@ act as abstracted interfaces for management systems (such as
 orchestrators) to automate the provisioning and management of VPN
 services.
 
-Defined in RFC 8049, the L3SM is used to deliver Layer 3
+Defined in {{RFC8299}}, the L3SM is used to deliver Layer 3
 provider-provisioned VPN services, specifically limited to BGP PE-based
 VPNs.
 
