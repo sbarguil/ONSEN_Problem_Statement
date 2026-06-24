@@ -1382,97 +1382,97 @@ delivered across a provider's network.<a href="#section-3-1" class="pilcrow">¶<
 representing services and networks through data models. It is designed
 to automate the management life cycle—including instantiation,
 provisioning, optimization, and monitoring—while enabling closed-loop
-control for adaptive service maintenance. Layered Data Model
-Architecture The framework uses a layered approach to promote data
+control for adaptive service maintenance.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">The framework uses a layered approach to promote data
 reusability and prevent feature duplication across different management
-levels:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+levels:<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1-2.1">
-            <p id="section-3.1-2.1.1">Service Models: These are customer-facing modules that define
+<li class="normal" id="section-3.1-3.1">
+            <p id="section-3.1-3.1.1">Service Models: These are customer-facing modules that define
 high-level network services (e.g., L3VPN) independently of specific
 technologies. They capture customer requirements such as
 communication scope (pipe, hose, or funnel) and performance
-guarantees.<a href="#section-3.1-2.1.1" class="pilcrow">¶</a></p>
+guarantees.<a href="#section-3.1-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-2.2">
-            <p id="section-3.1-2.2.1">Network Models: These describe network-level abstractions across
+          <li class="normal" id="section-3.1-3.2">
+            <p id="section-3.1-3.2.1">Network Models: These describe network-level abstractions across
 multiple devices, including topologies, resources, and protocols at
-the link and network layers.<a href="#section-3.1-2.2.1" class="pilcrow">¶</a></p>
+the link and network layers.<a href="#section-3.1-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-2.3">
-            <p id="section-3.1-2.3.1">Device Models: Also known as Network Element models, these are
+          <li class="normal" id="section-3.1-3.3">
+            <p id="section-3.1-3.3.1">Device Models: Also known as Network Element models, these are
 technology-specific modules (e.g., BGP, ACL, or interface management)
-used to realize services on individual functions or hardware.<a href="#section-3.1-2.3.1" class="pilcrow">¶</a></p>
+used to realize services on individual functions or hardware.<a href="#section-3.1-3.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.1-3">The framework organizes automation into two primary procedural blocks:<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.1-4">The framework organizes automation into two primary procedural blocks:<a href="#section-3.1-4" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1-4.1">
-            <p id="section-3.1-4.1.1">Service Life-Cycle Management: This manages the end-to-end service
-from a technology-independent perspective.<a href="#section-3.1-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.1-5.1">
+            <p id="section-3.1-5.1.1">Service Life-Cycle Management: This manages the end-to-end service
+from a technology-independent perspective.<a href="#section-3.1-5.1.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1-4.1.2.1">
-                <p id="section-3.1-4.1.2.1.1">Service Exposure: Captures services offered to customers via model
-catalogs.<a href="#section-3.1-4.1.2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.1-5.1.2.1">
+                <p id="section-3.1-5.1.2.1.1">Service Exposure: Captures services offered to customers via model
+catalogs.<a href="#section-3.1-5.1.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-3.1-4.1.2.2">
-                <p id="section-3.1-4.1.2.2.1">Service Creation/Modification: Validates resources and maps service
-requests to specific network or device models.<a href="#section-3.1-4.1.2.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-3.1-5.1.2.2">
+                <p id="section-3.1-5.1.2.2.1">Service Creation/Modification: Validates resources and maps service
+requests to specific network or device models.<a href="#section-3.1-5.1.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-3.1-4.1.2.3">
-                <p id="section-3.1-4.1.2.3.1">Service Assurance &amp; Optimization: Uses telemetry to monitor
+              <li class="normal" id="section-3.1-5.1.2.3">
+                <p id="section-3.1-5.1.2.3.1">Service Assurance &amp; Optimization: Uses telemetry to monitor
 performance against Service Level Agreements (SLAs) and dynamically
-adjusts configuration if objectives are not met.<a href="#section-3.1-4.1.2.3.1" class="pilcrow">¶</a></p>
+adjusts configuration if objectives are not met.<a href="#section-3.1-5.1.2.3.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-3.1-4.1.2.4">
-                <p id="section-3.1-4.1.2.4.1">Service Diagnosis &amp; Decommission: Provides OAM
+              <li class="normal" id="section-3.1-5.1.2.4">
+                <p id="section-3.1-5.1.2.4.1">Service Diagnosis &amp; Decommission: Provides OAM
 (Operations, Administration, and Maintenance) for troubleshooting and
-handles the release of resources when a service is terminated.<a href="#section-3.1-4.1.2.4.1" class="pilcrow">¶</a></p>
+handles the release of resources when a service is terminated.<a href="#section-3.1-5.1.2.4.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
-          <li class="normal" id="section-3.1-4.2">
-            <p id="section-3.1-4.2.1">Service Fulfillment Management: Focused on the technical execution and
-operational state at the device level.<a href="#section-3.1-4.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-5.2">
+            <p id="section-3.1-5.2.1">Service Fulfillment Management: Focused on the technical execution and
+operational state at the device level.<a href="#section-3.1-5.2.1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1-4.2.2.1">
-                <p id="section-3.1-4.2.2.1.1">Intended Configuration Provision: Maps high-level service views into
+<li class="normal" id="section-3.1-5.2.2.1">
+                <p id="section-3.1-5.2.2.1.1">Intended Configuration Provision: Maps high-level service views into
 detailed device settings such as VRF definitions, IP layers, and
-QoS features.<a href="#section-3.1-4.2.2.1.1" class="pilcrow">¶</a></p>
+QoS features.<a href="#section-3.1-5.2.2.1.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-3.1-4.2.2.2">
-                <p id="section-3.1-4.2.2.2.1">Configuration Validation: Ensures the intended configuration
-successfully takes effect in the operational datastore.<a href="#section-3.1-4.2.2.2.1" class="pilcrow">¶</a></p>
+              <li class="normal" id="section-3.1-5.2.2.2">
+                <p id="section-3.1-5.2.2.2.1">Configuration Validation: Ensures the intended configuration
+successfully takes effect in the operational datastore.<a href="#section-3.1-5.2.2.2.1" class="pilcrow">¶</a></p>
 </li>
-              <li class="normal" id="section-3.1-4.2.2.3">
-                <p id="section-3.1-4.2.2.3.1">Monitoring &amp; Fault Diagnostics: Aggregates operational states to
+              <li class="normal" id="section-3.1-5.2.2.3">
+                <p id="section-3.1-5.2.2.3.1">Monitoring &amp; Fault Diagnostics: Aggregates operational states to
 build network visibility and uses RPC (Remote Procedure Call)
-commands for fault isolation.<a href="#section-3.1-4.2.2.3.1" class="pilcrow">¶</a></p>
+commands for fault isolation.<a href="#section-3.1-5.2.2.3.1" class="pilcrow">¶</a></p>
 </li>
             </ul>
 </li>
         </ul>
-<p id="section-3.1-5">The framework translates end-to-end abstract views into domain-specific
+<p id="section-3.1-6">The framework translates end-to-end abstract views into domain-specific
 views (mapping) and then into specific device-level modules
 (decomposition). In practice, YANG Module Integration mechanisms such
 as Schema Mount allow multiple YANG modules to be combined into a
 tailored model for specific use cases. It also includes Closed-Loop
 Control: by correlating telemetry data with configuration data, the
 framework allows orchestrators to continuously adjust network resources
-to meet intended service parameters.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
-<p id="section-3.1-6">The Primary Benefits of the framework are:<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+to meet intended service parameters.<a href="#section-3.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.1-7">The primary benefits of the framework are:<a href="#section-3.1-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1-7.1">
-            <p id="section-3.1-7.1.1">Vendor-Agnosticism: Enables unified management of multi-vendor
-environments through standardized interfaces.<a href="#section-3.1-7.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.1-8.1">
+            <p id="section-3.1-8.1.1">Vendor-Agnosticism: Enables unified management of multi-vendor
+environments through standardized interfaces.<a href="#section-3.1-8.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-7.2">
-            <p id="section-3.1-7.2.1">Operational Agility: Moves away from manual, device-specific
-configuration toward network-wide provisioning.<a href="#section-3.1-7.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-8.2">
+            <p id="section-3.1-8.2.1">Operational Agility: Moves away from manual, device-specific
+configuration toward network-wide provisioning.<a href="#section-3.1-8.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-7.3">
-            <p id="section-3.1-7.3.1">Unified Orchestration: Allows orchestrators and controllers to manage
-resources across different network domains and layers.<a href="#section-3.1-7.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-8.3">
+            <p id="section-3.1-8.3.1">Unified Orchestration: Allows orchestrators and controllers to manage
+resources across different network domains and layers.<a href="#section-3.1-8.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>

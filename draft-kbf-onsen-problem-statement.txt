@@ -199,9 +199,9 @@ Table of Contents
    designed to automate the management life cycle—including
    instantiation, provisioning, optimization, and monitoring—while
    enabling closed-loop control for adaptive service maintenance.
-   Layered Data Model Architecture The framework uses a layered approach
-   to promote data reusability and prevent feature duplication across
-   different management levels:
+
+   The framework uses a layered approach to promote data reusability and
+   prevent feature duplication across different management levels:
 
    *  Service Models: These are customer-facing modules that define
       high-level network services (e.g., L3VPN) independently of
@@ -261,7 +261,7 @@ Table of Contents
    the framework allows orchestrators to continuously adjust network
    resources to meet intended service parameters.
 
-   The Primary Benefits of the framework are:
+   The primary benefits of the framework are:
 
    *  Vendor-Agnosticism: Enables unified management of multi-vendor
       environments through standardized interfaces.
