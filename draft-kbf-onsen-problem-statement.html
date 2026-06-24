@@ -1406,66 +1406,71 @@ used to realize services on individual functions or hardware.<a href="#section-3
 </li>
         </ul>
 <p id="section-3.1-3">The framework organizes automation into two primary procedural blocks:<a href="#section-3.1-3" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="normal type-1" id="section-3.1-4">
-<li id="section-3.1-4.1">
-            <p id="section-3.1-4.1.1">Service Life-Cycle Management — This manages the end-to-end service
+<ul class="normal">
+<li class="normal" id="section-3.1-4.1">
+            <p id="section-3.1-4.1.1">Service Life-Cycle Management: This manages the end-to-end service
 from a technology-independent perspective.<a href="#section-3.1-4.1.1" class="pilcrow">¶</a></p>
 </li>
-        </ol>
-<ul class="normal">
-<li class="normal" id="section-3.1-5.1">
-            <p id="section-3.1-5.1.1">Service Exposure: Captures services offered to customers via model
-catalogs.<a href="#section-3.1-5.1.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-4.2">
+            <p id="section-3.1-4.2.1">Service Exposure: Captures services offered to customers via model
+catalogs.<a href="#section-3.1-4.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-5.2">
-            <p id="section-3.1-5.2.1">Service Creation/Modification: Validates resources and maps service
-requests to specific network or device models.<a href="#section-3.1-5.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-4.3">
+            <p id="section-3.1-4.3.1">Service Creation/Modification: Validates resources and maps service
+requests to specific network or device models.<a href="#section-3.1-4.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-5.3">
-            <p id="section-3.1-5.3.1">Service Assurance &amp; Optimization: Uses telemetry to monitor
+          <li class="normal" id="section-3.1-4.4">
+            <p id="section-3.1-4.4.1">Service Assurance &amp; Optimization: Uses telemetry to monitor
 performance against Service Level Agreements (SLAs) and dynamically
-adjusts configuration if objectives are not met.<a href="#section-3.1-5.3.1" class="pilcrow">¶</a></p>
+adjusts configuration if objectives are not met.<a href="#section-3.1-4.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-5.4">
-            <p id="section-3.1-5.4.1">Service Diagnosis &amp; Decommission: Provides OAM
+          <li class="normal" id="section-3.1-4.5">
+            <p id="section-3.1-4.5.1">Service Diagnosis &amp; Decommission: Provides OAM
 (Operations, Administration, and Maintenance) for troubleshooting and
-handles the release of resources when a service is terminated.<a href="#section-3.1-5.4.1" class="pilcrow">¶</a></p>
+handles the release of resources when a service is terminated.<a href="#section-3.1-4.5.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-4.6">
+            <p id="section-3.1-4.6.1">Service Fulfillment Management: Focused on the technical execution and
+operational state at the device level.<a href="#section-3.1-4.6.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.1-4.6.2.1">
+                <p id="section-3.1-4.6.2.1.1">Intended Configuration Provision: Maps high-level service views into
+detailed device settings such as VRF definitions, IP layers, and
+QoS features.<a href="#section-3.1-4.6.2.1.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-3.1-4.6.2.2">
+                <p id="section-3.1-4.6.2.2.1">Configuration Validation: Ensures the intended configuration
+successfully takes effect in the operational datastore.<a href="#section-3.1-4.6.2.2.1" class="pilcrow">¶</a></p>
+</li>
+              <li class="normal" id="section-3.1-4.6.2.3">
+                <p id="section-3.1-4.6.2.3.1">Monitoring &amp; Fault Diagnostics: Aggregates operational states to
+build network visibility and uses RPC (Remote Procedure Call)
+commands for fault isolation.<a href="#section-3.1-4.6.2.3.1" class="pilcrow">¶</a></p>
+</li>
+            </ul>
 </li>
         </ul>
-<ol start="1" type="1" class="normal type-1" id="section-3.1-6">
-<li id="section-3.1-6.1">
-            <p id="section-3.1-6.1.1">Service Fulfillment Management — This focuses on the technical
-execution and operational state at the device level.<a href="#section-3.1-6.1.1" class="pilcrow">¶</a></p>
-</li>
-        </ol>
-<p id="section-3.1-7">Intended Configuration Provision: Maps high-level service views into
-detailed device settings such as VRF definitions, IP layers, and QoS
-features. Configuration Validation: Ensures the intended configuration
-successfully takes effect in the operational datastore. Performance
-Monitoring &amp; Fault Diagnostics: Aggregates operational states to build
-network visibility and uses RPC (Remote Procedure Call) commands for
-fault isolation.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
-<p id="section-3.1-8">The framework translates end-to-end abstract views into domain-specific
+<p id="section-3.1-5">The framework translates end-to-end abstract views into domain-specific
 views (mapping) and then into specific device-level modules
 (decomposition). In practice, YANG Module Integration mechanisms such
 as Schema Mount allow multiple YANG modules to be combined into a
 tailored model for specific use cases. It also includes Closed-Loop
 Control: by correlating telemetry data with configuration data, the
 framework allows orchestrators to continuously adjust network resources
-to meet intended service parameters.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
-<p id="section-3.1-9">The Primary Benefits of the framework are:<a href="#section-3.1-9" class="pilcrow">¶</a></p>
+to meet intended service parameters.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-6">The Primary Benefits of the framework are:<a href="#section-3.1-6" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-3.1-10.1">
-            <p id="section-3.1-10.1.1">Vendor-Agnosticism: Enables unified management of multi-vendor
-environments through standardized interfaces.<a href="#section-3.1-10.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-3.1-7.1">
+            <p id="section-3.1-7.1.1">Vendor-Agnosticism: Enables unified management of multi-vendor
+environments through standardized interfaces.<a href="#section-3.1-7.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-10.2">
-            <p id="section-3.1-10.2.1">Operational Agility: Moves away from manual, device-specific
-configuration toward network-wide provisioning.<a href="#section-3.1-10.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-7.2">
+            <p id="section-3.1-7.2.1">Operational Agility: Moves away from manual, device-specific
+configuration toward network-wide provisioning.<a href="#section-3.1-7.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-3.1-10.3">
-            <p id="section-3.1-10.3.1">Unified Orchestration: Allows orchestrators and controllers to manage
-resources across different network domains and layers.<a href="#section-3.1-10.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-3.1-7.3">
+            <p id="section-3.1-7.3.1">Unified Orchestration: Allows orchestrators and controllers to manage
+resources across different network domains and layers.<a href="#section-3.1-7.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
