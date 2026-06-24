@@ -224,19 +224,19 @@ Table of Contents
    *  Service Life-Cycle Management: This manages the end-to-end service
       from a technology-independent perspective.
 
-   *  Service Exposure: Captures services offered to customers via model
-      catalogs.
+      -  Service Exposure: Captures services offered to customers via
+         model catalogs.
 
-   *  Service Creation/Modification: Validates resources and maps
-      service requests to specific network or device models.
+      -  Service Creation/Modification: Validates resources and maps
+         service requests to specific network or device models.
 
-   *  Service Assurance & Optimization: Uses telemetry to monitor
-      performance against Service Level Agreements (SLAs) and
-      dynamically adjusts configuration if objectives are not met.
+      -  Service Assurance & Optimization: Uses telemetry to monitor
+         performance against Service Level Agreements (SLAs) and
+         dynamically adjusts configuration if objectives are not met.
 
-   *  Service Diagnosis & Decommission: Provides OAM (Operations,
-      Administration, and Maintenance) for troubleshooting and handles
-      the release of resources when a service is terminated.
+      -  Service Diagnosis & Decommission: Provides OAM (Operations,
+         Administration, and Maintenance) for troubleshooting and
+         handles the release of resources when a service is terminated.
 
    *  Service Fulfillment Management: Focused on the technical execution
       and operational state at the device level.
