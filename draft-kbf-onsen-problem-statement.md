@@ -228,7 +228,7 @@ The Primary Benefits of the framework are:
 - Vendor-Agnosticism: Enables unified management of multi-vendor
   environments through standardized interfaces.
 - Operational Agility: Moves away from manual, device-specific
-  configuration toward network-wide provisioning. 
+  configuration toward network-wide provisioning.
 - Unified Orchestration: Allows orchestrators and controllers to manage
   resources across different network domains and layers.
 
