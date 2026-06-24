@@ -1063,7 +1063,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Barguil &amp; Lambrechts</td>
-<td class="center">Expires 25 December 2026</td>
+<td class="center">Expires 26 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1076,12 +1076,12 @@ svg {
 <dd class="internet-draft">draft-kbf-onsen-problem-statement-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-06-23" class="published">23 June 2026</time>
+<time datetime="2026-06-24" class="published">24 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-12-25">25 December 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-26">26 December 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1146,7 +1146,7 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 25 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 26 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1185,10 +1185,16 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-background" class="internal xref">Background</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
-                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-ietf-service-and-network-ab" class="internal xref">IETF Service and Network Abstraction Models</a></p>
+                <p id="section-toc.1-1.3.2.1.1" class="keepWithNext"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-the-rfc8969-framework" class="internal xref">The RFC8969 Framework</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-the-rfc8969-framework" class="internal xref">The RFC8969 Framework</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-the-service-models-lxsm" class="internal xref">The Service Models (LxSM)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-the-network-models-lxnm" class="internal xref">The Network Models (LxNM)</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-attachment-circuits-ac-and-" class="internal xref">Attachment Circuits (AC) and Service Attachment Points (SAP)</a></p>
 </li>
             </ul>
 </li>
@@ -1259,17 +1265,21 @@ IAB NEMOPS Workshop <span>[<a href="#NEMOPS" class="cite xref">NEMOPS</a>]</span
 operational in nature.  They are not confined to a specific technology
 or service type, but recur across abstraction domains and deployment
 environments.<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">In addition, despite the availability of numerous YANG data models, the
-continuous growth of YANG data models for multiple purposes such as
-configuration, assurance, and fault management — published under the
-effort to make these models coexist in a common framework under the
-IETF umbrella — operators continue to face significant challenges in
-operationalizing YANG-based service APIs in a consistent, scalable, and
-interoperable manner. The usage of these APIs remains fragmented
-(used partially) and difficult to automate end-to-end. In practice,
-APIs generated from similar YANG models often differ in service
-semantics, complicating integration across systems, vendors, and
-deployment environments.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">In addition, despite the availability of numerous YANG data models —
+covering configuration, assurance, and fault management — and the
+ongoing effort to make these models coexist within a common framework
+under the IETF umbrella, operators continue to face significant
+challenges in operationalizing YANG-based service APIs in a consistent,
+scalable, and interoperable manner. While models such as the L3SM,
+L2SM, L3NM, L2NM, and AC/SAP abstractions each address specific aspects
+of service delivery, it is not always clear which models should be used
+together, in which scenarios, or to what extent a given implementation
+actually supports the full model. The usage of these APIs remains
+fragmented — often partially implemented — and difficult to automate
+end-to-end. In practice, APIs generated from similar YANG models often
+differ in service semantics, and the lack of clear guidance on model
+composition and interoperability complicates integration across
+systems, vendors, and deployment environments.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
 Group is chartered to address this problem space by focusing on the
 operational aspects of network and service abstractions.  It aims to
@@ -1355,27 +1365,178 @@ system that exposes simplified service and network constructs.<a href="#section-
       <h2 id="name-background">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-background" class="section-name selfRef">Background</a>
       </h2>
-<p id="section-3-1">TODO Background<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">This section provides a brief overview of the existing IETF YANG
-model landscape relevant to the ONSEN problem space, and the
-RFC8969 framework.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<div id="ietf-service-and-network-abstraction-models">
+<p id="section-3-1">This section provides a brief overview of the existing IETF YANG model
+landscape relevant to the ONSEN problem space and the RFC 8969
+framework. It describes the key data models that form the foundation of
+this work, including the L3VPN and L2VPN Service Models (L3SM, L2SM),
+the L3VPN and L2VPN Network Models (L3NM, L2NM), and the Attachment
+Circuit (AC) and Service Attachment Point (SAP) abstractions. Together,
+these models define how services are specified, provisioned, and
+delivered across a provider's network.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<div id="the-rfc8969-framework">
 <section id="section-3.1">
-        <h3 id="name-ietf-service-and-network-ab">
-<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-ietf-service-and-network-ab" class="section-name selfRef">IETF Service and Network Abstraction Models</a>
+        <h3 id="name-the-rfc8969-framework">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-the-rfc8969-framework" class="section-name selfRef">The RFC8969 Framework</a>
         </h3>
-<p id="section-3.1-1">TODO: Brief summary of existing models (L2SM, L3SM, L2NM, L3NM,
-AC, SAP, NSS, ACTN, SAIN, VN) and their intended roles.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-1">The YANG Automation Framework provides a programmatic approach to
+representing services and networks through data models. It is designed
+to automate the management life cycle—including instantiation,
+provisioning, optimization, and monitoring—while enabling closed-loop
+control for adaptive service maintenance. Layered Data Model
+Architecture The framework uses a layered approach to promote data
+reusability and prevent feature duplication across different management
+levels:<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.1-2.1">
+            <p id="section-3.1-2.1.1">Service Models: These are customer-facing modules that define
+high-level network services (e.g., L3VPN) independently of specific
+technologies. They capture customer requirements such as
+communication scope (pipe, hose, or funnel) and performance
+guarantees.<a href="#section-3.1-2.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-2.2">
+            <p id="section-3.1-2.2.1">Network Models: These describe network-level abstractions across
+multiple devices, including topologies, resources, and protocols at
+the link and network layers.<a href="#section-3.1-2.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-2.3">
+            <p id="section-3.1-2.3.1">Device Models: Also known as Network Element models, these are
+technology-specific modules (e.g., BGP, ACL, or interface management)
+used to realize services on individual functions or hardware.<a href="#section-3.1-2.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<p id="section-3.1-3">The framework organizes automation into two primary procedural blocks:<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="section-3.1-4">
+<li id="section-3.1-4.1">
+            <p id="section-3.1-4.1.1">Service Life-Cycle Management — This manages the end-to-end service
+from a technology-independent perspective.<a href="#section-3.1-4.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<ul class="normal">
+<li class="normal" id="section-3.1-5.1">
+            <p id="section-3.1-5.1.1">Service Exposure: Captures services offered to customers via model
+catalogs.<a href="#section-3.1-5.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-5.2">
+            <p id="section-3.1-5.2.1">Service Creation/Modification: Validates resources and maps service
+requests to specific network or device models.<a href="#section-3.1-5.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-5.3">
+            <p id="section-3.1-5.3.1">Service Assurance &amp; Optimization: Uses telemetry to monitor
+performance against Service Level Agreements (SLAs) and dynamically
+adjusts configuration if objectives are not met.<a href="#section-3.1-5.3.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-5.4">
+            <p id="section-3.1-5.4.1">Service Diagnosis &amp; Decommission: Provides OAM
+(Operations, Administration, and Maintenance) for troubleshooting and
+handles the release of resources when a service is terminated.<a href="#section-3.1-5.4.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
+<ol start="1" type="1" class="normal type-1" id="section-3.1-6">
+<li id="section-3.1-6.1">
+            <p id="section-3.1-6.1.1">Service Fulfillment Management — This focuses on the technical
+execution and operational state at the device level.<a href="#section-3.1-6.1.1" class="pilcrow">¶</a></p>
+</li>
+        </ol>
+<p id="section-3.1-7">Intended Configuration Provision: Maps high-level service views into
+detailed device settings such as VRF definitions, IP layers, and QoS
+features. Configuration Validation: Ensures the intended configuration
+successfully takes effect in the operational datastore. Performance
+Monitoring &amp; Fault Diagnostics: Aggregates operational states to build
+network visibility and uses RPC (Remote Procedure Call) commands for
+fault isolation.<a href="#section-3.1-7" class="pilcrow">¶</a></p>
+<p id="section-3.1-8">The framework translates end-to-end abstract views into domain-specific
+views (mapping) and then into specific device-level modules
+(decomposition). In practice, YANG Module Integration mechanisms such
+as Schema Mount allow multiple YANG modules to be combined into a
+tailored model for specific use cases. It also includes Closed-Loop
+Control: by correlating telemetry data with configuration data, the
+framework allows orchestrators to continuously adjust network resources
+to meet intended service parameters.<a href="#section-3.1-8" class="pilcrow">¶</a></p>
+<p id="section-3.1-9">The Primary Benefits of the framework are:<a href="#section-3.1-9" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.1-10.1">
+            <p id="section-3.1-10.1.1">Vendor-Agnosticism: Enables unified management of multi-vendor
+environments through standardized interfaces.<a href="#section-3.1-10.1.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-10.2">
+            <p id="section-3.1-10.2.1">Operational Agility: Moves away from manual, device-specific
+configuration toward network-wide provisioning.<a href="#section-3.1-10.2.1" class="pilcrow">¶</a></p>
+</li>
+          <li class="normal" id="section-3.1-10.3">
+            <p id="section-3.1-10.3.1">Unified Orchestration: Allows orchestrators and controllers to manage
+resources across different network domains and layers.<a href="#section-3.1-10.3.1" class="pilcrow">¶</a></p>
+</li>
+        </ul>
 </section>
 </div>
-<div id="the-rfc8969-framework">
+<div id="the-service-models-lxsm">
 <section id="section-3.2">
-        <h3 id="name-the-rfc8969-framework">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-the-rfc8969-framework" class="section-name selfRef">The RFC8969 Framework</a>
+        <h3 id="name-the-service-models-lxsm">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-the-service-models-lxsm" class="section-name selfRef">The Service Models (LxSM)</a>
         </h3>
-<p id="section-3.2-1">TODO: Summary of the Automating Service and Network Management
-Framework and how it relates to the abstraction layers ONSEN
-addresses.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">The L3VPN Service Model (L3SM) and the L2VPN Service Model (L2SM) are
+customer-facing YANG data models used to define the characteristics of
+network services between a customer and a service provider. Both models
+act as abstracted interfaces for management systems (such as
+orchestrators) to automate the provisioning and management of VPN
+services.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-2">Defined in RFC 8049, the L3SM is used to deliver Layer 3
+provider-provisioned VPN services, specifically limited to BGP PE-based
+VPNs.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2-3">Defined in <span>[<a href="#RFC8466" class="cite xref">RFC8466</a>]</span>, the L2SM is used to configure and manage Layer 2
+provider-provisioned VPN services. It supports point-to-point Virtual
+Private Wire Services (VPWS), multipoint Virtual Private LAN Services
+(VPLS), and Ethernet VPNs (EVPNs). Both models include parameters for
+bandwidth, MTU, QoS, BUM traffic, and availability.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<p id="section-3.2-4">Neither model is intended for the direct configuration of network
+elements; instead, an orchestration layer takes these models as input
+and translates them into technology-specific device models (such as BGP
+or interface configurations).<a href="#section-3.2-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="the-network-models-lxnm">
+<section id="section-3.3">
+        <h3 id="name-the-network-models-lxnm">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-the-network-models-lxnm" class="section-name selfRef">The Network Models (LxNM)</a>
+        </h3>
+<p id="section-3.3-1">The L3VPN Network Model (L3NM) and the L2VPN Network Model (L2NM) are
+network-centric YANG data models designed to manage VPN services within
+a service provider's network. While the Service Models focus on the
+customer's requirements, these Network Models provide an internal,
+resource-facing view used by controllers to automate technical
+configurations across multiple devices. Both models preserve specific
+parameters for traffic management, covering bandwidth, MTU, QoS, and
+BUM traffic.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">Defined in <span>[<a href="#RFC9182" class="cite xref">RFC9182</a>]</span>, the L3NM is used for the internal provisioning
+of Layer 3 VPN services, specifically focusing on BGP PE-based VPNs and
+Multicast VPNs.<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">Defined in <span>[<a href="#RFC9291" class="cite xref">RFC9291</a>]</span>, the L2NM is the network-centric counterpart to
+the L2SM, providing the internal view required to instantiate Layer 2
+services. It covers a wide range of L2VPNs, including VPLS, VPWS, and
+various EVPN flavors (EVPN over MPLS, VXLAN, and PBB-EVPN).<a href="#section-3.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3-4">Unlike customer-facing service models, these models can expose internal
+operational states and performance metrics to help controllers
+continuously adjust the network to meet SLAs.<a href="#section-3.3-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="attachment-circuits-ac-and-service-attachment-points-sap">
+<section id="section-3.4">
+        <h3 id="name-attachment-circuits-ac-and-">
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-attachment-circuits-ac-and-" class="section-name selfRef">Attachment Circuits (AC) and Service Attachment Points (SAP)</a>
+        </h3>
+<p id="section-3.4-1">In the context of the YANG Automation Framework, Attachment Circuits
+(ACs) and Service Attachment Points (SAPs) are fundamental abstractions
+used to define how customer networks connect to a provider's network
+and where services are delivered.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+<p id="section-3.4-2">An Attachment Circuit, as defined in <span>[<a href="#RFC9408" class="cite xref">RFC9408</a>]</span>, is a physical or
+logical channel that connects a Customer Edge (CE) device to a Provider
+Edge (PE) device.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+<p id="section-3.4-3">A Service Attachment Point is an abstract network reference point —
+typically the PE side of an AC — where network services are actually
+delivered or "grafted" to the customer. The SAP Network Model {
+{RFC9408}} provides an abstract view of the provider's topology,
+exposing only the nodes and interfaces where services can be attached.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1385,44 +1546,41 @@ addresses.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
       <h2 id="name-operational-problems-with-s">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-operational-problems-with-s" class="section-name selfRef">Operational Problems with Service and Network Abstractions</a>
       </h2>
-<p id="section-4-1">TODO Introduction to problem areas section.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">This section identifies the core operational problems that motivate
-the ONSEN Working Group.  Each problem is described in terms of its
+<p id="section-4-1">This section identifies the core operational problems that motivate
+the ONSEN Working Group. Each problem is described in terms of its
 operational impact and why it cannot be resolved by implementing
-automation of the existing LxNM/LxSM models in their current forms.<a href="#section-4-2" class="pilcrow">¶</a></p>
+automation of the existing LxNM/LxSM models in their current forms.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <div id="fragmented-operational-lifecycles">
 <section id="section-4.1">
         <h3 id="name-fragmented-operational-life">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-fragmented-operational-life" class="section-name selfRef">Fragmented Operational Lifecycles</a>
         </h3>
-<p id="section-4.1-1">TODO<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">Operational workflows associated with service abstractions — service
+<p id="section-4.1-1">Operational workflows associated with service abstractions — service
 instantiation, monitoring, modification, troubleshooting, and
-decommissioning — are often fragmented and inconsistently handled.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1-3">Key issues to elaborate:<a href="#section-4.1-3" class="pilcrow">¶</a></p>
+decommissioning — are often fragmented and inconsistently handled.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.1-4.1">
-            <p id="section-4.1-4.1.1">Operators depend on a heterogeneous mix of management protocols,
+<li class="normal" id="section-4.1-2.1">
+            <p id="section-4.1-2.1.1">Operators depend on a heterogeneous mix of management protocols,
 vendor-specific APIs, and legacy mechanisms (CLI, SNMP) even
-within a single deployment.<a href="#section-4.1-4.1.1" class="pilcrow">¶</a></p>
+within a single deployment.<a href="#section-4.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-4.2">
-            <p id="section-4.1-4.2.1">Lifecycle actions initiated through YANG-based service APIs often
+          <li class="normal" id="section-4.1-2.2">
+            <p id="section-4.1-2.2.1">Lifecycle actions initiated through YANG-based service APIs often
 require coordination across orchestration systems, controllers, and
 device configurations, but these components are rarely aligned in
-terms of lifecycle semantics or data models.<a href="#section-4.1-4.2.1" class="pilcrow">¶</a></p>
+terms of lifecycle semantics or data models.<a href="#section-4.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-4.3">
-            <p id="section-4.1-4.3.1">Existing service and network abstractions lack native constructs to
+          <li class="normal" id="section-4.1-2.3">
+            <p id="section-4.1-2.3.1">Existing service and network abstractions lack native constructs to
 express lifecycle attributes such as activation time, duration,
 expiration, or rollback behavior.  Transient service intents must
 therefore be tracked and enforced outside the abstraction
-framework.<a href="#section-4.1-4.3.1" class="pilcrow">¶</a></p>
+framework.<a href="#section-4.1-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.1-4.4">
-            <p id="section-4.1-4.4.1">Configuration management and the collection of statistics /
+          <li class="normal" id="section-4.1-2.4">
+            <p id="section-4.1-2.4.1">Configuration management and the collection of statistics /
 telemetry data continue to exist as separate silos in both the
-organizational chart and technology stacks/APIs.<a href="#section-4.1-4.4.1" class="pilcrow">¶</a></p>
+organizational chart and technology stacks/APIs.<a href="#section-4.1-2.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1432,35 +1590,33 @@ organizational chart and technology stacks/APIs.<a href="#section-4.1-4.4.1" cla
         <h3 id="name-misalignment-between-abstra">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-misalignment-between-abstra" class="section-name selfRef">Misalignment Between Abstraction Layers</a>
         </h3>
-<p id="section-4.2-1">TODO<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">Service abstractions are realized through a combination of
+<p id="section-4.2-1">Service abstractions are realized through a combination of
 service-level models, network-level models, control-plane behavior,
 and management interfaces.  These layers are often developed
 independently, with limited coordination across working groups or
-operational domains.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">Key issues to elaborate:<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+operational domains.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.2-4.1">
-            <p id="section-4.2-4.1.1">Service abstractions that do not cleanly map to underlying network
-capabilities.<a href="#section-4.2-4.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.2-2.1">
+            <p id="section-4.2-2.1.1">Service abstractions that do not cleanly map to underlying network
+capabilities.<a href="#section-4.2-2.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.2-4.2">
-            <p id="section-4.2-4.2.1">Network models that expose parameters without clear service-level
-semantics.<a href="#section-4.2-4.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-2.2">
+            <p id="section-4.2-2.2.1">Network models that expose parameters without clear service-level
+semantics.<a href="#section-4.2-2.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.2-4.3">
-            <p id="section-4.2-4.3.1">Control-plane behaviors that are difficult to correlate with
-service-level intent.<a href="#section-4.2-4.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-2.3">
+            <p id="section-4.2-2.3.1">Control-plane behaviors (vendor differentiators) that are difficult to
+correlate with service-level intent.<a href="#section-4.2-2.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.2-4.4">
-            <p id="section-4.2-4.4.1">Difficulty in combining different services into a higher-level
-composite service.<a href="#section-4.2-4.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.2-2.4">
+            <p id="section-4.2-2.4.1">Difficulty in combining different services into a higher-level
+composite service.<a href="#section-4.2-2.4.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.2-4.5">
-            <p id="section-4.2-4.5.1">An operator offering a diverse set of services (L3VPN, L2VPN,
+          <li class="normal" id="section-4.2-2.5">
+            <p id="section-4.2-2.5.1">An operator offering a diverse set of services (L3VPN, L2VPN,
 internet access, etc.) cannot use the LxSM models to offer a
 combination of these services through a single service
-orchestrator.<a href="#section-4.2-4.5.1" class="pilcrow">¶</a></p>
+orchestrator.<a href="#section-4.2-2.5.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
