@@ -71,9 +71,9 @@ document does not propose solutions, protocols, or new data models.
 
 The IETF has produced several YANG data models that are instrumental for
 automating the provisioning and delivery of connectivity services, as
-described in {{RFC8969}}.  These include models such as L3SM {
-{RFC8299}}, L3NM {{RFC9182}}, L2SM {{RFC8466}}, L2NM{
-{RFC9291}}, Network Slice Service {{RFC9543}}, and Service Attachment
+described in {{RFC8969}}.  These include models such as L3SM
+{{RFC8299}}, L3NM {{RFC9182}}, L2SM {{RFC8466}}, L2NM
+{{RFC9291}}, Network Slice Service {{RFC9543}}, and Service Attachment
 Points (SAPs) {{RFC9408}}.
 
 While these abstractions are widely deployed, operators report
