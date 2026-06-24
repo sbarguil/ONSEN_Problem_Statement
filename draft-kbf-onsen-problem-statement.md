@@ -189,7 +189,7 @@ levels:
 
 The framework organizes automation into two primary procedural blocks:
 
-1. Service Life-Cycle Management — This manages the end-to-end service
+- Service Life-Cycle Management: This manages the end-to-end service
 from a technology-independent perspective.
 
 - Service Exposure: Captures services offered to customers via model
@@ -203,16 +203,17 @@ from a technology-independent perspective.
   (Operations, Administration, and Maintenance) for troubleshooting and
   handles the release of resources when a service is terminated.
 
-2. Service Fulfillment Management — This focuses on the technical
-execution and operational state at the device level.
+- Service Fulfillment Management: Focused on the technical execution and
+  operational state at the device level.
 
-Intended Configuration Provision: Maps high-level service views into
-detailed device settings such as VRF definitions, IP layers, and QoS
-features. Configuration Validation: Ensures the intended configuration
-successfully takes effect in the operational datastore. Performance
-Monitoring & Fault Diagnostics: Aggregates operational states to build
-network visibility and uses RPC (Remote Procedure Call) commands for
-fault isolation.
+  - Intended Configuration Provision: Maps high-level service views into
+    detailed device settings such as VRF definitions, IP layers, and
+    QoS features. 
+  - Configuration Validation: Ensures the intended configuration
+    successfully takes effect in the operational datastore.
+  - Monitoring & Fault Diagnostics: Aggregates operational states to
+    build network visibility and uses RPC (Remote Procedure Call)
+    commands for fault isolation.
 
 The framework translates end-to-end abstract views into domain-specific
 views (mapping) and then into specific device-level modules
