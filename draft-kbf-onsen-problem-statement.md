@@ -83,17 +83,21 @@ operational in nature.  They are not confined to a specific technology
 or service type, but recur across abstraction domains and deployment
 environments.
 
-In addition, despite the availability of numerous YANG data models, the
-continuous growth of YANG data models for multiple purposes such as
-configuration, assurance, and fault management — published under the
-effort to make these models coexist in a common framework under the
-IETF umbrella — operators continue to face significant challenges in
-operationalizing YANG-based service APIs in a consistent, scalable, and
-interoperable manner. The usage of these APIs remains fragmented
-(used partially) and difficult to automate end-to-end. In practice,
-APIs generated from similar YANG models often differ in service
-semantics, complicating integration across systems, vendors, and
-deployment environments.
+In addition, despite the availability of numerous YANG data models —
+covering configuration, assurance, and fault management — and the
+ongoing effort to make these models coexist within a common framework
+under the IETF umbrella, operators continue to face significant
+challenges in operationalizing YANG-based service APIs in a consistent,
+scalable, and interoperable manner. While models such as the L3SM,
+L2SM, L3NM, L2NM, and AC/SAP abstractions each address specific aspects
+of service delivery, it is not always clear which models should be used
+together, in which scenarios, or to what extent a given implementation
+actually supports the full model. The usage of these APIs remains
+fragmented — often partially implemented — and difficult to automate
+end-to-end. In practice, APIs generated from similar YANG models often
+differ in service semantics, and the lack of clear guidance on model
+composition and interoperability complicates integration across
+systems, vendors, and deployment environments.
 
 The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
 Group is chartered to address this problem space by focusing on the
@@ -113,7 +117,7 @@ solutions, protocols, or new data models.
 The following terms are used in this document:
 
 AC:
-: Attachment Circuit.
+: Attachment Circuit as defined in {{RFC9835}}.
 
 API:
 : Application Programming Interface.
@@ -151,45 +155,160 @@ OSS:
 
 # Background
 
-TODO Background
-
-This section provides a brief overview of the existing IETF YANG
-model landscape relevant to the ONSEN problem space, and the
-RFC8969 framework.
-
-
-## IETF Service and Network Abstraction Models
-
-TODO: Brief summary of existing models (L2SM, L3SM, L2NM, L3NM,
-AC, SAP, NSS, ACTN, SAIN, VN) and their intended roles.
-
+This section provides a brief overview of the existing IETF YANG model
+landscape relevant to the ONSEN problem space and the RFC 8969
+framework. It describes the key data models that form the foundation of
+this work, including the L3VPN and L2VPN Service Models (L3SM, L2SM),
+the L3VPN and L2VPN Network Models (L3NM, L2NM), and the Attachment
+Circuit (AC) and Service Attachment Point (SAP) abstractions. Together,
+these models define how services are specified, provisioned, and
+delivered across a provider's network.
 
 ## The RFC8969 Framework
 
-TODO: Summary of the Automating Service and Network Management
-Framework and how it relates to the abstraction layers ONSEN
-addresses.
+The YANG Automation Framework provides a programmatic approach to
+representing services and networks through data models. It is designed
+to automate the management life cycle—including instantiation,
+provisioning, optimization, and monitoring—while enabling closed-loop
+control for adaptive service maintenance. Layered Data Model
+Architecture The framework uses a layered approach to promote data
+reusability and prevent feature duplication across different management
+levels:
 
+- Service Models: These are customer-facing modules that define
+  high-level network services (e.g., L3VPN) independently of specific
+  technologies. They capture customer requirements such as
+  communication scope (pipe, hose, or funnel) and performance
+  guarantees.
+- Network Models: These describe network-level abstractions across
+  multiple devices, including topologies, resources, and protocols at
+  the link and network layers.
+- Device Models: Also known as Network Element models, these are
+  technology-specific modules (e.g., BGP, ACL, or interface management)
+  used to realize services on individual functions or hardware.
+
+The framework organizes automation into two primary procedural blocks:
+
+1. Service Life-Cycle Management — This manages the end-to-end service
+from a technology-independent perspective.
+
+- Service Exposure: Captures services offered to customers via model
+  catalogs.
+- Service Creation/Modification: Validates resources and maps service
+  requests to specific network or device models.
+- Service Assurance & Optimization: Uses telemetry to monitor
+  performance against Service Level Agreements (SLAs) and dynamically
+  adjusts configuration if objectives are not met.
+- Service Diagnosis & Decommission: Provides OAM
+  (Operations, Administration, and Maintenance) for troubleshooting and
+  handles the release of resources when a service is terminated.
+
+2. Service Fulfillment Management — This focuses on the technical
+execution and operational state at the device level.
+
+Intended Configuration Provision: Maps high-level service views into
+detailed device settings such as VRF definitions, IP layers, and QoS
+features. Configuration Validation: Ensures the intended configuration
+successfully takes effect in the operational datastore. Performance
+Monitoring & Fault Diagnostics: Aggregates operational states to build
+network visibility and uses RPC (Remote Procedure Call) commands for
+fault isolation.
+
+The framework translates end-to-end abstract views into domain-specific
+views (mapping) and then into specific device-level modules
+(decomposition). In practice, YANG Module Integration mechanisms such
+as Schema Mount allow multiple YANG modules to be combined into a
+tailored model for specific use cases. It also includes Closed-Loop
+Control: by correlating telemetry data with configuration data, the
+framework allows orchestrators to continuously adjust network resources
+to meet intended service parameters.
+
+The Primary Benefits of the framework are:
+
+- Vendor-Agnosticism: Enables unified management of multi-vendor
+  environments through standardized interfaces.
+- Operational Agility: Moves away from manual, device-specific
+  configuration toward network-wide provisioning. 
+- Unified Orchestration: Allows orchestrators and controllers to manage
+  resources across different network domains and layers.
+
+## The Service Models (LxSM)
+
+The L3VPN Service Model (L3SM) and the L2VPN Service Model (L2SM) are
+customer-facing YANG data models used to define the characteristics of
+network services between a customer and a service provider. Both models
+act as abstracted interfaces for management systems (such as
+orchestrators) to automate the provisioning and management of VPN
+services.
+
+Defined in {{RFC8049}}, the L3SM is used to deliver Layer 3
+provider-provisioned VPN services, specifically limited to BGP PE-based
+VPNs.
+
+Defined in {{RFC8466}}, the L2SM is used to configure and manage Layer 2
+provider-provisioned VPN services. It supports point-to-point Virtual
+Private Wire Services (VPWS), multipoint Virtual Private LAN Services
+(VPLS), and Ethernet VPNs (EVPNs). Both models include parameters for
+bandwidth, MTU, QoS, BUM traffic, and availability.
+
+Neither model is intended for the direct configuration of network
+elements; instead, an orchestration layer takes these models as input
+and translates them into technology-specific device models (such as BGP
+or interface configurations).
+
+## The Network Models (LxNM)
+
+The L3VPN Network Model (L3NM) and the L2VPN Network Model (L2NM) are
+network-centric YANG data models designed to manage VPN services within
+a service provider's network. While the Service Models focus on the
+customer's requirements, these Network Models provide an internal,
+resource-facing view used by controllers to automate technical
+configurations across multiple devices. Both models preserve specific
+parameters for traffic management, covering bandwidth, MTU, QoS, and
+BUM traffic.
+
+Defined in {{RFC9182}}, the L3NM is used for the internal provisioning
+of Layer 3 VPN services, specifically focusing on BGP PE-based VPNs and
+Multicast VPNs.
+
+Defined in {{RFC9291}}, the L2NM is the network-centric counterpart to
+the L2SM, providing the internal view required to instantiate Layer 2
+services. It covers a wide range of L2VPNs, including VPLS, VPWS, and
+various EVPN flavors (EVPN over MPLS, VXLAN, and PBB-EVPN).
+
+Unlike customer-facing service models, these models can expose internal
+operational states and performance metrics to help controllers
+continuously adjust the network to meet SLAs.
+
+## Attachment Circuits (AC) and Service Attachment Points (SAP)
+
+In the context of the YANG Automation Framework, Attachment Circuits
+(ACs) and Service Attachment Points (SAPs) are fundamental abstractions
+used to define how customer networks connect to a provider's network
+and where services are delivered.
+
+An Attachment Circuit, as defined in {{RFC9408}}, is a physical or
+logical channel that connects a Customer Edge (CE) device to a Provider
+Edge (PE) device.
+
+A Service Attachment Point is an abstract network reference point —
+typically the PE side of an AC — where network services are actually
+delivered or "grafted" to the customer. The SAP Network Model {
+{RFC9408}} provides an abstract view of the provider's topology,
+exposing only the nodes and interfaces where services can be attached.
 
 # Operational Problems with Service and Network Abstractions
-
-TODO Introduction to problem areas section.
 
 This section identifies the core operational problems that motivate
 the ONSEN Working Group.  Each problem is described in terms of its
 operational impact and why it cannot be resolved by implementing
 automation of the existing LxNM/LxSM models in their current forms.
 
-
 ## Fragmented Operational Lifecycles
-
-TODO
 
 Operational workflows associated with service abstractions — service
 instantiation, monitoring, modification, troubleshooting, and
 decommissioning — are often fragmented and inconsistently handled.
-
-Key issues to elaborate:
 
 - Operators depend on a heterogeneous mix of management protocols,
   vendor-specific APIs, and legacy mechanisms (CLI, SNMP) even
@@ -213,15 +332,11 @@ Key issues to elaborate:
 
 ## Misalignment Between Abstraction Layers
 
-TODO
-
 Service abstractions are realized through a combination of
 service-level models, network-level models, control-plane behavior,
 and management interfaces.  These layers are often developed
 independently, with limited coordination across working groups or
 operational domains.
-
-Key issues to elaborate:
 
 - Service abstractions that do not cleanly map to underlying network
   capabilities.
@@ -229,8 +344,8 @@ Key issues to elaborate:
 - Network models that expose parameters without clear service-level
   semantics.
 
-- Control-plane behaviors that are difficult to correlate with
-  service-level intent.
+- Control-plane behaviors (vendor differentiators) that are difficult to
+  correlate with service-level intent.
 
 - Difficulty in combining different services into a higher-level
   composite service.
