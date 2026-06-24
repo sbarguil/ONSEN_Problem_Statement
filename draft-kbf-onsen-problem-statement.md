@@ -170,8 +170,9 @@ The YANG Automation Framework provides a programmatic approach to
 representing services and networks through data models. It is designed
 to automate the management life cycle—including instantiation,
 provisioning, optimization, and monitoring—while enabling closed-loop
-control for adaptive service maintenance. Layered Data Model
-Architecture The framework uses a layered approach to promote data
+control for adaptive service maintenance.
+
+The framework uses a layered approach to promote data
 reusability and prevent feature duplication across different management
 levels:
 
@@ -224,7 +225,7 @@ Control: by correlating telemetry data with configuration data, the
 framework allows orchestrators to continuously adjust network resources
 to meet intended service parameters.
 
-The Primary Benefits of the framework are:
+The primary benefits of the framework are:
 
 - Vendor-Agnosticism: Enables unified management of multi-vendor
   environments through standardized interfaces.
@@ -242,7 +243,7 @@ act as abstracted interfaces for management systems (such as
 orchestrators) to automate the provisioning and management of VPN
 services.
 
-Defined in RFC 8049, the L3SM is used to deliver Layer 3
+Defined in {{RFC8049}}, the L3SM is used to deliver Layer 3
 provider-provisioned VPN services, specifically limited to BGP PE-based
 VPNs.
 
