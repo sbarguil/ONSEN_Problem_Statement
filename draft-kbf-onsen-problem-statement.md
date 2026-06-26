@@ -34,6 +34,10 @@ author:
     fullname: Kris Lambrechts
     organization: NetEdge
     email: kris@netedge.plus
+ -
+    fullname: Chongfeng Xie
+    organization: China Telecom
+    email: xiechf@chinatelecom.cn
 
 informative:
   RFC8299:
@@ -360,17 +364,15 @@ operational domains.
 
 ## Inconsistent Service Semantics
 
-TODO
-
 Abstraction models frequently rely on metrics, attributes, or
-parameters whose semantics vary across models, implementations, or
+parameters whose semantics vary across vendors, models, implementations, or
 consumption contexts.  Concepts such as cost, availability, or
 performance may be represented using different definitions, units,
 scopes, or update frequencies.
 
 Key issues to elaborate:
 
-- APIs derived from similar YANG models differ in service semantics
+- APIs derived from similar intentions differ in service semantics
   across vendors and deployments, complicating integration for
   operators and OSS/BSS systems.
 
@@ -388,8 +390,6 @@ Key issues to elaborate:
 
 
 ## Limited Observability and Feedback
-
-TODO
 
 Existing abstractions primarily focus on configuration and offer
 limited standardized mechanisms for reporting whether requested
@@ -410,8 +410,6 @@ Key issues to elaborate:
 
 
 ## OSS/BSS Interface and API Interoperability
-
-TODO
 
 YANG data models are commonly used as the basis for APIs that expose
 service abstractions to external systems.  However, existing work
@@ -438,8 +436,6 @@ Key issues to elaborate:
 
 ## Lack of Architectural Guidance and Documentation
 
-TODO
-
 A recurring theme from the NEMOPS discussions is the absence of
 architectural documentation and operational guidance explaining how
 existing abstractions, models, protocols, and tools are intended to
@@ -456,8 +452,6 @@ Key issues to elaborate:
 
 
 # Evidence from the IAB NEMOPS Workshop
-
-TODO
 
 This section summarizes the relevant findings of the IAB NEMOPS
 Workshop {{NEMOPS}} that corroborate the problems identified in
