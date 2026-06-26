@@ -7,6 +7,7 @@
 <title>ONSEN Problem Statement</title>
 <meta content="Samier Barguil" name="author">
 <meta content="Kris Lambrechts" name="author">
+<meta content="Chongfeng Xie" name="author">
 <meta content="
        The IETF has produced numerous YANG data models for automating the
 provisioning and delivery of network and connectivity services,
@@ -1062,8 +1063,8 @@ svg {
 <td class="right">June 2026</td>
 </tr></thead>
 <tfoot><tr>
-<td class="left">Barguil &amp; Lambrechts</td>
-<td class="center">Expires 26 December 2026</td>
+<td class="left">Barguil, et al.</td>
+<td class="center">Expires 28 December 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1076,12 +1077,12 @@ svg {
 <dd class="internet-draft">draft-kbf-onsen-problem-statement-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-06-24" class="published">24 June 2026</time>
+<time datetime="2026-06-26" class="published">26 June 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-12-26">26 December 2026</time></dd>
+<dd class="expires"><time datetime="2026-12-28">28 December 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1091,6 +1092,10 @@ svg {
 <div class="author">
       <div class="author-name">K. Lambrechts</div>
 <div class="org">NetEdge</div>
+</div>
+<div class="author">
+      <div class="author-name">C. Xie</div>
+<div class="org">China Telecom</div>
 </div>
 </dd>
 </dl>
@@ -1146,7 +1151,7 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 26 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 28 December 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1633,33 +1638,32 @@ orchestrator.<a href="#section-4.2-2.5.1" class="pilcrow">¶</a></p>
         <h3 id="name-inconsistent-service-semant">
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-inconsistent-service-semant" class="section-name selfRef">Inconsistent Service Semantics</a>
         </h3>
-<p id="section-4.3-1">TODO<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<p id="section-4.3-2">Abstraction models frequently rely on metrics, attributes, or
-parameters whose semantics vary across models, implementations, or
+<p id="section-4.3-1">Abstraction models frequently rely on metrics, attributes, or
+parameters whose semantics vary across vendors, models, implementations, or
 consumption contexts.  Concepts such as cost, availability, or
 performance may be represented using different definitions, units,
-scopes, or update frequencies.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
-<p id="section-4.3-3">Key issues to elaborate:<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+scopes, or update frequencies.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2">Key issues to elaborate:<a href="#section-4.3-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.3-4.1">
-            <p id="section-4.3-4.1.1">APIs derived from similar YANG models differ in service semantics
+<li class="normal" id="section-4.3-3.1">
+            <p id="section-4.3-3.1.1">APIs derived from similar intentions differ in service semantics
 across vendors and deployments, complicating integration for
-operators and OSS/BSS systems.<a href="#section-4.3-4.1.1" class="pilcrow">¶</a></p>
+operators and OSS/BSS systems.<a href="#section-4.3-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.3-4.2">
-            <p id="section-4.3-4.2.1">The lack of consistent guidance on how abstractions should be
+          <li class="normal" id="section-4.3-3.2">
+            <p id="section-4.3-3.2.1">The lack of consistent guidance on how abstractions should be
 modeled, exposed, and consumed results in APIs that vary
-significantly across vendors and deployments.<a href="#section-4.3-4.2.1" class="pilcrow">¶</a></p>
+significantly across vendors and deployments.<a href="#section-4.3-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.3-4.3">
-            <p id="section-4.3-4.3.1">Inconsistent semantics complicate integration between systems and
+          <li class="normal" id="section-4.3-3.3">
+            <p id="section-4.3-3.3.1">Inconsistent semantics complicate integration between systems and
 undermine the reliability of automation, typically addressed
 through custom logic or manual processes that reduce portability
-and interoperability.<a href="#section-4.3-4.3.1" class="pilcrow">¶</a></p>
+and interoperability.<a href="#section-4.3-3.3.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.3-4.4">
-            <p id="section-4.3-4.4.1">The LxSM models lack administrative state control and operational
-state information.<a href="#section-4.3-4.4.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-3.4">
+            <p id="section-4.3-3.4.1">The LxSM models lack administrative state control and operational
+state information.<a href="#section-4.3-3.4.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1669,25 +1673,24 @@ state information.<a href="#section-4.3-4.4.1" class="pilcrow">¶</a></p>
         <h3 id="name-limited-observability-and-f">
 <a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-limited-observability-and-f" class="section-name selfRef">Limited Observability and Feedback</a>
         </h3>
-<p id="section-4.4-1">TODO<a href="#section-4.4-1" class="pilcrow">¶</a></p>
-<p id="section-4.4-2">Existing abstractions primarily focus on configuration and offer
+<p id="section-4.4-1">Existing abstractions primarily focus on configuration and offer
 limited standardized mechanisms for reporting whether requested
-behaviors have been successfully applied or remain valid over time.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
-<p id="section-4.4-3">Key issues to elaborate:<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+behaviors have been successfully applied or remain valid over time.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">Key issues to elaborate:<a href="#section-4.4-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.4-4.1">
-            <p id="section-4.4-4.1.1">Operators have limited ability to validate whether service intent
+<li class="normal" id="section-4.4-3.1">
+            <p id="section-4.4-3.1.1">Operators have limited ability to validate whether service intent
 is being met over time or to correlate operational state across
-abstraction layers.<a href="#section-4.4-4.1.1" class="pilcrow">¶</a></p>
+abstraction layers.<a href="#section-4.4-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.4-4.2">
-            <p id="section-4.4-4.2.1">The lack of consistent feedback undermines closed-loop automation
+          <li class="normal" id="section-4.4-3.2">
+            <p id="section-4.4-3.2.1">The lack of consistent feedback undermines closed-loop automation
 and complicates troubleshooting, particularly in multi-vendor and
-multi-domain environments.<a href="#section-4.4-4.2.1" class="pilcrow">¶</a></p>
+multi-domain environments.<a href="#section-4.4-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.4-4.3">
-            <p id="section-4.4-4.3.1">This lack of feedback assurance increases reliance on manual
-monitoring and intervention.<a href="#section-4.4-4.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.4-3.3">
+            <p id="section-4.4-3.3.1">This lack of feedback assurance increases reliance on manual
+monitoring and intervention.<a href="#section-4.4-3.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1697,30 +1700,29 @@ monitoring and intervention.<a href="#section-4.4-4.3.1" class="pilcrow">¶</a><
         <h3 id="name-oss-bss-interface-and-api-i">
 <a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-oss-bss-interface-and-api-i" class="section-name selfRef">OSS/BSS Interface and API Interoperability</a>
         </h3>
-<p id="section-4.5-1">TODO<a href="#section-4.5-1" class="pilcrow">¶</a></p>
-<p id="section-4.5-2">YANG data models are commonly used as the basis for APIs that expose
+<p id="section-4.5-1">YANG data models are commonly used as the basis for APIs that expose
 service abstractions to external systems.  However, existing work
 provides limited guidance on how these abstractions should be
 exposed, versioned, or consumed in a predictable and interoperable
-manner.<a href="#section-4.5-2" class="pilcrow">¶</a></p>
-<p id="section-4.5-3">Key issues to elaborate:<a href="#section-4.5-3" class="pilcrow">¶</a></p>
+manner.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.5-2">Key issues to elaborate:<a href="#section-4.5-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.5-4.1">
-            <p id="section-4.5-4.1.1">Some operators adopt TMF640/641 as APIs for service ordering from
+<li class="normal" id="section-4.5-3.1">
+            <p id="section-4.5-3.1.1">Some operators adopt TMF640/641 as APIs for service ordering from
 their BSS, but how these interfaces can be aligned with
 service/network YANG models is not specified.  Operators face the
 challenge of either paying commercial OSS/BSS providers to create
-bespoke interfaces or building an adaptation layer themselves.<a href="#section-4.5-4.1.1" class="pilcrow">¶</a></p>
+bespoke interfaces or building an adaptation layer themselves.<a href="#section-4.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.5-4.2">
-            <p id="section-4.5-4.2.1">The declarative model-driven nature of NETCONF/YANG is powerful,
+          <li class="normal" id="section-4.5-3.2">
+            <p id="section-4.5-3.2.1">The declarative model-driven nature of NETCONF/YANG is powerful,
 but the lack of commercial off-the-shelf systems that implement
-this methodology creates risk of vendor lock-in and limits uptake.<a href="#section-4.5-4.2.1" class="pilcrow">¶</a></p>
+this methodology creates risk of vendor lock-in and limits uptake.<a href="#section-4.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.5-4.3">
-            <p id="section-4.5-4.3.1">APIs generated from similar YANG models often differ in service
+          <li class="normal" id="section-4.5-3.3">
+            <p id="section-4.5-3.3.1">APIs generated from similar YANG models often differ in service
 semantics, complicating integration across systems, vendors, and
-deployment environments.<a href="#section-4.5-4.3.1" class="pilcrow">¶</a></p>
+deployment environments.<a href="#section-4.5-3.3.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1730,21 +1732,20 @@ deployment environments.<a href="#section-4.5-4.3.1" class="pilcrow">¶</a></p>
         <h3 id="name-lack-of-architectural-guida">
 <a href="#section-4.6" class="section-number selfRef">4.6. </a><a href="#name-lack-of-architectural-guida" class="section-name selfRef">Lack of Architectural Guidance and Documentation</a>
         </h3>
-<p id="section-4.6-1">TODO<a href="#section-4.6-1" class="pilcrow">¶</a></p>
-<p id="section-4.6-2">A recurring theme from the NEMOPS discussions is the absence of
+<p id="section-4.6-1">A recurring theme from the NEMOPS discussions is the absence of
 architectural documentation and operational guidance explaining how
 existing abstractions, models, protocols, and tools are intended to
-work together as a system.<a href="#section-4.6-2" class="pilcrow">¶</a></p>
-<p id="section-4.6-3">Key issues to elaborate:<a href="#section-4.6-3" class="pilcrow">¶</a></p>
+work together as a system.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
+<p id="section-4.6-2">Key issues to elaborate:<a href="#section-4.6-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.6-4.1">
-            <p id="section-4.6-4.1.1">Operators express difficulty understanding which abstractions to
+<li class="normal" id="section-4.6-3.1">
+            <p id="section-4.6-3.1.1">Operators express difficulty understanding which abstractions to
 use, how they should be combined, and how responsibilities are
-divided across layers and working groups.<a href="#section-4.6-4.1.1" class="pilcrow">¶</a></p>
+divided across layers and working groups.<a href="#section-4.6-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="normal" id="section-4.6-4.2">
-            <p id="section-4.6-4.2.1">The absence of cohesive guidance leads to divergent
-interpretations and inconsistent deployments.<a href="#section-4.6-4.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.6-3.2">
+            <p id="section-4.6-3.2.1">The absence of cohesive guidance leads to divergent
+interpretations and inconsistent deployments.<a href="#section-4.6-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -1756,38 +1757,37 @@ interpretations and inconsistent deployments.<a href="#section-4.6-4.2.1" class=
       <h2 id="name-evidence-from-the-iab-nemop">
 <a href="#section-5" class="section-number selfRef">5. </a><a href="#name-evidence-from-the-iab-nemop" class="section-name selfRef">Evidence from the IAB NEMOPS Workshop</a>
       </h2>
-<p id="section-5-1">TODO<a href="#section-5-1" class="pilcrow">¶</a></p>
-<p id="section-5-2">This section summarizes the relevant findings of the IAB NEMOPS
+<p id="section-5-1">This section summarizes the relevant findings of the IAB NEMOPS
 Workshop <span>[<a href="#NEMOPS" class="cite xref">NEMOPS</a>]</span> that corroborate the problems identified in
-Section 4.<a href="#section-5-2" class="pilcrow">¶</a></p>
-<p id="section-5-3">Key points to elaborate:<a href="#section-5-3" class="pilcrow">¶</a></p>
+Section 4.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-5-2">Key points to elaborate:<a href="#section-5-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-5-4.1">
-          <p id="section-5-4.1.1">Despite significant progress in protocol development and data
+<li class="normal" id="section-5-3.1">
+          <p id="section-5-3.1.1">Despite significant progress in protocol development and data
 modeling, operational workflows remain fragmented and difficult to
-automate end-to-end.<a href="#section-5-4.1.1" class="pilcrow">¶</a></p>
+automate end-to-end.<a href="#section-5-3.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.2">
-          <p id="section-5-4.2.1">Model-driven network management is generally successful, yet
-insufficient on its own to address higher-level operational needs.<a href="#section-5-4.2.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-5-3.2">
+          <p id="section-5-3.2.1">Model-driven network management is generally successful, yet
+insufficient on its own to address higher-level operational needs.<a href="#section-5-3.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.3">
-          <p id="section-5-4.3.1">Gaps between device-level and service-level abstractions: existing
+        <li class="normal" id="section-5-3.3">
+          <p id="section-5-3.3.1">Gaps between device-level and service-level abstractions: existing
 models often lack the semantic alignment and contextual information
-required by orchestration and OSS/BSS systems.<a href="#section-5-4.3.1" class="pilcrow">¶</a></p>
+required by orchestration and OSS/BSS systems.<a href="#section-5-3.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.4">
-          <p id="section-5-4.4.1">Operators must perform extensive model mapping, data
+        <li class="normal" id="section-5-3.4">
+          <p id="section-5-3.4.1">Operators must perform extensive model mapping, data
 transformation, and system-specific integration outside the scope
-of standardized abstractions.<a href="#section-5-4.4.1" class="pilcrow">¶</a></p>
+of standardized abstractions.<a href="#section-5-3.4.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.5">
-          <p id="section-5-4.5.1">Limited ability to validate whether service intent is being met
+        <li class="normal" id="section-5-3.5">
+          <p id="section-5-3.5.1">Limited ability to validate whether service intent is being met
 over time or to correlate operational state across abstraction
-layers.<a href="#section-5-4.5.1" class="pilcrow">¶</a></p>
+layers.<a href="#section-5-3.5.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-5-4.6">
-          <p id="section-5-4.6.1">Additional operator-reported challenges to be added here from contributors.<a href="#section-5-4.6.1" class="pilcrow">¶</a></p>
+        <li class="normal" id="section-5-3.6">
+          <p id="section-5-3.6.1">Additional operator-reported challenges to be added here from contributors.<a href="#section-5-3.6.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 </section>
@@ -1894,6 +1894,14 @@ network operators.  To be populated by operator contributors.<a href="#section-6
 <div class="email">
 <span>Email:</span>
 <a href="mailto:kris@netedge.plus" class="email">kris@netedge.plus</a>
+</div>
+</address>
+<address class="vcard">
+        <div dir="auto" class="left"><span class="fn nameRole">Chongfeng Xie</span></div>
+<div dir="auto" class="left"><span class="org">China Telecom</span></div>
+<div class="email">
+<span>Email:</span>
+<a href="mailto:xiechf@chinatelecom.cn" class="email">xiechf@chinatelecom.cn</a>
 </div>
 </address>
 </section>

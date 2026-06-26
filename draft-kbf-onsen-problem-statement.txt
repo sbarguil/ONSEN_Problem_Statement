@@ -5,8 +5,10 @@
 ONSEN Working Group                                           S. Barguil
 Internet-Draft                                                     Nokia
 Intended status: Informational                             K. Lambrechts
-Expires: 26 December 2026                                        NetEdge
-                                                            24 June 2026
+Expires: 28 December 2026                                        NetEdge
+                                                                  C. Xie
+                                                           China Telecom
+                                                            26 June 2026
 
 
                         ONSEN Problem Statement
@@ -60,7 +62,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 December 2026.
+   This Internet-Draft will expire on 28 December 2026.
 
 Copyright Notice
 
@@ -396,17 +398,15 @@ Table of Contents
 
 4.3.  Inconsistent Service Semantics
 
-   TODO
-
    Abstraction models frequently rely on metrics, attributes, or
-   parameters whose semantics vary across models, implementations, or
-   consumption contexts.  Concepts such as cost, availability, or
-   performance may be represented using different definitions, units,
-   scopes, or update frequencies.
+   parameters whose semantics vary across vendors, models,
+   implementations, or consumption contexts.  Concepts such as cost,
+   availability, or performance may be represented using different
+   definitions, units, scopes, or update frequencies.
 
    Key issues to elaborate:
 
-   *  APIs derived from similar YANG models differ in service semantics
+   *  APIs derived from similar intentions differ in service semantics
       across vendors and deployments, complicating integration for
       operators and OSS/BSS systems.
 
@@ -423,8 +423,6 @@ Table of Contents
       state information.
 
 4.4.  Limited Observability and Feedback
-
-   TODO
 
    Existing abstractions primarily focus on configuration and offer
    limited standardized mechanisms for reporting whether requested
@@ -444,8 +442,6 @@ Table of Contents
       monitoring and intervention.
 
 4.5.  OSS/BSS Interface and API Interoperability
-
-   TODO
 
    YANG data models are commonly used as the basis for APIs that expose
    service abstractions to external systems.  However, existing work
@@ -471,8 +467,6 @@ Table of Contents
 
 4.6.  Lack of Architectural Guidance and Documentation
 
-   TODO
-
    A recurring theme from the NEMOPS discussions is the absence of
    architectural documentation and operational guidance explaining how
    existing abstractions, models, protocols, and tools are intended to
@@ -488,8 +482,6 @@ Table of Contents
       interpretations and inconsistent deployments.
 
 5.  Evidence from the IAB NEMOPS Workshop
-
-   TODO
 
    This section summarizes the relevant findings of the IAB NEMOPS
    Workshop [NEMOPS] that corroborate the problems identified in
@@ -596,3 +588,8 @@ Authors' Addresses
    Kris Lambrechts
    NetEdge
    Email: kris@netedge.plus
+
+
+   Chongfeng Xie
+   China Telecom
+   Email: xiechf@chinatelecom.cn
