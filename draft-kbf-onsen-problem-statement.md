@@ -123,9 +123,6 @@ The following terms are used in this document:
 AC:
 : Attachment Circuit.
 
-API:
-: Application Programming Interface.
-
 Abstraction:
 : The process of defining simplified, high-level constructs that
 represent network and service-level capabilities, while hiding the
@@ -133,13 +130,6 @@ details of their underlying realization.  Abstraction enables
 interaction between management and automation systems without
 requiring direct exposure of device-specific configurations or
 protocol behaviors.
-
-Abstraction Layer:
-: The layer between managed components and the automation management
-system that exposes simplified service and network constructs.
-
-BSS:
-: Business Support Systems.
 
 LxNM:
 : Layer x Network Model (L2NM or L3NM).
@@ -316,9 +306,10 @@ Operational workflows associated with service abstractions — service
 instantiation, monitoring, modification, troubleshooting, and
 decommissioning — are often fragmented and inconsistently handled.
 
-- Operators depend on a heterogeneous mix of management protocols,
-  vendor-specific APIs, and legacy mechanisms (CLI, SNMP) even
-  within a single deployment.
+- Despite the availability of numerous YANG data models, operators
+  depend on a heterogeneous mix of models,
+  vendor-specific APIs, and legacy mechanisms (CLI, SNMP), even within
+  a single deployment.
 
 - Lifecycle actions initiated through YANG-based service APIs often
   require coordination across orchestration systems, controllers, and
@@ -370,8 +361,6 @@ consumption contexts.  Concepts such as cost, availability, or
 performance may be represented using different definitions, units,
 scopes, or update frequencies.
 
-Key issues to elaborate:
-
 - APIs derived from similar intentions differ in service semantics
   across vendors and deployments, complicating integration for
   operators and OSS/BSS systems.
@@ -395,11 +384,12 @@ Existing abstractions primarily focus on configuration and offer
 limited standardized mechanisms for reporting whether requested
 behaviors have been successfully applied or remain valid over time.
 
-Key issues to elaborate:
-
-- Operators have limited ability to validate whether service intent
-  is being met over time or to correlate operational state across
-  abstraction layers.
+- Operators have limited ability to validate whether service intent is
+  being met over time or to correlate operational state across
+  abstraction layers. Operational considerations such as alarms,
+  notifications, and state changes triggered by service updates are
+  not comprehensively addressed in the existing Service and Network
+  Models, further hindering end-to-end observability.
 
 - The lack of consistent feedback undermines closed-loop automation
   and complicates troubleshooting, particularly in multi-vendor and
@@ -407,7 +397,6 @@ Key issues to elaborate:
 
 - This lack of feedback assurance increases reliance on manual
   monitoring and intervention.
-
 
 ## OSS/BSS Interface and API Interoperability
 
@@ -417,17 +406,11 @@ provides limited guidance on how these abstractions should be
 exposed, versioned, or consumed in a predictable and interoperable
 manner.
 
-Key issues to elaborate:
-
 - Some operators adopt TMF640/641 as APIs for service ordering from
   their BSS, but how these interfaces can be aligned with
   service/network YANG models is not specified.  Operators face the
   challenge of either paying commercial OSS/BSS providers to create
   bespoke interfaces or building an adaptation layer themselves.
-
-- The declarative model-driven nature of NETCONF/YANG is powerful,
-  but the lack of commercial off-the-shelf systems that implement
-  this methodology creates risk of vendor lock-in and limits uptake.
 
 - APIs generated from similar YANG models often differ in service
   semantics, complicating integration across systems, vendors, and
@@ -440,8 +423,6 @@ A recurring theme from the NEMOPS discussions is the absence of
 architectural documentation and operational guidance explaining how
 existing abstractions, models, protocols, and tools are intended to
 work together as a system.
-
-Key issues to elaborate:
 
 - Operators express difficulty understanding which abstractions to
   use, how they should be combined, and how responsibilities are
@@ -456,8 +437,6 @@ Key issues to elaborate:
 This section summarizes the relevant findings of the IAB NEMOPS
 Workshop {{NEMOPS}} that corroborate the problems identified in
 Section 4.
-
-Key points to elaborate:
 
 - Despite significant progress in protocol development and data
   modeling, operational workflows remain fragmented and difficult to
