@@ -5,10 +5,10 @@
 ONSEN Working Group                                           S. Barguil
 Internet-Draft                                                     Nokia
 Intended status: Informational                             K. Lambrechts
-Expires: 30 December 2026                                        NetEdge
+Expires: 1 January 2027                                          NetEdge
                                                                   C. Xie
                                                            China Telecom
-                                                            28 June 2026
+                                                            30 June 2026
 
 
                         ONSEN Problem Statement
@@ -62,7 +62,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 December 2026.
+   This Internet-Draft will expire on 1 January 2027.
 
 Copyright Notice
 
@@ -337,6 +337,17 @@ Table of Contents
    the ONSEN Working Group.  Each problem is described in terms of its
    operational impact and why it cannot be resolved by implementing
    automation of the existing LxNM/LxSM models in their current forms.
+
+   The emergence of data-intensive workload transmission services — an
+   enhanced L3VPN requiring on-demand ultra-high bandwidth,
+   deterministic scheduling, and dynamic lifecycle management —
+   illustrates the limitations of existing models.  The L3SM, for
+   instance, assumes all connectivity is persistent and provides no
+   mechanism to express temporality, dynamic bandwidth adjustment,
+   integration with service-level objectives (such as latency, jitter,
+   or guaranteed throughput), or slice service templates.  These gaps
+   are representative of the broader set of problems described in the
+   subsections below.
 
 4.1.  Fragmented Operational Lifecycles
 
