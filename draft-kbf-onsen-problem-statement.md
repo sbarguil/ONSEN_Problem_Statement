@@ -45,6 +45,9 @@ informative:
   RFC9182:
   RFC9291:
   RFC9543:
+  draft-ietf-teas-ietf-network-slice-nbi-yang-26:
+    title: "A YANG Data Model for the RFC 9543 Network Slice Service"
+    target: https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-26
   RFC9408:
   RFC8969:
   NEMOPS:
@@ -77,10 +80,10 @@ The IETF has produced several YANG data models that are instrumental for
 automating the provisioning and delivery of connectivity services, as
 described in {{RFC8969}}.  These include models such as L3SM
 {{RFC8299}}, L3NM {{RFC9182}}, L2SM {{RFC8466}}, L2NM
-{{RFC9291}}, Network Slice Service {{RFC9543}}, and Service Attachment
-Points (SAPs) {{RFC9408}}.
+{{RFC9291}} and Service Attachment Points (SAPs) {{RFC9408}}. Current
+IETF work adds on a YANG model for Network Slice Service {{RFC9543}}, in{{draft-ietf-teas-ietf-network-slice-nbi-yang-26}}.
 
-While these abstractions are widely deployed, operators report
+While some of these abstractions have been deployed, operators report
 persistent challenges in operationalizing them.  As highlighted by the
 IAB NEMOPS Workshop {{NEMOPS}}, these challenges are systemic and
 operational in nature.  They are not confined to a specific technology
@@ -93,7 +96,8 @@ ongoing effort to make these models coexist within a common framework
 under the IETF umbrella, operators continue to face significant
 challenges in operationalizing YANG-based service APIs in a consistent,
 scalable, and interoperable manner. While models such as the L3SM,
-L2SM, L3NM, L2NM, and AC/SAP abstractions each address specific aspects
+L2SM, L3NM, L2NM, AC/SAP abstractions and Network Slice Service each
+address specific aspects
 of service delivery, it is not always clear which models should be used
 together, in which scenarios, or to what extent a given implementation
 actually supports the full model. The usage of these APIs remains
@@ -307,9 +311,9 @@ illustrates the limitations of existing models.  The L3SM, for
 instance, assumes all connectivity is persistent and provides no
 mechanism to express temporality, dynamic bandwidth adjustment,
 integration with service-level objectives (such as latency, jitter,
-or guaranteed throughput), or slice service templates.  These gaps
-are representative of the broader set of problems described in the
-subsections below.
+or guaranteed throughput), or site network access (SNA) templates.
+These gaps are representative of the broader set of problems described
+in the subsections below.
 
 ## Fragmented Operational Lifecycles
 
