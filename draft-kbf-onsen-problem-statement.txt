@@ -5,10 +5,10 @@
 ONSEN Working Group                                           S. Barguil
 Internet-Draft                                                     Nokia
 Intended status: Informational                             K. Lambrechts
-Expires: 4 January 2027                                          NetEdge
+Expires: 5 January 2027                                          Intwine
                                                                   C. Xie
                                                            China Telecom
-                                                             3 July 2026
+                                                             4 July 2026
 
 
                         ONSEN Problem Statement
@@ -62,7 +62,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 January 2027.
+   This Internet-Draft will expire on 5 January 2027.
 
 Copyright Notice
 
@@ -653,8 +653,8 @@ Authors' Addresses
 
 
    Kris Lambrechts
-   NetEdge
-   Email: kris@netedge.plus
+   Intwine
+   Email: kris@intwine.net
 
 
    Chongfeng Xie
