@@ -32,8 +32,8 @@ author:
     email: samier.barguil_giraldo@nokia.com
  -
     fullname: Kris Lambrechts
-    organization: NetEdge
-    email: kris@netedge.plus
+    organization: Intwine
+    email: kris@intwine.net
  -
     fullname: Chongfeng Xie
     organization: China Telecom
