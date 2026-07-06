@@ -90,8 +90,8 @@ operational in nature.  They are not confined to a specific technology
 or service type, but recur across abstraction domains and deployment
 environments.
 
-In addition, despite the availability of numerous YANG data models —
-covering configuration, assurance, and fault management — and the
+In addition, despite the availability of numerous YANG data models -
+covering configuration, assurance, and fault management - and the
 ongoing effort to make these models coexist within a common framework
 under the IETF umbrella, operators continue to face significant
 challenges in operationalizing YANG-based service APIs in a consistent,
@@ -101,7 +101,7 @@ address specific aspects
 of service delivery, it is not always clear which models should be used
 together, in which scenarios, or to what extent a given implementation
 actually supports the full model. The usage of these APIs remains
-fragmented — often partially implemented — and difficult to automate
+fragmented - often partially implemented - and difficult to automate
 end-to-end. In practice, APIs generated from similar YANG models often
 differ in service semantics, and the lack of clear guidance on model
 composition and interoperability complicates integration across
@@ -119,8 +119,6 @@ solutions, protocols, or new data models.
 
 
 # Conventions and Definitions
-
-{::boilerplate bcp14-tagged}
 
 The following terms are used in this document:
 
@@ -166,8 +164,8 @@ delivered across a provider's network.
 
 The YANG Automation Framework provides a programmatic approach to
 representing services and networks through data models. It is designed
-to automate the management life cycle—including instantiation,
-provisioning, optimization, and monitoring—while enabling closed-loop
+to automate the management life cycle-including instantiation,
+provisioning, optimization, and monitoring-while enabling closed-loop
 control for adaptive service maintenance.
 
 The framework uses a layered approach to promote data
@@ -291,8 +289,8 @@ An Attachment Circuit, as defined in {{RFC9408}}, is a physical or
 logical channel that connects a Customer Edge (CE) device to a Provider
 Edge (PE) device.
 
-A Service Attachment Point is an abstract network reference point —
-typically the PE side of an AC — where network services are actually
+A Service Attachment Point is an abstract network reference point -
+typically the PE side of an AC - where network services are actually
 delivered or "grafted" to the customer. The SAP Network Model {
 {RFC9408}} provides an abstract view of the provider's topology,
 exposing only the nodes and interfaces where services can be attached.
@@ -306,9 +304,9 @@ automation of the existing LxNM/LxSM models in their current forms.
 
 ## Fragmented Operational Lifecycles
 
-Operational workflows associated with service abstractions — service
+Operational workflows associated with service abstractions - service
 instantiation, monitoring, modification, troubleshooting, and
-decommissioning — are often fragmented and inconsistently handled.
+decommissioning - are often fragmented and inconsistently handled.
 
 ### Difficulty Integrating Different Management Domains
 
@@ -520,7 +518,10 @@ TODO
 This section documents operational problems reported directly by
 network operators.  To be populated by operator contributors.
 
+# IANA Considerations
+
+This memo includes no request to IANA.
 
 # Security Considerations
 
-TODO S
+TODO
