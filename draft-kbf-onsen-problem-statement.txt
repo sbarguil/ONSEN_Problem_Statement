@@ -5,10 +5,10 @@
 ONSEN Working Group                                           S. Barguil
 Internet-Draft                                                     Nokia
 Intended status: Informational                             K. Lambrechts
-Expires: 5 January 2027                                          Intwine
+Expires: 7 January 2027                                          Intwine
                                                                   C. Xie
                                                            China Telecom
-                                                             4 July 2026
+                                                             6 July 2026
 
 
                         ONSEN Problem Statement
@@ -62,7 +62,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 January 2027.
+   This Internet-Draft will expire on 7 January 2027.
 
 Copyright Notice
 
@@ -113,10 +113,9 @@ Table of Contents
      4.6.  Lack of Architectural Guidance and Documentation
    5.  Evidence from the IAB NEMOPS Workshop
    6.  Operator Experiences
-   7.  Security Considerations
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
+   7.  IANA Considerations
+   8.  Security Considerations
+   9.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -136,8 +135,8 @@ Table of Contents
    technology or service type, but recur across abstraction domains and
    deployment environments.
 
-   In addition, despite the availability of numerous YANG data models —
-   covering configuration, assurance, and fault management — and the
+   In addition, despite the availability of numerous YANG data models -
+   covering configuration, assurance, and fault management - and the
    ongoing effort to make these models coexist within a common framework
    under the IETF umbrella, operators continue to face significant
    challenges in operationalizing YANG-based service APIs in a
@@ -146,8 +145,8 @@ Table of Contents
    Service each address specific aspects of service delivery, it is not
    always clear which models should be used together, in which
    scenarios, or to what extent a given implementation actually supports
-   the full model.  The usage of these APIs remains fragmented — often
-   partially implemented — and difficult to automate end-to-end.  In
+   the full model.  The usage of these APIs remains fragmented - often
+   partially implemented - and difficult to automate end-to-end.  In
    practice, APIs generated from similar YANG models often differ in
    service semantics, and the lack of clear guidance on model
    composition and interoperability complicates integration across
@@ -164,12 +163,6 @@ Table of Contents
    propose solutions, protocols, or new data models.
 
 2.  Conventions and Definitions
-
-   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-   "OPTIONAL" in this document are to be interpreted as described in
-   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
-   capitals, as shown here.
 
    The following terms are used in this document:
 
@@ -207,8 +200,8 @@ Table of Contents
 
    The YANG Automation Framework provides a programmatic approach to
    representing services and networks through data models.  It is
-   designed to automate the management life cycle—including
-   instantiation, provisioning, optimization, and monitoring—while
+   designed to automate the management life cycle-including
+   instantiation, provisioning, optimization, and monitoring-while
    enabling closed-loop control for adaptive service maintenance.
 
    The framework uses a layered approach to promote data reusability and
@@ -341,8 +334,8 @@ Table of Contents
    logical channel that connects a Customer Edge (CE) device to a
    Provider Edge (PE) device.
 
-   A Service Attachment Point is an abstract network reference point —
-   typically the PE side of an AC — where network services are actually
+   A Service Attachment Point is an abstract network reference point -
+   typically the PE side of an AC - where network services are actually
    delivered or "grafted" to the customer.  The SAP Network Model {
    {RFC9408}} provides an abstract view of the provider's topology,
    exposing only the nodes and interfaces where services can be
@@ -357,9 +350,9 @@ Table of Contents
 
 4.1.  Fragmented Operational Lifecycles
 
-   Operational workflows associated with service abstractions — service
+   Operational workflows associated with service abstractions - service
    instantiation, monitoring, modification, troubleshooting, and
-   decommissioning — are often fragmented and inconsistently handled.
+   decommissioning - are often fragmented and inconsistently handled.
 
 4.1.1.  Difficulty Integrating Different Management Domains
 
@@ -580,24 +573,15 @@ Table of Contents
    This section documents operational problems reported directly by
    network operators.  To be populated by operator contributors.
 
-7.  Security Considerations
+7.  IANA Considerations
 
-   TODO S
+   This memo includes no request to IANA.
 
-8.  References
+8.  Security Considerations
 
-8.1.  Normative References
+   TODO
 
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997,
-              <https://www.rfc-editor.org/rfc/rfc2119>.
-
-   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
-              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
-              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
-
-8.2.  Informative References
+9.  Informative References
 
    [draft-ietf-teas-ietf-network-slice-nbi-yang-26]
               "A YANG Data Model for the RFC 9543 Network Slice
