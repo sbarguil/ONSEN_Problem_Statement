@@ -767,7 +767,7 @@ Authors' Addresses
 
    Samier Barguil
    Nokia
-   Email: samier.barguil_giraldo@nokia.com
+   Email: samier.barguil@nokia.com
 
 
    Kris Lambrechts
