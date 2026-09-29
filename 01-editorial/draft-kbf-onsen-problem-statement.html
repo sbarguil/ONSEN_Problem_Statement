@@ -22,26 +22,26 @@ automation.  The problems documented here are drawn from operator
 experience and from the findings of the IAB NEMOPS Workshop.  This
 document does not propose solutions, protocols, or new data models. 
     " name="description">
-<meta content="xml2rfc 3.34.0" name="generator">
+<meta content="xml2rfc 3.34.1" name="generator">
 <meta content="YANG" name="keyword">
 <meta content="service abstractions" name="keyword">
 <meta content="network automation" name="keyword">
 <meta content="operationalization" name="keyword">
 <meta content="draft-kbf-onsen-problem-statement-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.0
-    Python 3.14.5
-    ConfigArgParse 1.7.5
+  xml2rfc 3.34.1
+    Python 3.14.7
+    ConfigArgParse 1.7.7
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.10.0
+    platformdirs 4.11.10
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.2
+    wcwidth 0.8.4
 -->
 <link href="draft-kbf-onsen-problem-statement.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -77,7 +77,6 @@ document does not propose solutions, protocols, or new data models.
   src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: italic;
@@ -126,7 +125,6 @@ document does not propose solutions, protocols, or new data models.
   src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: normal;
@@ -191,7 +189,6 @@ document does not propose solutions, protocols, or new data models.
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 }
 
 @font-face {
@@ -1060,11 +1057,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">ONSEN Problem Statement</td>
-<td class="right">July 2026</td>
+<td class="right">September 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Barguil, et al.</td>
-<td class="center">Expires 7 January 2027</td>
+<td class="center">Expires 2 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1077,12 +1074,12 @@ svg {
 <dd class="internet-draft">draft-kbf-onsen-problem-statement-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-06" class="published">6 July 2026</time>
+<time datetime="2026-09-29" class="published">29 September 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-07">7 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-02">2 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1151,7 +1148,7 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 7 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 2 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1207,30 +1204,24 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-operational-problems-with-s" class="internal xref">Operational Problems with Service and Network Abstractions</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-fragmented-operational-life" class="internal xref">Fragmented Operational Lifecycles</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-insufficient-guidance-on-ya" class="internal xref">Insufficient Guidance on YANG Model Usage and Composition</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.1">
-                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-difficulty-integrating-diff" class="internal xref">Difficulty Integrating Different Management Domains</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.1.1"><a href="#section-4.1.1" class="auto internal xref">4.1.1</a>.  <a href="#name-inconsistent-service-operat" class="internal xref">Inconsistent Service Operation Semantics Across Models</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.2">
-                    <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-differing-lifecycle-semanti" class="internal xref">Differing Lifecycle Semantics Across Abstractions</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.2.1"><a href="#section-4.1.2" class="auto internal xref">4.1.2</a>.  <a href="#name-absence-of-reusable-service" class="internal xref">Absence of Reusable Service Configuration Constructs</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.3">
-                    <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-no-native-exposure-of-lifec" class="internal xref">No Native Exposure of Lifecycle Attributes</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.3.1"><a href="#section-4.1.3" class="auto internal xref">4.1.3</a>.  <a href="#name-management-domain-integrati" class="internal xref">Management Domain Integration Challenges</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.4">
-                    <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-limited-support-for-dynamic" class="internal xref">Limited Support for Dynamic Lifecycle Management</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.5">
-                    <p id="section-toc.1-1.4.2.1.2.5.1"><a href="#section-4.1.5" class="auto internal xref">4.1.5</a>.  <a href="#name-lack-of-templates-for-commo" class="internal xref">Lack of Templates for Common Lifecycle Patterns</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1.2.6">
-                    <p id="section-toc.1-1.4.2.1.2.6.1"><a href="#section-4.1.6" class="auto internal xref">4.1.6</a>.  <a href="#name-operational-silos" class="internal xref">Operational Silos</a></p>
+                    <p id="section-toc.1-1.4.2.1.2.4.1"><a href="#section-4.1.4" class="auto internal xref">4.1.4</a>.  <a href="#name-absence-of-architectural-do" class="internal xref">Absence of Architectural Documentation</a></p>
 </li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-inconsistent-models-at-the-" class="internal xref">Inconsistent Models at the Same Abstraction Layer</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-misalignment-between-and-wi" class="internal xref">Misalignment Between and Within Abstraction Layers</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.1">
                     <p id="section-toc.1-1.4.2.2.2.1.1"><a href="#section-4.2.1" class="auto internal xref">4.2.1</a>.  <a href="#name-inconsistent-parameter-avai" class="internal xref">Inconsistent Parameter Availability and Naming</a></p>
@@ -1239,24 +1230,24 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
                     <p id="section-toc.1-1.4.2.2.2.2.1"><a href="#section-4.2.2" class="auto internal xref">4.2.2</a>.  <a href="#name-cannot-combine-service-inst" class="internal xref">Cannot Combine Service Instances Across LxSM Models</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.3">
-                    <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-lxsm-and-network-slice-serv" class="internal xref">LxSM and Network Slice Service Relationship</a></p>
+                    <p id="section-toc.1-1.4.2.2.2.3.1"><a href="#section-4.2.3" class="auto internal xref">4.2.3</a>.  <a href="#name-lxsm-and-network-slice-serv" class="internal xref">LxSM and Network Slice Service Model Relationship</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.4">
+                    <p id="section-toc.1-1.4.2.2.2.4.1"><a href="#section-4.2.4" class="auto internal xref">4.2.4</a>.  <a href="#name-no-defined-interworking-bet" class="internal xref">No Defined Interworking Between Service and Network Layers</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2.2.5">
+                    <p id="section-toc.1-1.4.2.2.2.5.1"><a href="#section-4.2.5" class="auto internal xref">4.2.5</a>.  <a href="#name-inconsistent-semantics-acro" class="internal xref">Inconsistent Semantics Across Layers</a></p>
 </li>
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
-                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-misalignment-between-abstra" class="internal xref">Misalignment Between Abstraction Layers</a></p>
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-on-demand-and-scheduled-ser" class="internal xref">On-Demand and Scheduled Service Operations</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.1">
-                    <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-no-clear-mapping-from-servi" class="internal xref">No Clear Mapping From Service to Network Models</a></p>
+                    <p id="section-toc.1-1.4.2.3.2.1.1"><a href="#section-4.3.1" class="auto internal xref">4.3.1</a>.  <a href="#name-absence-of-temporal-and-sta" class="internal xref">Absence of Temporal and State Attributes in Service Models</a></p>
 </li>
                   <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.2">
-                    <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-no-clear-mapping-from-netwo" class="internal xref">No Clear Mapping From Network to Service Models</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.3">
-                    <p id="section-toc.1-1.4.2.3.2.3.1"><a href="#section-4.3.3" class="auto internal xref">4.3.3</a>.  <a href="#name-different-control-plane-beh" class="internal xref">Different Control-Plane Behaviors Across Vendors</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3.2.4">
-                    <p id="section-toc.1-1.4.2.3.2.4.1"><a href="#section-4.3.4" class="auto internal xref">4.3.4</a>.  <a href="#name-inconsistent-service-semant" class="internal xref">Inconsistent Service Semantics</a></p>
+                    <p id="section-toc.1-1.4.2.3.2.2.1"><a href="#section-4.3.2" class="auto internal xref">4.3.2</a>.  <a href="#name-limited-support-for-dynamic" class="internal xref">Limited Support for Dynamic Service Instantiation and Modification</a></p>
 </li>
                 </ul>
 </li>
@@ -1269,18 +1260,10 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
                 </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5">
-                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-oss-bss-interface-and-api-i" class="internal xref">OSS/BSS Interface and API Interoperability</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5.2.1">
-                    <p id="section-toc.1-1.4.2.5.2.1.1"><a href="#section-4.5.1" class="auto internal xref">4.5.1</a>.  <a href="#name-tmf-640-641-apis-and-yang-m" class="internal xref">TMF 640/641 APIs and YANG Model Alignment</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.5.2.2">
-                    <p id="section-toc.1-1.4.2.5.2.2.1"><a href="#section-4.5.2" class="auto internal xref">4.5.2</a>.  <a href="#name-divergence-between-yang-mod" class="internal xref">Divergence Between YANG Models and Generated APIs</a></p>
-</li>
-                </ul>
+                <p id="section-toc.1-1.4.2.5.1"><a href="#section-4.5" class="auto internal xref">4.5</a>.  <a href="#name-oss-bss-interface-and-api-i" class="internal xref">OSS/BSS Interface and API Interoperability — TMF Mapping</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.6">
-                <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-lack-of-architectural-guida" class="internal xref">Lack of Architectural Guidance and Documentation</a></p>
+                <p id="section-toc.1-1.4.2.6.1"><a href="#section-4.6" class="auto internal xref">4.6</a>.  <a href="#name-yang-model-to-northbound-ap" class="internal xref">YANG Model to Northbound API Domain Mapping</a></p>
 </li>
             </ul>
 </li>
@@ -1291,16 +1274,30 @@ document does not propose solutions, protocols, or new data models.<a href="#sec
             <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-operator-experiences" class="internal xref">Operator Experiences</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-items-for-future-study" class="internal xref">Items for Future Study</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.1">
+                <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-quantum-security-requiremen" class="internal xref">Quantum-Security Requirements in Service Models</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-secure-handling-of-secrets-" class="internal xref">Secure Handling of Secrets in Orchestration Workflows</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
+                <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-generic-abstraction-to-unde" class="internal xref">Generic Abstraction-to-Underlay Mapping</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
+            <p id="section-toc.1-1.11.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1394,6 +1391,17 @@ protocol behaviors.<a href="#section-2-2.4.1" class="pilcrow">¶</a></p>
 <dt id="section-2-2.13">OSS:</dt>
         <dd style="margin-left: 1.5em" id="section-2-2.14">
           <p id="section-2-2.14.1">Operation Support Systems.<a href="#section-2-2.14.1" class="pilcrow">¶</a></p>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-2-2.15">Service Model Intent:</dt>
+        <dd style="margin-left: 1.5em" id="section-2-2.16">
+          <p id="section-2-2.16.1">The desired service behavior expressed by an operator through a
+service model (LxSM), as described in <span>[<a href="#RFC8309" class="cite xref">RFC8309</a>]</span>.  This refers to
+the set of customer requirements — connectivity, performance,
+availability — submitted to the orchestration layer and expected to
+be maintained by the network over time.  When this document uses the
+term "service intent", it refers to Service Model Intent in this
+sense.<a href="#section-2-2.16.1" class="pilcrow">¶</a></p>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1592,103 +1600,123 @@ exposing only the nodes and interfaces where services can be attached.<a href="#
       <h2 id="name-operational-problems-with-s">
 <a href="#section-4" class="section-number selfRef">4. </a><a href="#name-operational-problems-with-s" class="section-name selfRef">Operational Problems with Service and Network Abstractions</a>
       </h2>
-<p id="section-4-1">This section identifies the core operational problems that motivate
-the ONSEN Working Group. Each problem is described in terms of its
-operational impact and why it cannot be resolved by implementing
-automation of the existing LxNM/LxSM models in their current forms.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<div id="fragmented-operational-lifecycles">
+<p id="section-4-1">This section identifies the six core operational problems that
+motivate the ONSEN Working Group.  Each problem is described in terms
+of its operational impact and why it cannot be resolved by
+implementing automation of the existing LxNM/LxSM models in their
+current forms.  The problems are drawn from operator experience and
+from the findings of the IAB NEMOPS Workshop <span>[<a href="#NEMOPS" class="cite xref">NEMOPS</a>]</span>.<a href="#section-4-1" class="pilcrow">¶</a></p>
+<div id="insufficient-guidance-on-yang-model-usage-and-composition">
 <section id="section-4.1">
-        <h3 id="name-fragmented-operational-life">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-fragmented-operational-life" class="section-name selfRef">Fragmented Operational Lifecycles</a>
+        <h3 id="name-insufficient-guidance-on-ya">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-insufficient-guidance-on-ya" class="section-name selfRef">Insufficient Guidance on YANG Model Usage and Composition</a>
         </h3>
-<p id="section-4.1-1">Operational workflows associated with service abstractions - service
-instantiation, monitoring, modification, troubleshooting, and
-decommissioning - are often fragmented and inconsistently handled.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<div id="difficulty-integrating-different-management-domains">
+<p id="section-4.1-1">Despite the availability of numerous YANG data models for service and
+network automation, operators report persistent difficulty in applying
+them consistently in real-world deployments.  The root cause is the
+absence of guidance on how existing models are intended to be used
+together, how responsibilities are divided across abstraction layers
+and working groups, and how common deployment patterns should be
+approached.  This is not a gap in the models themselves but in the
+documentation and operational guidance that would allow implementers
+to use them correctly and consistently.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<div id="inconsistent-service-operation-semantics-across-models">
 <section id="section-4.1.1">
-          <h4 id="name-difficulty-integrating-diff">
-<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-difficulty-integrating-diff" class="section-name selfRef">Difficulty Integrating Different Management Domains</a>
+          <h4 id="name-inconsistent-service-operat">
+<a href="#section-4.1.1" class="section-number selfRef">4.1.1. </a><a href="#name-inconsistent-service-operat" class="section-name selfRef">Inconsistent Service Operation Semantics Across Models</a>
           </h4>
-<p id="section-4.1.1-1">Despite the availability of numerous YANG data models, operators
-depend on a heterogeneous mix of models, vendor-specific APIs, and
-legacy mechanisms (CLI, SNMP), even within a single deployment.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="differing-lifecycle-semantics-across-abstractions">
-<section id="section-4.1.2">
-          <h4 id="name-differing-lifecycle-semanti">
-<a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-differing-lifecycle-semanti" class="section-name selfRef">Differing Lifecycle Semantics Across Abstractions</a>
-          </h4>
-<p id="section-4.1.2-1">Lifecycle actions initiated through YANG-based service APIs often
+<p id="section-4.1.1-1">Service operations such as instantiation, modification, and
+decommissioning are initiated through YANG-based service APIs but
 require coordination across orchestration systems, controllers, and
-device configurations, but these components are rarely aligned in
-terms of lifecycle semantics or data models.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+device configurations.  These components are rarely aligned in terms
+of what each operation means or implies — for example, what
+constitutes a successfully instantiated service, or what state a
+service should be in after a modification is applied.  This
+inconsistency makes it difficult to build reliable, automated
+operational workflows.<a href="#section-4.1.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="no-native-exposure-of-lifecycle-attributes">
+<div id="absence-of-reusable-service-configuration-constructs">
+<section id="section-4.1.2">
+          <h4 id="name-absence-of-reusable-service">
+<a href="#section-4.1.2" class="section-number selfRef">4.1.2. </a><a href="#name-absence-of-reusable-service" class="section-name selfRef">Absence of Reusable Service Configuration Constructs</a>
+          </h4>
+<p id="section-4.1.2-1">The LxSM models do not provide templates or reusable constructs to
+aid operators in reducing the input parameters required for common
+site deployment patterns.  Operators must manually configure each
+service instance, which increases the risk of misconfiguration and
+reduces operational efficiency.<a href="#section-4.1.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.2-2">For the purposes of this document, "template" refers to reusable
+constructs defined within a YANG model itself — not external
+template-based configuration mechanisms.  The absence of such
+constructs in the current LxSM models is the problem being
+identified.<a href="#section-4.1.2-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="management-domain-integration-challenges">
 <section id="section-4.1.3">
-          <h4 id="name-no-native-exposure-of-lifec">
-<a href="#section-4.1.3" class="section-number selfRef">4.1.3. </a><a href="#name-no-native-exposure-of-lifec" class="section-name selfRef">No Native Exposure of Lifecycle Attributes</a>
+          <h4 id="name-management-domain-integrati">
+<a href="#section-4.1.3" class="section-number selfRef">4.1.3. </a><a href="#name-management-domain-integrati" class="section-name selfRef">Management Domain Integration Challenges</a>
           </h4>
-<p id="section-4.1.3-1">Existing service and network abstractions lack native constructs to
-express lifecycle attributes such as activation time, duration,
-expiration, or rollback behavior. Transient service intents must
-therefore be tracked and enforced outside the abstraction
-framework.<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="limited-support-for-dynamic-lifecycle-management">
-<section id="section-4.1.4">
-          <h4 id="name-limited-support-for-dynamic">
-<a href="#section-4.1.4" class="section-number selfRef">4.1.4. </a><a href="#name-limited-support-for-dynamic" class="section-name selfRef">Limited Support for Dynamic Lifecycle Management</a>
-          </h4>
-<p id="section-4.1.4-1">Existing service and network abstractions are primarily designed for
-static, long-lived services. They provide limited support for dynamic
-lifecycle management, such as on-demand service instantiation,
-dynamic bandwidth adjustment, or temporary service suspension.
-Operators must implement custom lifecycle management logic outside the
-abstraction framework, which increases operational complexity and
-reduces automation reliability.<a href="#section-4.1.4-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="lack-of-templates-for-common-lifecycle-patterns">
-<section id="section-4.1.5">
-          <h4 id="name-lack-of-templates-for-commo">
-<a href="#section-4.1.5" class="section-number selfRef">4.1.5. </a><a href="#name-lack-of-templates-for-commo" class="section-name selfRef">Lack of Templates for Common Lifecycle Patterns</a>
-          </h4>
-<p id="section-4.1.5-1">The LxSM models do not provide templates or reusable constructs to aid
-operators in reducing the input parameters required for common site
-deployment patterns. Operators must manually configure each service
-instance, which increases the risk of misconfiguration and reduces
-operational efficiency.<a href="#section-4.1.5-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="operational-silos">
-<section id="section-4.1.6">
-          <h4 id="name-operational-silos">
-<a href="#section-4.1.6" class="section-number selfRef">4.1.6. </a><a href="#name-operational-silos" class="section-name selfRef">Operational Silos</a>
-          </h4>
-<p id="section-4.1.6-1">Configuration management and the collection of statistics /
+<p id="section-4.1.3-1">Despite the availability of numerous YANG data models, operators
+depend on a heterogeneous mix of models, vendor-specific APIs, and
+legacy mechanisms (CLI, SNMP), even within a single deployment.
+Configuration management and the collection of statistics and
 telemetry data continue to exist as separate silos in both the
-organizational chart and technology stacks/APIs.<a href="#section-4.1.6-1" class="pilcrow">¶</a></p>
+organizational structure and technology stacks.  There is no guidance
+on how these domains should be integrated or how responsibilities
+should be divided.<a href="#section-4.1.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="absence-of-architectural-documentation">
+<section id="section-4.1.4">
+          <h4 id="name-absence-of-architectural-do">
+<a href="#section-4.1.4" class="section-number selfRef">4.1.4. </a><a href="#name-absence-of-architectural-do" class="section-name selfRef">Absence of Architectural Documentation</a>
+          </h4>
+<p id="section-4.1.4-1">There is no document that explains how LxSM, LxNM, AC, SAP, NSS,
+and related IETF models are intended to work together as a system.
+Operators express difficulty understanding which abstractions to use,
+how they should be combined, and how responsibilities are divided
+across layers and working groups.  The absence of cohesive guidance
+leads to divergent interpretations and inconsistent deployments.<a href="#section-4.1.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.1.4-2">The architectural guidance produced by ONSEN should not be a
+standalone descriptive document.  It should be directly tied to the
+concrete work items the WG undertakes, informing model design
+decisions and helping implementers apply the abstractions correctly.
+The collection and documentation of real-world operational experience
+— including implementation lessons, interoperability findings, and
+deployment patterns — is considered part of the scope of this work
+item.<a href="#section-4.1.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="inconsistent-models-at-the-same-abstraction-layer">
+<div id="misalignment-between-and-within-abstraction-layers">
 <section id="section-4.2">
-        <h3 id="name-inconsistent-models-at-the-">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-inconsistent-models-at-the-" class="section-name selfRef">Inconsistent Models at the Same Abstraction Layer</a>
+        <h3 id="name-misalignment-between-and-wi">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-misalignment-between-and-wi" class="section-name selfRef">Misalignment Between and Within Abstraction Layers</a>
         </h3>
+<p id="section-4.2-1">The service and network abstraction layers defined by the IETF were
+developed independently and with limited cross-layer coordination.
+This results in structural and semantic misalignment both within the
+same abstraction layer and across layers.  Some degree of difference
+across layers is intentional and necessary — each layer serves a
+distinct purpose.  The problem is the absence of guidance on where
+alignment is appropriate, where separation should be preserved, and
+how the layers are intended to interwork.  Defining authoritative
+mappings between layers is out of scope for ONSEN; providing guidance
+on how such mappings can be approached and what properties they
+should preserve is in scope.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <div id="inconsistent-parameter-availability-and-naming">
 <section id="section-4.2.1">
           <h4 id="name-inconsistent-parameter-avai">
 <a href="#section-4.2.1" class="section-number selfRef">4.2.1. </a><a href="#name-inconsistent-parameter-avai" class="section-name selfRef">Inconsistent Parameter Availability and Naming</a>
           </h4>
 <p id="section-4.2.1-1">Very similar, if not identical, features and functionality across
-different models at the same abstraction layer are often using
-slightly different parameters names, a different YANG data type
-or is not configurable to the same level of detail.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
+different models at the same abstraction layer often use different
+parameter names, different YANG data types, or are not configurable
+to the same level of detail.  This inconsistency increases
+implementation effort and complicates integration across models.<a href="#section-4.2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="cannot-combine-service-instances-across-lxsm-models">
@@ -1696,93 +1724,115 @@ or is not configurable to the same level of detail.<a href="#section-4.2.1-1" cl
           <h4 id="name-cannot-combine-service-inst">
 <a href="#section-4.2.2" class="section-number selfRef">4.2.2. </a><a href="#name-cannot-combine-service-inst" class="section-name selfRef">Cannot Combine Service Instances Across LxSM Models</a>
           </h4>
-<p id="section-4.2.2-1">An operator offering a diverse set of services (L3VPN, L2VPN, internet
-access, etc.) cannot use the LxSM models to offer a combination of
-these services through a consistent representation on the same
-orchestrator.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.2-1">An operator offering a diverse set of services (L3VPN, L2VPN,
+internet access, etc.) cannot use the LxSM models to offer a
+combination of these services through a consistent representation on
+the same orchestrator.<a href="#section-4.2.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="lxsm-and-network-slice-service-relationship">
+<div id="lxsm-and-network-slice-service-model-relationship">
 <section id="section-4.2.3">
           <h4 id="name-lxsm-and-network-slice-serv">
-<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-lxsm-and-network-slice-serv" class="section-name selfRef">LxSM and Network Slice Service Relationship</a>
+<a href="#section-4.2.3" class="section-number selfRef">4.2.3. </a><a href="#name-lxsm-and-network-slice-serv" class="section-name selfRef">LxSM and Network Slice Service Model Relationship</a>
           </h4>
-<p id="section-4.2.3-1">The published LxSM models and <span>[<a href="#draft-ietf-teas-ietf-network-slice-nbi-yang-26" class="cite xref">draft-ietf-teas-ietf-network-slice-nbi-yang-26</a>]</span>
-act as Service Models with a similar level of abstraction. Operators
-need guidance on the use cases for both model sets, and when one should
-be used versus the other or whether both can, and should be, combined
-for a given deployment scenarios.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.2.3-1">The published LxSM models and
+<span>[<a href="#draft-ietf-teas-ietf-network-slice-nbi-yang-26" class="cite xref">draft-ietf-teas-ietf-network-slice-nbi-yang-26</a>]</span> act as Service
+Models with a similar level of abstraction.  Operators need guidance
+on the use cases for both model sets, and when one should be used
+versus the other, or whether both can and should be combined for a
+given deployment scenario.<a href="#section-4.2.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="no-defined-interworking-between-service-and-network-layers">
+<section id="section-4.2.4">
+          <h4 id="name-no-defined-interworking-bet">
+<a href="#section-4.2.4" class="section-number selfRef">4.2.4. </a><a href="#name-no-defined-interworking-bet" class="section-name selfRef">No Defined Interworking Between Service and Network Layers</a>
+          </h4>
+<p id="section-4.2.4-1">Some service abstractions do not have a defined relationship to
+underlying network models, making it difficult to implement and
+automate end-to-end service provisioning.  Similarly, the Network
+Models (LxNM) expose parameters that have no equivalent in the
+Service Models (LxSM), making consistent bidirectional correlation
+difficult.  The absence of guidance on how these layers should
+interwork — and how controllers should interpret and adapt
+Service Model Intent <span>[<a href="#RFC8309" class="cite xref">RFC8309</a>]</span> at each stage — is a recurring
+source of proprietary implementations and inconsistent behavior.<a href="#section-4.2.4-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="inconsistent-semantics-across-layers">
+<section id="section-4.2.5">
+          <h4 id="name-inconsistent-semantics-acro">
+<a href="#section-4.2.5" class="section-number selfRef">4.2.5. </a><a href="#name-inconsistent-semantics-acro" class="section-name selfRef">Inconsistent Semantics Across Layers</a>
+          </h4>
+<p id="section-4.2.5-1">Abstraction models frequently rely on metrics, attributes, or
+parameters whose semantics vary across vendors, models,
+implementations, or consumption contexts.  Concepts such as cost,
+availability, or performance may be represented using different
+definitions, units, scopes, or update frequencies.  Control-plane
+behaviors that represent vendor differentiators are not captured in
+service-level intent, further complicating the correlation between
+what was requested and what is delivered.<a href="#section-4.2.5-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="misalignment-between-abstraction-layers">
+<div id="on-demand-and-scheduled-service-operations">
 <section id="section-4.3">
-        <h3 id="name-misalignment-between-abstra">
-<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-misalignment-between-abstra" class="section-name selfRef">Misalignment Between Abstraction Layers</a>
+        <h3 id="name-on-demand-and-scheduled-ser">
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-on-demand-and-scheduled-ser" class="section-name selfRef">On-Demand and Scheduled Service Operations</a>
         </h3>
-<p id="section-4.3-1">Service abstractions are realized through a combination of
-service-level models, network-level models, control-plane behavior,
-and management interfaces.  These layers are often developed
-independently, with limited coordination across working groups or
-operational domains.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<div id="no-clear-mapping-from-service-to-network-models">
-<section id="section-4.3.1">
-          <h4 id="name-no-clear-mapping-from-servi">
-<a href="#section-4.3.1" class="section-number selfRef">4.3.1. </a><a href="#name-no-clear-mapping-from-servi" class="section-name selfRef">No Clear Mapping From Service to Network Models</a>
-          </h4>
-<p id="section-4.3.1-1">Some service abstractions do not have a clear mapping to underlying
-network models, making it difficult to implement and automate
-end-to-end service provisioning.<a href="#section-4.3.1-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="no-clear-mapping-from-network-to-service-models">
-<section id="section-4.3.2">
-          <h4 id="name-no-clear-mapping-from-netwo">
-<a href="#section-4.3.2" class="section-number selfRef">4.3.2. </a><a href="#name-no-clear-mapping-from-netwo" class="section-name selfRef">No Clear Mapping From Network to Service Models</a>
-          </h4>
-<p id="section-4.3.2-1">The Network Models (LxNM) expose parameters that are have no equivalent
-in the Service Models (LxSM), making it difficult to implement a
-consistent mapping.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="different-control-plane-behaviors-across-vendors">
-<section id="section-4.3.3">
-          <h4 id="name-different-control-plane-beh">
-<a href="#section-4.3.3" class="section-number selfRef">4.3.3. </a><a href="#name-different-control-plane-beh" class="section-name selfRef">Different Control-Plane Behaviors Across Vendors</a>
-          </h4>
-<p id="section-4.3.3-1">Control-plane behaviors (vendor differentiators) that are difficult to
-correlate with service-level intent.<a href="#section-4.3.3-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="inconsistent-service-semantics">
-<section id="section-4.3.4">
-          <h4 id="name-inconsistent-service-semant">
-<a href="#section-4.3.4" class="section-number selfRef">4.3.4. </a><a href="#name-inconsistent-service-semant" class="section-name selfRef">Inconsistent Service Semantics</a>
-          </h4>
-<p id="section-4.3.4-1">Abstraction models frequently rely on metrics, attributes, or
-parameters whose semantics vary across vendors, models, implementations, or
-consumption contexts.  Concepts such as cost, availability, or
-performance may be represented using different definitions, units,
-scopes, or update frequencies.<a href="#section-4.3.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-1">Existing YANG service and network models are primarily designed for
+static, long-lived services.  They do not provide the constructs
+needed to express service behaviors that vary over time, are triggered
+on demand, or follow a defined schedule.  As operators introduce
+services such as data-intensive workload transmission or SD-WAN-like
+dynamic VPN capabilities, this gap becomes a concrete operational
+blocker.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<p id="section-4.3-2"><span>[<a href="#RFC9922" class="cite xref">RFC9922</a>]</span> defines a generic schedule model in NETMOD that could be
+bound to LxSM service instances.  ONSEN's role is to define how that
+binding works and what additional model constructs are needed.  Any
+enhancements required at the NETCONF protocol level would fall under
+the NETCONF Working Group.<a href="#section-4.3-2" class="pilcrow">¶</a></p>
+<p id="section-4.3-3">Use cases driving this requirement include:<a href="#section-4.3-3" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.3.4-2.1">
-              <p id="section-4.3.4-2.1.1">APIs derived from similar intentions differ in service semantics
-across vendors and deployments, complicating integration for
-operators and OSS/BSS systems.<a href="#section-4.3.4-2.1.1" class="pilcrow">¶</a></p>
+<li class="normal" id="section-4.3-4.1">
+            <p id="section-4.3-4.1.1">Data-intensive workload transmission services requiring on-demand
+ultra-high bandwidth and deterministic scheduling.<a href="#section-4.3-4.1.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.3.4-2.2">
-              <p id="section-4.3.4-2.2.1">The lack of consistent guidance on how abstractions should be
-modeled, exposed, and consumed results in APIs that vary
-significantly across vendors and deployments.<a href="#section-4.3.4-2.2.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-4.2">
+            <p id="section-4.3-4.2.1">Customer expectations for SD-WAN-like dynamic capabilities within
+traditional managed VPN services.<a href="#section-4.3-4.2.1" class="pilcrow">¶</a></p>
 </li>
-            <li class="normal" id="section-4.3.4-2.3">
-              <p id="section-4.3.4-2.3.1">Inconsistent semantics complicate integration between systems and
-undermine the reliability of automation, typically addressed
-through custom logic or manual processes that reduce portability
-and interoperability.<a href="#section-4.3.4-2.3.1" class="pilcrow">¶</a></p>
+          <li class="normal" id="section-4.3-4.3">
+            <p id="section-4.3-4.3.1">Time-based network security policies such as IP-based access
+control rules with scheduled expiry.<a href="#section-4.3-4.3.1" class="pilcrow">¶</a></p>
 </li>
-          </ul>
+        </ul>
+<div id="absence-of-temporal-and-state-attributes-in-service-models">
+<section id="section-4.3.1">
+          <h4 id="name-absence-of-temporal-and-sta">
+<a href="#section-4.3.1" class="section-number selfRef">4.3.1. </a><a href="#name-absence-of-temporal-and-sta" class="section-name selfRef">Absence of Temporal and State Attributes in Service Models</a>
+          </h4>
+<p id="section-4.3.1-1">Existing service and network abstractions lack native constructs to
+express temporal attributes such as activation time, duration,
+expiration, or rollback behavior.  Service Model Intent <span>[<a href="#RFC8309" class="cite xref">RFC8309</a>]</span>
+that is transient in nature must therefore be tracked and enforced
+outside the abstraction framework, increasing operational complexity
+and reducing automation reliability.<a href="#section-4.3.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="limited-support-for-dynamic-service-instantiation-and-modification">
+<section id="section-4.3.2">
+          <h4 id="name-limited-support-for-dynamic">
+<a href="#section-4.3.2" class="section-number selfRef">4.3.2. </a><a href="#name-limited-support-for-dynamic" class="section-name selfRef">Limited Support for Dynamic Service Instantiation and Modification</a>
+          </h4>
+<p id="section-4.3.2-1">Existing service and network abstractions provide limited support for
+on-demand service instantiation, dynamic bandwidth adjustment, or
+temporary service suspension.  Services are implemented in a top-down
+manner, so both the model constructs to express time-varying Service
+Model Intent and the operational workflows to trigger and manage
+changes are required.  Operators must implement custom logic outside
+the abstraction framework to support these operations.<a href="#section-4.3.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1792,28 +1842,24 @@ and interoperability.<a href="#section-4.3.4-2.3.1" class="pilcrow">¶</a></p>
         <h3 id="name-limited-observability-and-f">
 <a href="#section-4.4" class="section-number selfRef">4.4. </a><a href="#name-limited-observability-and-f" class="section-name selfRef">Limited Observability and Feedback</a>
         </h3>
-<p id="section-4.4-1">Existing abstractions primarily focus on configuration and offer
-limited standardized mechanisms for reporting whether requested
-behaviors have been successfully applied or remain valid over time.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.4-2.1">
-            <p id="section-4.4-2.1.1">Operators have limited ability to validate whether service intent is
-being met over time or to correlate operational state across
-abstraction layers. Operational considerations such as alarms,
-notifications, and state changes triggered by service updates are
-not comprehensively addressed in the existing Service and Network
-Models, further hindering end-to-end observability.<a href="#section-4.4-2.1.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-4.4-2.2">
-            <p id="section-4.4-2.2.1">The lack of consistent feedback undermines closed-loop automation
-and complicates troubleshooting, particularly in multi-vendor and
-multi-domain environments.<a href="#section-4.4-2.2.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-4.4-2.3">
-            <p id="section-4.4-2.3.1">This lack of feedback assurance increases reliance on manual
-monitoring and intervention.<a href="#section-4.4-2.3.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+<p id="section-4.4-1">Existing service and network models focus on configuration and
+provide no standardised mechanism for reporting whether a service is
+being delivered as ordered.  This gap applies both to discrete
+operational state — whether the service is up and fault-free at a
+given moment — and to historical SLO compliance — whether the service
+has met its contracted performance targets over a given period.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
+<p id="section-4.4-2">SAIN (<span>[<a href="#RFC9417" class="cite xref">RFC9417</a>]</span>, <span>[<a href="#RFC9418" class="cite xref">RFC9418</a>]</span>) addresses observability internally
+within the provider domain through an assurance graph that enables
+operators to troubleshoot outages.  It is not designed to be exposed
+to customers or to the service model layer.  SAIN can contribute
+through a feedback loop from the SAIN Controller to the Service
+Orchestrator, which would then populate relevant state in LxSM/LxNM;
+however, that interworking is not currently defined.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
+<p id="section-4.4-3"><span>[<a href="#RFC9375" class="cite xref">RFC9375</a>]</span> provides raw performance monitoring data but does not
+include a model for expressing the outcome of evaluating that data
+against the SLOs set in the service model.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+<p id="section-4.4-4">The gap is a customer-facing service delivery reporting layer that
+does not currently exist in LxSM or LxNM.<a href="#section-4.4-4" class="pilcrow">¶</a></p>
 <div id="lack-of-operational-state-in-lxsm-and-lxnm-models">
 <section id="section-4.4.1">
           <h4 id="name-lack-of-operational-state-i">
@@ -1821,71 +1867,49 @@ monitoring and intervention.<a href="#section-4.4-2.3.1" class="pilcrow">¶</a><
           </h4>
 <p id="section-4.4.1-1">Some of the LxSM and LxNM models provide operational state
 information, but this is not consistent across models, and the
-information provided is often insufficient for operators to
-determine whether the service is functioning as intended.<a href="#section-4.4.1-1" class="pilcrow">¶</a></p>
+information provided is often insufficient for operators to determine
+whether the service is functioning as intended.<a href="#section-4.4.1-1" class="pilcrow">¶</a></p>
 <p id="section-4.4.1-2">For example, the L3SM model does not provide any operational state
 information, while the L2SM model provides some operational state
-information, but it is limited to the status of the service and
-does not include e.g. details on SLO violations or other operational
-metrics that would be useful for troubleshooting and monitoring.<a href="#section-4.4.1-2" class="pilcrow">¶</a></p>
+information, but it is limited to the status of the service and does
+not include details on SLO violations or other operational metrics
+that would be useful for troubleshooting and monitoring.<a href="#section-4.4.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="ossbss-interface-and-api-interoperability">
+<div id="ossbss-interface-and-api-interoperability-tmf-mapping">
 <section id="section-4.5">
         <h3 id="name-oss-bss-interface-and-api-i">
-<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-oss-bss-interface-and-api-i" class="section-name selfRef">OSS/BSS Interface and API Interoperability</a>
+<a href="#section-4.5" class="section-number selfRef">4.5. </a><a href="#name-oss-bss-interface-and-api-i" class="section-name selfRef">OSS/BSS Interface and API Interoperability — TMF Mapping</a>
         </h3>
-<p id="section-4.5-1">YANG data models are commonly used as the basis for APIs that expose
-service abstractions to external systems.  However, existing work
-provides limited guidance on how these abstractions should be
-exposed, versioned, or consumed in a predictable and interoperable
-manner.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
-<div id="tmf-640641-apis-and-yang-model-alignment">
-<section id="section-4.5.1">
-          <h4 id="name-tmf-640-641-apis-and-yang-m">
-<a href="#section-4.5.1" class="section-number selfRef">4.5.1. </a><a href="#name-tmf-640-641-apis-and-yang-m" class="section-name selfRef">TMF 640/641 APIs and YANG Model Alignment</a>
-          </h4>
-<p id="section-4.5.1-1">Some operators adopt TMF640/641 as APIs for service ordering from
-their BSS, but how these interfaces can be aligned with
-service/network YANG models is not specified.  Operators face the
-challenge of either paying commercial OSS/BSS providers to create
-bespoke interfaces or building an adaptation layer themselves.<a href="#section-4.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.5-1">Many operators use TMF640/641 as the northbound API for service
+ordering from their BSS.  There is no specification of how these
+interfaces align with YANG service and network models.  Operators
+must either pay commercial OSS/BSS vendors to build bespoke
+interfaces or build and maintain their own adaptation layer.  The
+absence of a defined alignment creates integration complexity, vendor
+lock-in risk, and inconsistent implementations across deployments.<a href="#section-4.5-1" class="pilcrow">¶</a></p>
+<p id="section-4.5-2">This problem area is in scope for ONSEN.  The WG expects to address
+it after the foundational problems in Sections 4.1 through 4.4 are
+sufficiently progressed.<a href="#section-4.5-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="divergence-between-yang-models-and-generated-apis">
-<section id="section-4.5.2">
-          <h4 id="name-divergence-between-yang-mod">
-<a href="#section-4.5.2" class="section-number selfRef">4.5.2. </a><a href="#name-divergence-between-yang-mod" class="section-name selfRef">Divergence Between YANG Models and Generated APIs</a>
-          </h4>
-<p id="section-4.5.2-1">APIs generated from similar YANG models often differ in service
-semantics, complicating integration across systems, vendors, and
-deployment environments.<a href="#section-4.5.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
-<div id="lack-of-architectural-guidance-and-documentation">
+<div id="yang-model-to-northbound-api-domain-mapping">
 <section id="section-4.6">
-        <h3 id="name-lack-of-architectural-guida">
-<a href="#section-4.6" class="section-number selfRef">4.6. </a><a href="#name-lack-of-architectural-guida" class="section-name selfRef">Lack of Architectural Guidance and Documentation</a>
+        <h3 id="name-yang-model-to-northbound-ap">
+<a href="#section-4.6" class="section-number selfRef">4.6. </a><a href="#name-yang-model-to-northbound-ap" class="section-name selfRef">YANG Model to Northbound API Domain Mapping</a>
         </h3>
-<p id="section-4.6-1">A recurring theme from the NEMOPS discussions is the absence of
-architectural documentation and operational guidance explaining how
-existing abstractions, models, protocols, and tools are intended to
-work together as a system.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-4.6-2.1">
-            <p id="section-4.6-2.1.1">Operators express difficulty understanding which abstractions to
-use, how they should be combined, and how responsibilities are
-divided across layers and working groups.<a href="#section-4.6-2.1.1" class="pilcrow">¶</a></p>
-</li>
-          <li class="normal" id="section-4.6-2.2">
-            <p id="section-4.6-2.2.1">The absence of cohesive guidance leads to divergent
-interpretations and inconsistent deployments.<a href="#section-4.6-2.2.1" class="pilcrow">¶</a></p>
-</li>
-        </ul>
+<p id="section-4.6-1">YANG data models are increasingly used as the basis for northbound
+APIs exposed to orchestration systems and customers.  However,
+different implementations of similar YANG models produce APIs that
+differ in service semantics — parameter naming, data types, scoping
+— even when the underlying models are closely related.  There is no
+guidance on how YANG-based service abstractions should be translated
+into northbound APIs in a consistent and interoperable way.  This
+divergence complicates integration across systems and vendors and
+undermines the portability gains that standardised YANG models are
+intended to provide.<a href="#section-4.6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1939,26 +1963,84 @@ layers.<a href="#section-5-2.5.1" class="pilcrow">¶</a></p>
 network operators.  To be populated by operator contributors.<a href="#section-6-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="iana-considerations">
+<div id="items-for-future-study">
 <section id="section-7">
-      <h2 id="name-iana-considerations">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      <h2 id="name-items-for-future-study">
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-items-for-future-study" class="section-name selfRef">Items for Future Study</a>
       </h2>
-<p id="section-7-1">This memo includes no request to IANA.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">The following problem areas were raised during IETF 126 discussions
+and subsequent mailing list exchanges.  They are not yet sufficiently
+developed or prioritised for inclusion in the core problem statement.
+They are documented here for completeness and to solicit community
+input on whether and how they should be addressed by ONSEN or other
+working groups.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<div id="quantum-security-requirements-in-service-models">
+<section id="section-7.1">
+        <h3 id="name-quantum-security-requiremen">
+<a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-quantum-security-requiremen" class="section-name selfRef">Quantum-Security Requirements in Service Models</a>
+        </h3>
+<p id="section-7.1-1">An increasing number of customers require long-term data
+confidentiality and protection against future quantum-computing
+threats.  Current service models do not provide a way to express
+quantum-security requirements or capabilities.  It is not yet clear
+whether this is best addressed through extensions to existing models
+or through new model constructs.  This item is considered lower
+priority relative to the core problems in Section 4 and may be
+revisited in a later revision.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="secure-handling-of-secrets-in-orchestration-workflows">
+<section id="section-7.2">
+        <h3 id="name-secure-handling-of-secrets-">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-secure-handling-of-secrets-" class="section-name selfRef">Secure Handling of Secrets in Orchestration Workflows</a>
+        </h3>
+<p id="section-7.2-1">Device-level configuration often requires credentials, authentication
+keys, or other sensitive data.  There is currently no standardised
+mechanism for referencing sensitive information securely across the
+orchestration stack and resolving it only at the point of device
+configuration.  Whether this belongs within the scope of ONSEN,
+NETMOD, or another WG is an open question that requires further
+discussion.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="generic-abstraction-to-underlay-mapping">
+<section id="section-7.3">
+        <h3 id="name-generic-abstraction-to-unde">
+<a href="#section-7.3" class="section-number selfRef">7.3. </a><a href="#name-generic-abstraction-to-unde" class="section-name selfRef">Generic Abstraction-to-Underlay Mapping</a>
+        </h3>
+<p id="section-7.3-1">Operators repeatedly encounter the challenge of mapping service-layer
+abstractions to underlying infrastructure resources in a generic,
+technology-independent way.  Existing work addresses this problem in
+specific contexts (e.g., TE-based approaches in TEAS) but no broadly
+applicable mechanism exists.  The ONSEN charter defines the device
+layer as the lowest layer in scope; mapping below the device layer is
+therefore out of scope.  Further information from the community on
+the exact problem being identified is needed before this item can be
+evaluated for inclusion.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+</section>
+</div>
+<div id="iana-considerations">
+<section id="section-8">
+      <h2 id="name-iana-considerations">
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-8-1">This memo includes no request to IANA.<a href="#section-8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-8">
+<section id="section-9">
       <h2 id="name-security-considerations">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-8-1">TODO<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-9-1">TODO<a href="#section-9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-9">
+<section id="section-10">
       <h2 id="name-informative-references">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
       </h2>
 <dl class="references">
 <dt id="draft-ietf-teas-ietf-network-slice-nbi-yang-26">[draft-ietf-teas-ietf-network-slice-nbi-yang-26]</dt>
@@ -1972,6 +2054,10 @@ network operators.  To be populated by operator contributors.<a href="#section-6
 <dt id="RFC8299">[RFC8299]</dt>
       <dd>
 <span class="refAuthor">Wu, Q., Ed.</span>, <span class="refAuthor">Litkowski, S.</span>, <span class="refAuthor">Tomotaki, L.</span>, and <span class="refAuthor">K. Ogaki</span>, <span class="refTitle">"YANG Data Model for L3VPN Service Delivery"</span>, <span class="seriesInfo">RFC 8299</span>, <span class="seriesInfo">DOI 10.17487/RFC8299</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8299">https://www.rfc-editor.org/rfc/rfc8299</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC8309">[RFC8309]</dt>
+      <dd>
+<span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Liu, W.</span>, and <span class="refAuthor">A. Farrel</span>, <span class="refTitle">"Service Models Explained"</span>, <span class="seriesInfo">RFC 8309</span>, <span class="seriesInfo">DOI 10.17487/RFC8309</span>, <time datetime="2018-01" class="refDate">January 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8309">https://www.rfc-editor.org/rfc/rfc8309</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8466">[RFC8466]</dt>
       <dd>
@@ -1989,13 +2075,33 @@ network operators.  To be populated by operator contributors.<a href="#section-6
       <dd>
 <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Gonzalez de Dios, O., Ed.</span>, <span class="refAuthor">Barguil, S.</span>, and <span class="refAuthor">L. Munoz</span>, <span class="refTitle">"A YANG Network Data Model for Layer 2 VPNs"</span>, <span class="seriesInfo">RFC 9291</span>, <span class="seriesInfo">DOI 10.17487/RFC9291</span>, <time datetime="2022-09" class="refDate">September 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9291">https://www.rfc-editor.org/rfc/rfc9291</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC9315">[RFC9315]</dt>
+      <dd>
+<span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Ciavaglia, L.</span>, <span class="refAuthor">Granville, L. Z.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"Intent-Based Networking - Concepts and Definitions"</span>, <span class="seriesInfo">RFC 9315</span>, <span class="seriesInfo">DOI 10.17487/RFC9315</span>, <time datetime="2022-10" class="refDate">October 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9315">https://www.rfc-editor.org/rfc/rfc9315</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9375">[RFC9375]</dt>
+      <dd>
+<span class="refAuthor">Wu, B., Ed.</span>, <span class="refAuthor">Wu, Q., Ed.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Gonzalez de Dios, O.</span>, and <span class="refAuthor">B. Wen</span>, <span class="refTitle">"A YANG Data Model for Network and VPN Service Performance Monitoring"</span>, <span class="seriesInfo">RFC 9375</span>, <span class="seriesInfo">DOI 10.17487/RFC9375</span>, <time datetime="2023-04" class="refDate">April 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9375">https://www.rfc-editor.org/rfc/rfc9375</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC9408">[RFC9408]</dt>
       <dd>
 <span class="refAuthor">Boucadair, M., Ed.</span>, <span class="refAuthor">Gonzalez de Dios, O.</span>, <span class="refAuthor">Barguil, S.</span>, <span class="refAuthor">Wu, Q.</span>, and <span class="refAuthor">V. Lopez</span>, <span class="refTitle">"A YANG Network Data Model for Service Attachment Points (SAPs)"</span>, <span class="seriesInfo">RFC 9408</span>, <span class="seriesInfo">DOI 10.17487/RFC9408</span>, <time datetime="2023-06" class="refDate">June 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9408">https://www.rfc-editor.org/rfc/rfc9408</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC9417">[RFC9417]</dt>
+      <dd>
+<span class="refAuthor">Claise, B.</span>, <span class="refAuthor">Quilbeuf, J.</span>, <span class="refAuthor">Lopez, D.</span>, <span class="refAuthor">Voyer, D.</span>, and <span class="refAuthor">T. Arumugam</span>, <span class="refTitle">"Service Assurance for Intent-Based Networking Architecture"</span>, <span class="seriesInfo">RFC 9417</span>, <span class="seriesInfo">DOI 10.17487/RFC9417</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9417">https://www.rfc-editor.org/rfc/rfc9417</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9418">[RFC9418]</dt>
+      <dd>
+<span class="refAuthor">Claise, B.</span>, <span class="refAuthor">Quilbeuf, J.</span>, <span class="refAuthor">Lucente, P.</span>, <span class="refAuthor">Fasano, P.</span>, and <span class="refAuthor">T. Arumugam</span>, <span class="refTitle">"A YANG Data Model for Service Assurance"</span>, <span class="seriesInfo">RFC 9418</span>, <span class="seriesInfo">DOI 10.17487/RFC9418</span>, <time datetime="2023-07" class="refDate">July 2023</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9418">https://www.rfc-editor.org/rfc/rfc9418</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC9543">[RFC9543]</dt>
-    <dd>
+      <dd>
 <span class="refAuthor">Farrel, A., Ed.</span>, <span class="refAuthor">Drake, J., Ed.</span>, <span class="refAuthor">Rokui, R.</span>, <span class="refAuthor">Homma, S.</span>, <span class="refAuthor">Makhijani, K.</span>, <span class="refAuthor">Contreras, L.</span>, and <span class="refAuthor">J. Tantsura</span>, <span class="refTitle">"A Framework for Network Slices in Networks Built from IETF Technologies"</span>, <span class="seriesInfo">RFC 9543</span>, <span class="seriesInfo">DOI 10.17487/RFC9543</span>, <time datetime="2024-03" class="refDate">March 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9543">https://www.rfc-editor.org/rfc/rfc9543</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9922">[RFC9922]</dt>
+    <dd>
+<span class="refAuthor">Ma, Q., Ed.</span>, <span class="refAuthor">Wu, Q.</span>, <span class="refAuthor">Boucadair, M., Ed.</span>, and <span class="refAuthor">D. King</span>, <span class="refTitle">"A Common YANG Data Model for Scheduling"</span>, <span class="seriesInfo">RFC 9922</span>, <span class="seriesInfo">DOI 10.17487/RFC9922</span>, <time datetime="2026-03" class="refDate">March 2026</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc9922">https://www.rfc-editor.org/rfc/rfc9922</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
