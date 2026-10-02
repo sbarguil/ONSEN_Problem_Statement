@@ -96,10 +96,16 @@ of service delivery, it is not always clear which models should be used
 together, in which scenarios, or to what extent a given implementation
 actually supports the full model. The usage of these APIs remains
 fragmented - often partially implemented - and difficult to automate
-end-to-end. In practice, APIs generated from similar YANG models often
+end-to-end.</t>
+
+<!-- @klambrec: Which APIs, which inconsistencies? Is this on NETCONF/RESTCONF?
+Can we substantiate this statement with some examples?
+
+In practice, APIs generated from similar YANG models often
 differ in service semantics, and the lack of clear guidance on model
 composition and interoperability complicates integration across
 systems, vendors, and deployment environments.</t>
+-->
       <t>The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
 Group is chartered to address this problem space by focusing on the
 operational aspects of network and service abstractions.  It aims to
@@ -158,6 +164,10 @@ sense.</t>
         </dd>
       </dl>
     </section>
+
+<!-- @klambrec: Is yet another overview of previous work in this area helpful?
+Interested readers can read the RFCs and in particular RFC 8969 themselves.
+
     <section anchor="background">
       <name>Background</name>
       <t>This section provides a brief overview of the existing IETF YANG model
@@ -326,6 +336,7 @@ delivered or "grafted" to the customer. The SAP Network Model {
 exposing only the nodes and interfaces where services can be attached.</t>
       </section>
     </section>
+-->
     <section anchor="operational-problems-with-service-and-network-abstractions">
       <name>Operational Problems with Service and Network Abstractions</name>
       <t>This section identifies the six core operational problems that
@@ -357,6 +368,7 @@ service should be in after a modification is applied.  This
 inconsistency makes it difficult to build reliable, automated
 operational workflows.</t>
         </section>
+<!-- @klambrec: draft-tt-netmod-yang-config-templates-04 covers this problem, get confirmation from the list?
         <section anchor="absence-of-reusable-service-configuration-constructs">
           <name>Absence of Reusable Service Configuration Constructs</name>
           <t>The LxSM models do not provide templates or reusable constructs to
@@ -370,6 +382,7 @@ template-based configuration mechanisms.  The absence of such
 constructs in the current LxSM models is the problem being
 identified.</t>
         </section>
+-->
         <section anchor="management-domain-integration-challenges">
           <name>Management Domain Integration Challenges</name>
           <t>Despite the availability of numerous YANG data models, operators
@@ -470,7 +483,11 @@ services such as data-intensive workload transmission or SD-WAN-like
 dynamic VPN capabilities, this gap becomes a concrete operational
 blocker.</t>
         <t><xref target="RFC9922"/> defines a generic schedule model in NETMOD that could be
-bound to LxSM service instances.  ONSEN's role is to define how that
+bound to LxSM service instances. ONSEN can leverage this model to define how
+dynamic scheduling can be applied to the LxSM service models.</t>
+
+<!-- @klambrec: Is the use case information adding value here?
+ONSEN's role is to define how that
 binding works and what additional model constructs are needed.  Any
 enhancements required at the NETCONF protocol level would fall under
 the NETCONF Working Group.</t>
@@ -489,6 +506,9 @@ traditional managed VPN services.</t>
 control rules with scheduled expiry.</t>
           </li>
         </ul>
+-->
+
+<!-- @klambrec: Both these sections seem to re-state the same problem?
         <section anchor="absence-of-temporal-and-state-attributes-in-service-models">
           <name>Absence of Temporal and State Attributes in Service Models</name>
           <t>Existing service and network abstractions lack native constructs to
@@ -508,6 +528,7 @@ Model Intent and the operational workflows to trigger and manage
 changes are required.  Operators must implement custom logic outside
 the abstraction framework to support these operations.</t>
         </section>
+-->
       </section>
       <section anchor="limited-observability-and-feedback">
         <name>Limited Observability and Feedback</name>
@@ -603,12 +624,6 @@ layers.</t>
           <t>Additional operator-reported challenges to be added here from contributors.</t>
         </li>
       </ul>
-    </section>
-    <section anchor="operator-experiences">
-      <name>Operator Experiences</name>
-      <t>TODO</t>
-      <t>This section documents operational problems reported directly by
-network operators.  To be populated by operator contributors.</t>
     </section>
     <section anchor="items-for-future-study">
       <name>Items for Future Study</name>
