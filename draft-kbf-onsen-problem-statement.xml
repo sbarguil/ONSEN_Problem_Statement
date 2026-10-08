@@ -38,18 +38,26 @@
     <abstract>
       <?line 65?>
 
-<t>The IETF has produced numerous YANG data models for automating the
+<t>The IETF has published a number of YANG data models for automating the
 provisioning and delivery of network and connectivity services,
-including L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and Network
-Slicing models.  Despite their wide availability, operators report
-persistent challenges in operationalizing these abstractions in a
+including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and Network
+Slicing models. These models are intended to provided asbstracted representations of
+common operator services, exposing only the necessary parameters for configuring
+and managing services. These abstractions help to contain the complexity of
+service provisioning within the necessary domains, making the implementation of
+complex, multi-domain services easier to implement and manage.
+ However, operators have reported persistent challenges
+in operationalizing these abstractions in a
 consistent, scalable, and automatable manner.  This document
 describes the problem space for the ONSEN Working Group, identifying
 the operational gaps and deficiencies in existing IETF service and
 network abstraction models that prevent effective end-to-end
-automation.  The problems documented here are drawn from operator
-experience and from the findings of the IAB NEMOPS Workshop.  This
-document does not propose solutions, protocols, or new data models.</t>
+automation.  The problems documented here are initially drawn from operator
+experience and from the findings of the IAB NEMOPS Workshop. It is a living draft,
+not intended for publication as an RFC, and will be updated with new problem
+descriptions as the ONSEN work proceeds. This
+document does not propose solutions, protocols, or new data models.
+</t>
     </abstract>
     <note removeInRFC="true">
       <name>About This Document</name>
@@ -72,12 +80,12 @@ document does not propose solutions, protocols, or new data models.</t>
 
 <section anchor="introduction">
       <name>Introduction</name>
-      <t>The IETF has produced several YANG data models that are instrumental for
-automating the provisioning and delivery of connectivity services, as
-described in <xref target="RFC8969"/>.  These include models such as L3SM
-<xref target="RFC8299"/>, L3NM <xref target="RFC9182"/>, L2SM <xref target="RFC8466"/>, L2NM
-<xref target="RFC9291"/> and Service Attachment Points (SAPs) <xref target="RFC9408"/>. Current
-IETF work adds on a YANG model for Network Slice Service <xref target="RFC9543"/>, in<xref target="draft-ietf-teas-ietf-network-slice-nbi-yang-26"/>.</t>
+      <t>The IETF has published several YANG data models that are intended for
+automating the provisioning and management of service provider connectivity services.
+These include models such as L3SM <xref target="RFC8299"/>, L3NM <xref target="RFC9182"/>,
+L2SM <xref target="RFC8466"/>, L2NM <xref target="RFC9291"/> and Service Attachment
+Points (SAPs) <xref target="RFC9408"/>. A new YANG model for Network Slice Service <xref target="RFC9543"/>, i
+is currently being authored: <xref target="draft-ietf-teas-ietf-network-slice-nbi-yang-26"/>.</t>
       <t>While some of these abstractions have been deployed, operators report
 persistent challenges in operationalizing them.  As highlighted by the
 IAB NEMOPS Workshop <xref target="NEMOPS"/>, these challenges are systemic and
@@ -126,6 +134,10 @@ interaction between management and automation systems without
 requiring direct exposure of device-specific configurations or
 protocol behaviors.</t>
         </dd>
+        <dt>BSS:</dt>
+        <dd>
+          <t>Business Support System.</t>
+        </dd>
         <dt>LxNM:</dt>
         <dd>
           <t>Layer x Network Model (L2NM or L3NM).</t>
@@ -144,7 +156,7 @@ protocol behaviors.</t>
         </dd>
         <dt>OSS:</dt>
         <dd>
-          <t>Operation Support Systems.</t>
+          <t>Operation Support System.</t>
         </dd>
         <dt>Service Model Intent:</dt>
         <dd>
@@ -332,11 +344,20 @@ exposing only the nodes and interfaces where services can be attached.</t>
     </section>
 -->
     <section anchor="yang-orchestrator-standards">
-      <name>Lack of Standards for Building YANG-based Orchestrators</name>
+      <name>Lack of Guidance for Implementing YANG-based Orchestrators</name>
       <t>With the YANG Data Store <xref target="RFC7950"/> and the NMDA
       architecture <xref target="RFC8342"/> the IETF has standardized a clear
       operational model for exposing configuration and operational state on
       individual network devices.</t>
+
+      <!-- if: RFC8342 only discusses the implementation
+        of YANG data stores in terms of NETCONF servers, and is not prescriptive of what the server is
+        implemented on. There may be a lack of understanding that this is the case, but it's not due
+         to RFC8342
+
+       For the following section, the language should be guidance/examples around
+       real implementations of the lxNM/LxSM rather than standards.
+      -->
 
       <t>YANG has since gained widespread adoption as a schema language for
       describing the data model at varous abstraction layers, above the network
@@ -344,7 +365,7 @@ exposing only the nodes and interfaces where services can be attached.</t>
       the schemas for OSS systems, orchestrators, and controllers. A prime
       example are the IETF LxSM and LxNM models.</t>
 
-      <t>Yet no clear standards exist for building a YANG-based orchestrator
+      <t>Yet no clear guidance exist for implementing a YANG-based orchestrator
       that can consume these models and respect their layered hierarchy and
       semantics. The operator community has expressed a need for guidance on how
       to build orchestration systems that can comsume these models specifically,
@@ -362,7 +383,7 @@ exposing only the nodes and interfaces where services can be attached.</t>
         a schema language but a lack of equivalent standards for API semantics
         on orchestrator northbound APIs has resulted in divergent
         implementations and interoperability challenges.</t>
-        <t>Standardized semanics for service creation, modification, and
+        <t>Standardized semantics for service creation, modification, and
         decommissioning would simplify the implementation of
         orchestrators and controllers, and enable better interoperability
         across vendors and deployments.</t>
