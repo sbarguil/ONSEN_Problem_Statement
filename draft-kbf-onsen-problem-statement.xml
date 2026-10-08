@@ -343,33 +343,85 @@ exposing only the nodes and interfaces where services can be attached.</t>
       </section>
     </section>
 -->
-    <section anchor="yang-orchestrator-standards">
-      <name>Lack of Guidance for Implementing YANG-based Orchestrators</name>
-      <t>With the YANG Data Store <xref target="RFC7950"/> and the NMDA
-      architecture <xref target="RFC8342"/> the IETF has standardized a clear
-      operational model for exposing configuration and operational state on
-      individual network devices.</t>
 
-      <!-- if: RFC8342 only discusses the implementation
-        of YANG data stores in terms of NETCONF servers, and is not prescriptive of what the server is
-        implemented on. There may be a lack of understanding that this is the case, but it's not due
-         to RFC8342
+  <!-- @klambrec: This section combines:
+      - "Insufficient Guidance on YANG Model Usage and Composition"
+      - "Absence of Architectural Documentation" (Service Model aspects)
+      - "Cannot Combine Service Instances Across LxSM Models"
+      - "LxSM and Network Slice Service Model Relationship"
+      - "Inconsistent Parameter Availability and Naming"
+  -->
+    <section anchor="structural-lxnm-lxsm-problems">
+      <name>Structural LxNM/LxSM Problems</name>
+      <t>The following sections highlight structural problems observed in the
+      current LxNM and LxSM models, which impact their usability and
+      composability in real-world deployments.</t>
+      <section>
+        <name>Difficulty in Selecting and Composing Service Models</name>
+        <t>Operators report persistent difficulty in selecting the relevant
+        service model(s) for a given deployment scenario, and in applying them
+        in real-world deployments. The L2SM <xref target="RFC8466"/>,
+        L3SM <xref target="RFC8299"/>, ACaaS <xref target="RFC9834"/>,
+        and NSS <xref target="draft-ietf-teas-ietf-network-slice-nbi-yang-26"/>
+        all define service abstractions at a similar level in adjacent domains.
+        Insufficient guidance exists on how to effectively use and compose these
+        service models in practice. No implementation guidance information
+        exists on if, when, and how they should be, or should not be, combined.
+        </t>
+      </section>
+      <section>
+        <name>Inconsistent Parameter Availability and Naming</name>
+        <t>Very similar, if not identical, features and functionality across
+        different network and service models are often using slightly
+        different parameters names, a different YANG data type or are not
+        configurable to the same level of detail.
+        </t>
+      </section>
+    </section>
 
-       For the following section, the language should be guidance/examples around
-       real implementations of the lxNM/LxSM rather than standards.
+    <section anchor="limited-observability-and-service-assurance">
+      <name>Limited Observability and Service Assurance</name>
+      <t>Existing service and network models focus on configuration and
+      provide no standardised mechanism for reporting whether a service is
+      being delivered as ordered.  This gap applies both to discrete
+      operational state — whether the service is up and fault-free at a
+      given moment — and to historical SLO compliance — whether the service
+      has met its contracted performance targets over a given period.</t>
+      <t>SAIN (<xref target="RFC9417"/>, <xref target="RFC9418"/>) addresses observability internally
+      within the provider domain through an assurance graph that enables
+      operators to troubleshoot outages.  It is not designed to be exposed
+      to customers or to the service model layer.  SAIN can contribute
+      through a feedback loop from the SAIN Controller to the Service
+      Orchestrator, which would then populate relevant state in LxSM/LxNM;
+      however, that interworking is not currently defined.</t>
+      <t><xref target="RFC9375"/> provides raw performance monitoring data but does not
+      include a model for expressing the outcome of evaluating that data
+      against the SLOs set in the service model.</t>
+      <t>The gap is a customer-facing service delivery reporting layer that
+      does not currently exist in LxSM or LxNM.</t>
+      <!-- @klambrec: These subsectionns are highly repetitive!
+            <section anchor="lack-of-operational-state-in-lxsm-and-lxnm-models">
+              <name>Lack of Operational State in LxSM and LxNM Models</name>
+              <t>Some of the LxSM and LxNM models provide operational state
+      information, but this is not consistent across models, and the
+      information provided is often insufficient for operators to determine
+      whether the service is functioning as intended.</t>
+              <t>For example, the L3SM model does not provide any operational state
+      information, while the L2SM model provides some operational state
+      information, but it is limited to the status of the service and does
+      not include details on SLO violations or other operational metrics
+      that would be useful for troubleshooting and monitoring.</t>
+      </section>
       -->
+    </section>
 
-      <t>YANG has since gained widespread adoption as a schema language for
-      describing the data model at varous abstraction layers, above the network
-      devices themselves. In other words, YANG is increasingly used to define
-      the schemas for OSS systems, orchestrators, and controllers. A prime
-      example are the IETF LxSM and LxNM models.</t>
-
-      <t>Yet no clear guidance exist for implementing a YANG-based orchestrator
-      that can consume these models and respect their layered hierarchy and
-      semantics. The operator community has expressed a need for guidance on how
-      to build orchestration systems that can comsume these models specifically,
-      and how to build layered YANG-based orchestrators in general.</t>
+    <section anchor="oss-bss-interface-and-api-interoperability">
+      <name>OSS/BSS Interface and API Interoperability</name>
+      <t>YANG data models are commonly used as the basis for APIs that expose
+      service abstractions to external systems. However, existing work provides
+      limited guidance on how these abstractions should be exposed, versioned,
+      or consumed in a predictable and interoperable manner.
+      </t>
 
       <!-- @klambrec: This section combines:
         - "Differing Lifecycle Semantics Across Abstractions"
@@ -377,28 +429,60 @@ exposing only the nodes and interfaces where services can be attached.</t>
       -->
       <section anchor="northbound-api-semantics">
         <name>Northbound API Semantics</name>
-        <t>For devices, the IETF standardized the YANG Data Store with its
-        NETCONF and RESTCONF protocols and matching service semantics.
-        Orchestration and controller systems have widely adopted YANG as
-        a schema language but a lack of equivalent standards for API semantics
-        on orchestrator northbound APIs has resulted in divergent
+        <t>Orchestration and controller systems have widely adopted YANG as
+        a schema language as well but a lack of equivalent standards for API
+        semantics on orchestrator northbound APIs has resulted in divergent
         implementations and interoperability challenges.</t>
         <t>Standardized semantics for service creation, modification, and
         decommissioning would simplify the implementation of
         orchestrators and controllers, and enable better interoperability
         across vendors and deployments.</t>
-
-        <section anchor="tmf-api-based-semantics-for-oss-bss-integration">
-          <name>TMF API-Based Semantics</name>
-          <t>Many operators use TMF640/641 as the northbound API for service
-          ordering from their BSS. There is no specification of how these
-          interfaces align with YANG service and network models.  Operators
-          must either pay commercial OSS/BSS vendors to build bespoke
-          interfaces or build and maintain their own adaptation layer. The
-          absence of a defined alignment creates integration complexity, vendor
-          lock-in risk, and inconsistent implementations across deployments.</t>
-        </section>
       </section>
+      <section anchor="tmf-api-based-semantics">
+        <name>TMF API-Based Semantics</name>
+        <t>Some operators use TMF640/641 as the northbound API for service
+        ordering from their BSS. There is no specification of how these
+        interfaces align with YANG service and network models.  Operators
+        must either pay commercial OSS/BSS vendors to build bespoke
+        interfaces or build and maintain their own adaptation layer. The
+        absence of a defined alignment creates integration complexity, vendor
+        lock-in risk, and inconsistent implementations across deployments.</t>
+      </section>
+    </section>
+
+    <!-- @klambrec: This section combines:
+      - "Absence of Architectural Documentation" (Cross layer aspects)
+      - "No Defined Interworking Between Service and Network Layers"
+      - "Inconsistent Semantics Across Layers"
+    -->
+    <section anchor="yang-orchestration-guidance">
+      <name>Insufficient Guidance for Implementing YANG-based Orchestration</name>
+      <t>With the YANG Data Store <xref target="RFC7950"/> and the NMDA
+      architecture <xref target="RFC8342"/> the IETF has standardized a clear
+      operational model for exposing configuration and operational state from
+      an individual NETCONF/RESTCONF server.</t>
+
+      <t>YANG has since gained widespread adoption as a schema language for
+      describing the data model at varous abstraction layers, above the network
+      devices themselves. In other words, YANG is increasingly used to define
+      the schemas for OSS systems, orchestrators, and controllers. A prime
+      example are the IETF LxSM and LxNM models.</t>
+
+      <t>A variety of Informational RFCs, including The YANG Module
+      Classification <xref target="RFC8199"/>, Service Models Explained
+      <xref target="RFC8309"/>, and A Framework for Automating Service and
+      Network Management with YANG <xref target="RFC8969"/> have advanced
+      the classification of, and relationships between YANG modules as well
+      as the software components that implement them.</t>
+
+      <t>Operators consistently report they require more precise
+      guidelines, and a much more concrete service stack. This includes a
+      requirement for clear guidelines on how and when to combine IETF
+      standardized models with vendor models and user models at each layer.
+      Further guidance is needed on the interactions between the Service and
+      Network Models. Previous IETF work has attempted to define an exact
+      mapping between these layers, which was determined to be impractical,
+      yet guidance on how to manage these interactions is still needed.</t>
 
       <section anchor="other-southbound-management-interfaces">
         <name>Other Southbound Management Interfaces</name>
@@ -415,118 +499,13 @@ exposing only the nodes and interfaces where services can be attached.</t>
         non-YANG modeled devices in a way that can be correlated with YANG
         modeled service state and performance data.</t>
       </section>
-
-    <!-- @klambrec: This section combines:
-        - "Insufficient Guidance on YANG Model Usage and Composition"
-        - "Absence of Architectural Documentation" (Service Model aspects)
-        - "Cannot Combine Service Instances Across LxSM Models"
-        - "LxSM and Network Slice Service Model Relationship"
-        - "Inconsistent Parameter Availability and Naming"
-    -->
     </section>
-      <section anchor="diverse-landscape-of-service-models">
-        <name>Diverse Landscape of Service Models</name>
-        <t>Operators report persistent difficulty in selecting the relevant
-        service model(s) for a given deployment scenario, and in applying them
-        in real-world deployments. The L2SM <xref target="RFC8466"/>,
-        L3SM <xref target="RFC8299"/>, ACaaS <xref target="RFC9834"/>,
-        and NSS <xref target="draft-ietf-teas-ietf-network-slice-nbi-yang-26"/>
-        all define service abstractions at a similar level in adjacent domains.
-        Little to no documentation exists to guide an implementer in selecting
-        one or more service models for their use cases. No information exists on
-        if, when, and how they should be, or should not be, combined.</t>
 
-        <t>The collection and documentation of real-world operational experience
-        — including implementation lessons, interoperability findings, and
-        deployment patterns should be the first Working Group action item in
-        this area. Based on the outcome, ONSEN may produce architecture guidance
-        for implementers, YANG modeling guidelines for new service layer YANG
-        work and/or revisions of existing service models.</t>
-      </section>
-
-    <!-- @klambrec: This section combines:
-        - "Absence of Architectural Documentation" (Cross layer aspects)
-        - "Misalignment Between and Within Abstraction Layers"
-        - "No Defined Interworking Between Service and Network Layers"
-        - "Inconsistent Semantics Across Layers"
-    -->
-      <section anchor="ambiguous-roles-of-abstraction-layers">
-        <name>Ambiguous Roles of Abstraction Layers</name>
-        <t>A variety of Informational RFCs, including The YANG Module
-        Classification <xref target="RFC8199"/>, Service Models Explained
-        <xref target="RFC8309"/>, and A Framework for Automating Service and
-        Network Management with YANG <xref target="RFC8969"/> have advanced
-        the classification of, and relationships between YANG modules as well
-        as the software components that implement them.</t>
-        <t>Collectively, they have promoted a, now commonly held, view in the
-        OPS Area that a service stack should be thought of as exactly three
-        layers. In that view, those layers should contain one or more IETF
-        Service Models, IETF Network Models, and IETF Device Models
-        respectively.</t>
-        <figure anchor="rfc8969-l3-target">
-          <name>L3VPN Service Delivery Example from RFC8969 Figure 6</name>
-          <artwork align="center" name="" type="" alt=""><![CDATA[                  L3SM    |     ^
-                Service   |     |  Notifications
-                 Model    |     |
- +------------------------+------------------------+
- |               +--------V--------+               |
- |               | Service Mapping |               |
- |               +--------+--------+               |
- | Orchestrator           |                        |
- +------------------------+------------------------+
-                    L3NM  |     ^ UNI Topology Model
-                   Network|     | L3NM Notifications
-                    Model |     | L3NM Capabilities
- +------------------------+------------------------+
- |            +-----------V-----------+            |
- |            | Service Decomposition |            |
- |            +--++---------------++--+            |
- |               ||               ||               |
- | Controller    ||               ||               |
- +---------------++---------------++---------------+
-                 ||               ||
-                 ||     BGP,      ||
-                 ||     QoS,      ||
-                 ||   Interface,  ||
-    +------------+|      NI,      |+------------+
-    |             |      IP       |             |
- +--+--+       +--+--+         +--+--+       +--+--+
- | CE1 +-------+ PE1 |         | PE2 +-------+ CE2 |
- +-----+       +-----+         +-----+       +-----+
-]]></artwork>
-        </figure>
-        <t>However, none of these RFCs actually state that this is a
-        standardized service stack, nor should they given their Informational
-        status. These RFCs use the aforementioned three-layer stack as a mental
-        model only. Operators consistently report they require more precise
-        guidelines, and a much more concrete service stack.</t>
-
-        <t>Standardizing the process for defining and selecting abstraction
-        layers as well as clear guidelines on how and when to combine IETF
-        standardized models with vendor models and user models at each layer
-        would greatly aid the adoption of YANG model driven software-defined
-        networking.</t>
-
-        <section>
-          <name>Interactions Between Abstraction Layers</name>
-          <t>Operators face uncertainty regarding the interactions between
-          different abstraction layers, in particular between the Service and
-          Network Models. Previous IETF work has attempted to define an exact
-          mapping between these layers, but this did not result in a useable
-          implementation. Some Working Group members cite differences in
-          terminology and model structure as a source of the implementation
-          challenges.</t>
-
-          <t>Operators require better guidelines on what each of the defined
-          abstraction layers is responsible for, and how they should interact
-          with each other. The interaction guidelines should be established
-          in alignment with the Standards for YANG-based Orchestrators in
-          <xref target="yang-orchestrator-standards"/>.</t>
-        </section>
-      </section>
-
-      <section anchor="missing-service-and-network-model-functionality">
-        <name>Missing Functionality in Service and Network Models</name>
+      <!-- @klambrec: Samier, shouldn't we have a subsection here describing
+                      at a high-levl what you have collected on the LxNM models?
+       -->
+      <section anchor="missing-lxsm-lxnm-functionality">
+        <name>Missing LxSM and LxNM Functionality</name>
         <t>Operators who use the LxSM and LxNM models in real-world deployments
         report that the models do not provide the constructs needed to express
         the full range of service behaviors and operational requirements.</t>
@@ -585,41 +564,6 @@ manner, so both the model constructs to express time-varying Service
 Model Intent and the operational workflows to trigger and manage
 changes are required.  Operators must implement custom logic outside
 the abstraction framework to support these operations.</t>
-        </section>
--->
-      </section>
-      <section anchor="limited-observability-and-feedback">
-        <name>Service Assurance and Reporting</name>
-        <t>Existing service and network models focus on configuration and
-provide no standardised mechanism for reporting whether a service is
-being delivered as ordered.  This gap applies both to discrete
-operational state — whether the service is up and fault-free at a
-given moment — and to historical SLO compliance — whether the service
-has met its contracted performance targets over a given period.</t>
-        <t>SAIN (<xref target="RFC9417"/>, <xref target="RFC9418"/>) addresses observability internally
-within the provider domain through an assurance graph that enables
-operators to troubleshoot outages.  It is not designed to be exposed
-to customers or to the service model layer.  SAIN can contribute
-through a feedback loop from the SAIN Controller to the Service
-Orchestrator, which would then populate relevant state in LxSM/LxNM;
-however, that interworking is not currently defined.</t>
-        <t><xref target="RFC9375"/> provides raw performance monitoring data but does not
-include a model for expressing the outcome of evaluating that data
-against the SLOs set in the service model.</t>
-        <t>The gap is a customer-facing service delivery reporting layer that
-does not currently exist in LxSM or LxNM.</t>
-<!-- @klambrec: These subsectionns are highly repetitive!
-        <section anchor="lack-of-operational-state-in-lxsm-and-lxnm-models">
-          <name>Lack of Operational State in LxSM and LxNM Models</name>
-          <t>Some of the LxSM and LxNM models provide operational state
-information, but this is not consistent across models, and the
-information provided is often insufficient for operators to determine
-whether the service is functioning as intended.</t>
-          <t>For example, the L3SM model does not provide any operational state
-information, while the L2SM model provides some operational state
-information, but it is limited to the status of the service and does
-not include details on SLO violations or other operational metrics
-that would be useful for troubleshooting and monitoring.</t>
         </section>
 -->
       </section>
