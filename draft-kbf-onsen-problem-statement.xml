@@ -84,8 +84,8 @@ document does not propose solutions, protocols, or new data models.
 automating the provisioning and management of service provider connectivity services.
 These include models such as L3SM <xref target="RFC8299"/>, L3NM <xref target="RFC9182"/>,
 L2SM <xref target="RFC8466"/>, L2NM <xref target="RFC9291"/> and Service Attachment
-Points (SAPs) <xref target="RFC9408"/>. A new YANG model for the Network Slice 
-Service <xref target="RFC9543"/>, is currently being authored: 
+Points (SAPs) <xref target="RFC9408"/>. A new YANG model for the Network Slice
+Service <xref target="RFC9543"/>, is currently being authored:
 <xref target="I-D.ietf-teas-ietf-network-slice-nbi-yang"/>.</t>
       <t>While some of these abstractions have been deployed, operators report
 persistent challenges in operationalizing them.  As highlighted by the
@@ -100,9 +100,9 @@ under the IETF umbrella, operators continue to face significant
 challenges in operationalizing YANG-based service APIs in a consistent,
 scalable, and interoperable manner. While models such as the L3SM,
 L2SM, L3NM, L2NM, AC/SAP abstractions and Network Slice Service each
-address specific aspects of service delivery, it is not always clear 
-which models should be used together, in which scenarios, or to what 
-extent a given implementation actually supports the full model. 
+address specific aspects of service delivery, it is not always clear
+which models should be used together, in which scenarios, or to what
+extent a given implementation actually supports the full model.
 The usage of these APIs remains
 fragmented - often partially implemented - and difficult to automate
 end-to-end. In practice, APIs generated from similar YANG models often
@@ -395,7 +395,7 @@ exposing only the nodes and interfaces where services can be attached.</t>
       operational state — whether the service is up and fault-free at a
       given moment — and to historical SLO compliance — whether the service
       has met its contracted performance targets over a given period.</t>
-      <t>SAIN (<xref target="RFC9417"/>, <xref target="RFC9418"/>) addresses 
+      <t>SAIN (<xref target="RFC9417"/>, <xref target="RFC9418"/>) addresses
       observability internally
       within the provider domain through an assurance graph that enables
       operators to troubleshoot outages.  It is not designed to be exposed
@@ -409,9 +409,9 @@ exposing only the nodes and interfaces where services can be attached.</t>
       <t>The gap is a customer-facing service delivery reporting layer that
       does not currently exist in LxSM or LxNM.</t>
       <!-- @iffy50: 3 issues on the LxNM update github page: https://github.com/oscargdd/lxnm-bis/issues
-        #4, #5, #16 are relevant to this problem. Need to decide if this is a 
+        #4, #5, #16 are relevant to this problem. Need to decide if this is a
         maintenance update, or needs standalone work to align LxNM/LxSM observability.
-      --> 
+      -->
       <!-- @klambrec: These subsectionns are highly repetitive!
             <section anchor="lack-of-operational-state-in-lxsm-and-lxnm-models">
               <name>Lack of Operational State in LxSM and LxNM Models</name>
@@ -420,9 +420,9 @@ exposing only the nodes and interfaces where services can be attached.</t>
       information provided is often insufficient for operators to determine
       whether the service is functioning as intended.</t>
               <t>For example,L3SM model does not provide any operational state
-      information, while the L2SM model includes some operational state, 
-      limited to the status of the service. It does not include details 
-      on SLO violations or other operational metrics that would be useful 
+      information, while the L2SM model includes some operational state,
+      limited to the status of the service. It does not include details
+      on SLO violations or other operational metrics that would be useful
       for troubleshooting and monitoring.</t>
       </section>
       -->
@@ -453,11 +453,11 @@ exposing only the nodes and interfaces where services can be attached.</t>
       </section>
       <section anchor="tmf-api-based-semantics">
         <name>TMF API-Based Semantics</name>
-        <t>Some operators use <xref target="TMF640"/>/<xref target="TMF641"/> 
+        <t>Some operators use <xref target="TMF640"/>/<xref target="TMF641"/>
         as the northbound API for service ordering from their BSS. There is
-        no specification of how these interfaces can be aligned with YANG 
-        service and network models.  Operators must either pay commercial 
-        OSS/BSS vendors to build bespoke interfaces or build and maintain 
+        no specification of how these interfaces can be aligned with YANG
+        service and network models.  Operators must either pay commercial
+        OSS/BSS vendors to build bespoke interfaces or build and maintain
         their own adaptation layer. The
         absence of a defined API creates integration complexity, lack of re-useability,
         vendor lock-in risk, and inconsistent implementations across deployments.</t>
@@ -622,67 +622,57 @@ layers.</t>
     <section anchor="items-for-future-study">
       <name>Items for Future Study</name>
 
-      <t>The following problem areas were raised during the IETF126 ONSEN 
-      work group meeting and subsequent mailing list exchanges.  They are 
-      currently sufficiently developed or prioritised for inclusion in 
-      the core problem statement.  They are documented here for completeness 
-      and to solicit community input on whether and how they should be 
+      <t>The following problem areas were raised during the IETF126 ONSEN
+      work group meeting and subsequent mailing list exchanges.  They are
+      currently sufficiently developed or prioritised for inclusion in
+      the core problem statement.  They are documented here for completeness
+      and to solicit community input on whether and how they should be
       addressed by ONSEN or other working groups.</t>
       <section anchor="quantum-security-requirements-in-service-models">
         <name>Quantum-Security Requirements in Service Models</name>
         <t>An increasing number of customers require long-term data
-confidentiality and protection against future quantum-computing
-threats.  Current service models do not provide a way to express
-quantum-security requirements or capabilities.  It is not yet clear
-whether this is best addressed through extensions to existing models
-or through new model constructs.  This item is considered lower
-priority relative to the core problems above and may be
-revisited in a later revision.</t>
+        confidentiality and protection against future quantum-computing
+        threats.  Current service models do not provide a way to express
+        quantum-security requirements or capabilities.  It is not yet clear
+        whether this is best addressed through extensions to existing models
+        or through new model constructs.  This item is considered lower
+        priority relative to the core problems above and may be
+        revisited in a later revision.</t>
       </section>
       <section anchor="secure-handling-of-secrets-in-orchestration-workflows">
         <name>Secure Handling of Secrets in Orchestration Workflows</name>
         <t>Device-level configuration often requires credentials, authentication
-          keys, or other sensitive data.  There is currently no standardised
-          mechanism for referencing sensitive information securely across the
-          orchestration stack and resolving it only at the point of device
-          configuration.  Whether this belongs within the scope of ONSEN,
-          NETMOD, or another WG is an open question that requires further discussion.
+        keys, or other sensitive data.  There is currently no standardised
+        mechanism for referencing sensitive information securely across the
+        orchestration stack and resolving it only at the point of device
+        configuration.  Whether this belongs within the scope of ONSEN,
+        NETMOD, or another WG is an open question that requires further discussion.
         </t>
       </section>
       <section anchor="generic-abstraction-to-underlay-mapping">
         <name>Generic Abstraction-to-Underlay Mapping</name>
         <t>Operators repeatedly encounter the challenge of mapping service-layer
-abstractions to underlying infrastructure resources in a generic,
-technology-independent way.  Existing work addresses this problem in
-specific contexts (e.g., TE-based approaches in TEAS) but no broadly
-applicable mechanism exists.  The ONSEN charter defines the device
-layer as the lowest layer in scope; mapping below the device layer is
-therefore out of scope.  Further information from the community on
-the exact problem being identified is needed before this item can be
-evaluated for inclusion.</t>
+        abstractions to underlying infrastructure resources in a generic,
+        technology-independent way.  Existing work addresses this problem in
+        specific contexts (e.g., TE-based approaches in TEAS) but no broadly
+        applicable mechanism exists.  The ONSEN charter defines the device
+        layer as the lowest layer in scope; mapping below the device layer is
+        therefore out of scope.  Further information from the community on
+        the exact problem being identified is needed before this item can be
+        evaluated for inclusion.</t>
       </section>
-    </section>
-    <!-- @klambrec: Keep this section or just get feedback on the list and remove it? -->
-    <section anchor="items-for-other-working-groups">
-      <name>Items for Other Working Groups</name>
-    <!-- @iffy50: Given the intro text for the above section includes items for 
-      other WGs, can't this section be collapsed into the above section? -->
-      <t>The following problem areas were raised during IETF 126 discussions
-      and subsequent mailing list exchanges. Working Group members have
-      reported that related work in other Working Groups may already address
-      the identified problems.</t>
-        <section anchor="absence-of-reusable-service-configuration-constructs">
-          <name>Absence of Reusable Service Configuration Constructs</name>
-          <t>The LxSM models do not provide templates or reusable constructs to
-          aid operators in reducing the input parameters required for common
-          site deployment patterns.  Operators must manually configure each
-          service instance, which increases the risk of misconfiguration and
-          reduces operational efficiency.</t>
-          <t>YANG Configuration Templates
-          <xref target="I-D.tt-netmod-yang-config-templates" />, being
-          worked on in NETMOD already provide a generic solution that addresses
-          repetitive YANG configuration instances.</t>
-        </section>
+      <section anchor="absence-of-reusable-service-configuration-constructs">
+        <name>Absence of Reusable Service Configuration Constructs</name>
+        <t>The LxSM models do not provide templates or reusable constructs to
+        aid operators in reducing the input parameters required for common
+        site deployment patterns.  Operators must manually configure each
+        service instance, which increases the risk of misconfiguration and
+        reduces operational efficiency.</t>
+        <t>YANG Configuration Templates
+        <xref target="I-D.tt-netmod-yang-config-templates" />, being
+        worked on in NETMOD already provide a generic solution that addresses
+        repetitive YANG configuration instances.</t>
+      </section>
     </section>
     <section anchor="iana-considerations">
       <name>IANA Considerations</name>
