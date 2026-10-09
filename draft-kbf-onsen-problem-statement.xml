@@ -28,7 +28,7 @@
         <email>xiechf@chinatelecom.cn</email>
       </address>
     </author>
-    <date year="2026" month="October" day="02"/>
+    <date year="2026"/>
     <area>Operations and Management</area>
     <workgroup>ONSEN Working Group</workgroup>
     <keyword>YANG</keyword>
@@ -41,7 +41,7 @@
 <t>The IETF has published a number of YANG data models for automating the
 provisioning and delivery of network and connectivity services,
 including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and Network
-Slicing models. These models are intended to provided asbstracted representations of
+Slicing models. These models are intended to provided abstracted representations of
 common operator services, exposing only the necessary parameters for configuring
 and managing services. These abstractions help to contain the complexity of
 service provisioning within the necessary domains, making the implementation of
@@ -51,9 +51,9 @@ in operationalizing these abstractions in a
 consistent, scalable, and automatable manner.  This document
 describes the problem space for the ONSEN Working Group, identifying
 the operational gaps and deficiencies in existing IETF service and
-network abstraction models that prevent effective end-to-end
+network abstraction models that complicate, or prevent effective end-to-end
 automation.  The problems documented here are initially drawn from operator
-experience and from the findings of the IAB NEMOPS Workshop. It is a living draft,
+experience, and from the findings of the IAB NEMOPS Workshop. It is a living draft,
 not intended for publication as an RFC, and will be updated with new problem
 descriptions as the ONSEN work proceeds. This
 document does not propose solutions, protocols, or new data models.
@@ -84,13 +84,14 @@ document does not propose solutions, protocols, or new data models.
 automating the provisioning and management of service provider connectivity services.
 These include models such as L3SM <xref target="RFC8299"/>, L3NM <xref target="RFC9182"/>,
 L2SM <xref target="RFC8466"/>, L2NM <xref target="RFC9291"/> and Service Attachment
-Points (SAPs) <xref target="RFC9408"/>. A new YANG model for Network Slice Service <xref target="RFC9543"/>, i
-is currently being authored: <xref target="draft-ietf-teas-ietf-network-slice-nbi-yang-26"/>.</t>
+Points (SAPs) <xref target="RFC9408"/>. A new YANG model for the Network Slice 
+Service <xref target="RFC9543"/>, is currently being authored: 
+<xref target="I-D.ietf-teas-ietf-network-slice-nbi-yang"/>.</t>
       <t>While some of these abstractions have been deployed, operators report
 persistent challenges in operationalizing them.  As highlighted by the
 IAB NEMOPS Workshop <xref target="NEMOPS"/>, these challenges are systemic and
 operational in nature.  They are not confined to a specific technology
-or service type, but recur across abstraction domains and deployment
+or service type, but reoccur across abstraction domains and deployment
 environments.</t>
       <t>In addition, despite the availability of numerous YANG data models -
 covering configuration, assurance, and fault management - and the
@@ -99,15 +100,18 @@ under the IETF umbrella, operators continue to face significant
 challenges in operationalizing YANG-based service APIs in a consistent,
 scalable, and interoperable manner. While models such as the L3SM,
 L2SM, L3NM, L2NM, AC/SAP abstractions and Network Slice Service each
-address specific aspects
-of service delivery, it is not always clear which models should be used
-together, in which scenarios, or to what extent a given implementation
-actually supports the full model. The usage of these APIs remains
+address specific aspects of service delivery, it is not always clear 
+which models should be used together, in which scenarios, or to what 
+extent a given implementation actually supports the full model. 
+The usage of these APIs remains
 fragmented - often partially implemented - and difficult to automate
 end-to-end. In practice, APIs generated from similar YANG models often
 differ in service semantics, and the lack of clear guidance on model
 composition and interoperability complicates integration across
 systems, vendors, and deployment environments.</t>
+
+<!-- @iffy50: The above paragraph seems redundant. Can it be cut?-->
+
       <t>The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
 Group is chartered to address this problem space by focusing on the
 operational aspects of network and service abstractions.  It aims to
@@ -123,7 +127,7 @@ solutions, protocols, or new data models.</t>
       <dl>
         <dt>AC:</dt>
         <dd>
-          <t>Attachment Circuit.</t>
+          <t>Attachment Circuit</t>
         </dd>
         <dt>Abstraction:</dt>
         <dd>
@@ -136,27 +140,31 @@ protocol behaviors.</t>
         </dd>
         <dt>BSS:</dt>
         <dd>
-          <t>Business Support System.</t>
+          <t>Business Support System</t>
         </dd>
         <dt>LxNM:</dt>
         <dd>
-          <t>Layer x Network Model (L2NM or L3NM).</t>
+          <t>Layer x Network Model (L2NM or L3NM)</t>
         </dd>
         <dt>LxSM:</dt>
         <dd>
-          <t>Layer x Service Model (L2SM or L3SM).</t>
+          <t>Layer x Service Model (L2SM or L3SM)</t>
         </dd>
         <dt>NEMOPS:</dt>
         <dd>
-          <t>Next Era of Network Management Operations.</t>
+          <t>Next Era of Network Management Operations</t>
         </dd>
         <dt>ONSEN:</dt>
         <dd>
-          <t>Operationalizing Network and SErvice abstractioNs.</t>
+          <t>Operationalizing Network and SErvice abstractioNs</t>
         </dd>
         <dt>OSS:</dt>
         <dd>
-          <t>Operation Support System.</t>
+          <t>Operation Support System</t>
+        </dd>
+        <dt>SLO:</dt>
+        <dd>
+          <t>Service Level Objective</t>
         </dd>
         <dt>Service Model Intent:</dt>
         <dd>
@@ -362,19 +370,19 @@ exposing only the nodes and interfaces where services can be attached.</t>
         service model(s) for a given deployment scenario, and in applying them
         in real-world deployments. The L2SM <xref target="RFC8466"/>,
         L3SM <xref target="RFC8299"/>, ACaaS <xref target="RFC9834"/>,
-        and NSS <xref target="draft-ietf-teas-ietf-network-slice-nbi-yang-26"/>
+        and NSS <xref target="I-D.ietf-teas-ietf-network-slice-nbi-yang"/>
         all define service abstractions at a similar level in adjacent domains.
         Insufficient guidance exists on how to effectively use and compose these
         service models in practice. No implementation guidance information
-        exists on if, when, and how they should be, or should not be, combined.
+        exists on if, when, and how they should, or should not be combined.
         </t>
       </section>
       <section>
         <name>Inconsistent Parameter Availability and Naming</name>
         <t>Very similar, if not identical, features and functionality across
-        different network and service models are often using slightly
-        different parameters names, a different YANG data type or are not
-        configurable to the same level of detail.
+        different network and service models often use slightly
+        different parameters names, YANG data types, or do not
+        provide the same level of configuration detail.
         </t>
       </section>
     </section>
@@ -387,7 +395,8 @@ exposing only the nodes and interfaces where services can be attached.</t>
       operational state — whether the service is up and fault-free at a
       given moment — and to historical SLO compliance — whether the service
       has met its contracted performance targets over a given period.</t>
-      <t>SAIN (<xref target="RFC9417"/>, <xref target="RFC9418"/>) addresses observability internally
+      <t>SAIN (<xref target="RFC9417"/>, <xref target="RFC9418"/>) addresses 
+      observability internally
       within the provider domain through an assurance graph that enables
       operators to troubleshoot outages.  It is not designed to be exposed
       to customers or to the service model layer.  SAIN can contribute
@@ -399,6 +408,10 @@ exposing only the nodes and interfaces where services can be attached.</t>
       against the SLOs set in the service model.</t>
       <t>The gap is a customer-facing service delivery reporting layer that
       does not currently exist in LxSM or LxNM.</t>
+      <!-- @iffy50: 3 issues on the LxNM update github page: https://github.com/oscargdd/lxnm-bis/issues
+        #4, #5, #16 are relevant to this problem. Need to decide if this is a 
+        maintenance update, or needs standalone work to align LxNM/LxSM observability.
+      --> 
       <!-- @klambrec: These subsectionns are highly repetitive!
             <section anchor="lack-of-operational-state-in-lxsm-and-lxnm-models">
               <name>Lack of Operational State in LxSM and LxNM Models</name>
@@ -406,11 +419,11 @@ exposing only the nodes and interfaces where services can be attached.</t>
       information, but this is not consistent across models, and the
       information provided is often insufficient for operators to determine
       whether the service is functioning as intended.</t>
-              <t>For example, the L3SM model does not provide any operational state
-      information, while the L2SM model provides some operational state
-      information, but it is limited to the status of the service and does
-      not include details on SLO violations or other operational metrics
-      that would be useful for troubleshooting and monitoring.</t>
+              <t>For example,L3SM model does not provide any operational state
+      information, while the L2SM model includes some operational state, 
+      limited to the status of the service. It does not include details 
+      on SLO violations or other operational metrics that would be useful 
+      for troubleshooting and monitoring.</t>
       </section>
       -->
     </section>
@@ -430,7 +443,7 @@ exposing only the nodes and interfaces where services can be attached.</t>
       <section anchor="northbound-api-semantics">
         <name>Northbound API Semantics</name>
         <t>Orchestration and controller systems have widely adopted YANG as
-        a schema language as well but a lack of equivalent standards for API
+        a schema language, but a lack of equivalent standards for API
         semantics on orchestrator northbound APIs has resulted in divergent
         implementations and interoperability challenges.</t>
         <t>Standardized semantics for service creation, modification, and
@@ -440,13 +453,14 @@ exposing only the nodes and interfaces where services can be attached.</t>
       </section>
       <section anchor="tmf-api-based-semantics">
         <name>TMF API-Based Semantics</name>
-        <t>Some operators use TMF640/641 as the northbound API for service
-        ordering from their BSS. There is no specification of how these
-        interfaces align with YANG service and network models.  Operators
-        must either pay commercial OSS/BSS vendors to build bespoke
-        interfaces or build and maintain their own adaptation layer. The
-        absence of a defined alignment creates integration complexity, vendor
-        lock-in risk, and inconsistent implementations across deployments.</t>
+        <t>Some operators use <xref target="TMF640"/>/<xref target="TMF641"/> 
+        as the northbound API for service ordering from their BSS. There is
+        no specification of how these interfaces can be aligned with YANG 
+        service and network models.  Operators must either pay commercial 
+        OSS/BSS vendors to build bespoke interfaces or build and maintain 
+        their own adaptation layer. The
+        absence of a defined API creates integration complexity, lack of re-useability,
+        vendor lock-in risk, and inconsistent implementations across deployments.</t>
       </section>
     </section>
 
@@ -518,7 +532,7 @@ exposing only the nodes and interfaces where services can be attached.</t>
         services such as data-intensive workload transmission or SD-WAN-like
         dynamic VPN capabilities, this gap becomes a concrete operational
         blocker.</t>
-        <t><xref target="RFC9922"/> defines a generic schedule model in NETMOD
+        <t><xref target="RFC9922"/> defines a generic model for scheduling
         that could be bound to LxSM service instances. ONSEN can leverage this
         model to define how dynamic scheduling can be applied to the LxSM
         service models.</t>
@@ -607,12 +621,13 @@ layers.</t>
 -->
     <section anchor="items-for-future-study">
       <name>Items for Future Study</name>
-      <t>The following problem areas were raised during IETF 126 discussions
-and subsequent mailing list exchanges.  They are not yet sufficiently
-developed or prioritised for inclusion in the core problem statement.
-They are documented here for completeness and to solicit community
-input on whether and how they should be addressed by ONSEN or other
-working groups.</t>
+
+      <t>The following problem areas were raised during the IETF126 ONSEN 
+      work group meeting and subsequent mailing list exchanges.  They are 
+      currently sufficiently developed or prioritised for inclusion in 
+      the core problem statement.  They are documented here for completeness 
+      and to solicit community input on whether and how they should be 
+      addressed by ONSEN or other working groups.</t>
       <section anchor="quantum-security-requirements-in-service-models">
         <name>Quantum-Security Requirements in Service Models</name>
         <t>An increasing number of customers require long-term data
@@ -621,18 +636,18 @@ threats.  Current service models do not provide a way to express
 quantum-security requirements or capabilities.  It is not yet clear
 whether this is best addressed through extensions to existing models
 or through new model constructs.  This item is considered lower
-priority relative to the core problems in Section 4 and may be
+priority relative to the core problems above and may be
 revisited in a later revision.</t>
       </section>
       <section anchor="secure-handling-of-secrets-in-orchestration-workflows">
         <name>Secure Handling of Secrets in Orchestration Workflows</name>
         <t>Device-level configuration often requires credentials, authentication
-keys, or other sensitive data.  There is currently no standardised
-mechanism for referencing sensitive information securely across the
-orchestration stack and resolving it only at the point of device
-configuration.  Whether this belongs within the scope of ONSEN,
-NETMOD, or another WG is an open question that requires further
-discussion.</t>
+          keys, or other sensitive data.  There is currently no standardised
+          mechanism for referencing sensitive information securely across the
+          orchestration stack and resolving it only at the point of device
+          configuration.  Whether this belongs within the scope of ONSEN,
+          NETMOD, or another WG is an open question that requires further discussion.
+        </t>
       </section>
       <section anchor="generic-abstraction-to-underlay-mapping">
         <name>Generic Abstraction-to-Underlay Mapping</name>
@@ -650,6 +665,8 @@ evaluated for inclusion.</t>
     <!-- @klambrec: Keep this section or just get feedback on the list and remove it? -->
     <section anchor="items-for-other-working-groups">
       <name>Items for Other Working Groups</name>
+    <!-- @iffy50: Given the intro text for the above section includes items for 
+      other WGs, can't this section be collapsed into the above section? -->
       <t>The following problem areas were raised during IETF 126 discussions
       and subsequent mailing list exchanges. Working Group members have
       reported that related work in other Working Groups may already address
@@ -662,7 +679,7 @@ evaluated for inclusion.</t>
           service instance, which increases the risk of misconfiguration and
           reduces operational efficiency.</t>
           <t>YANG Configuration Templates
-          <xref target="draft-tt-netmod-yang-config-templates-04" />, being
+          <xref target="I-D.tt-netmod-yang-config-templates" />, being
           worked on in NETMOD already provide a generic solution that addresses
           repetitive YANG configuration instances.</t>
         </section>
@@ -679,303 +696,26 @@ evaluated for inclusion.</t>
   <back>
     <references anchor="sec-informative-references">
       <name>Informative References</name>
-      <reference anchor="draft-tt-netmod-yang-config-templates-04" target="https://datatracker.ietf.org/doc/html/draft-tt-netmod-yang-config-templates-04">
-        <front>
-          <title>YANG Configuration Templates</title>
-          <author fullname="Kent Watsen" initials="K." surname="Watsen">
-            <organization>Watsen Networks</organization>
-          </author>
-          <author fullname="Qiufang Ma" initials="Q." surname="Ma">
-            <organization>Huawei</organization>
-          </author>
-          <author fullname="Deepak Rajaram" initials="D." surname="Rajaram">
-            <organization>Nokia</organization>
-          </author>
-          <date day="22" month="September" year="2026"/>
-          <abstract>
-            <t>This document defines a YANG-based configuration template mechanism whereby repetitive configuration data can be factored out into templates and applied where needed. This avoids the redundant definition of identical configuration and ensures the consistency of it, thus allowing configuration data to be managed more conveniently and efficiently.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="Internet-Draft" value="draft-tt-netmod-yang-config-templates-04"/>
-      </reference>
-      <reference anchor="RFC8199" target="https://www.rfc-editor.org/info/rfc8199">
-        <front>
-          <title>YANG Module Classification</title>
-          <author fullname="D. Bogdanovic" initials="D." surname="Bogdanovic"/>
-          <author fullname="B. Claise" initials="B." surname="Claise"/>
-          <author fullname="C. Moberg" initials="C." surname="Moberg"/>
-          <date month="July" year="2017"/>
-          <abstract>
-            <t>The YANG data modeling language is currently being considered for a wide variety of applications throughout the networking industry at large. Many standards development organizations (SDOs), open-source software projects, vendors, and users are using YANG to develop and publish YANG modules for a wide variety of applications. At the same time, there is currently no well-known terminology to categorize various types of YANG modules.</t>
-            <t>A consistent terminology would help with the categorization of YANG modules, assist in the analysis of the YANG data modeling efforts in the IETF and other organizations, and bring clarity to the YANG- related discussions between the different groups.</t>
-            <t>This document describes a set of concepts and associated terms to support consistent classification of YANG modules.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="8199"/>
-        <seriesInfo name="DOI" value="10.17487/RFC8199"/>
-      </reference>
-      <reference anchor="RFC9834" target="https://www.rfc-editor.org/info/rfc9834">
-        <front>
-          <title>YANG Data Models for Bearers and Attachment Circuits as a Service (ACaaS)</title>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="R. Roberts" initials="R." role="editor" surname="Roberts"/>
-          <author fullname="O. Gonzalez de Dios" initials="O." surname="Gonzalez de Dios"/>
-          <author fullname="S. Barguil" initials="S." surname="Barguil"/>
-          <author fullname="B. Wu" initials="B." surname="Wu"/>
-          <date month="September" year="2025"/>
-          <abstract>
-            <t>Delivery of network services assumes that appropriate setup is
-      provisioned over the links that connect customer termination points
-      and a provider network. The required setup to allow successful data
-      exchange over these links is referred to as an attachment circuit
-      (AC), while the underlying link is referred to as a "bearer".</t>
-            <t>This document specifies a YANG service data model for ACs. This model
-      can be used for the provisioning of ACs before or during service
-      provisioning (e.g., RFC 9543 Network Slice Service).</t>
-            <t>The document also specifies a YANG service data model for managing
-      bearers over which ACs are established.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9834"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9834"/>
-      </reference>
-      <reference anchor="RFC7950" target="https://www.rfc-editor.org/info/rfc7950">
-        <front>
-          <title>The YANG 1.1 Data Modeling Language</title>
-          <author fullname="M. Bjorklund" initials="M." role="editor" surname="Bjorklund"/>
-          <date month="August" year="2016"/>
-          <abstract>
-            <t>YANG is a data modeling language used to model configuration data, state data, Remote Procedure Calls, and notifications for network management protocols. This document describes the syntax and semantics of version 1.1 of the YANG language. YANG version 1.1 is a maintenance release of the YANG language, addressing ambiguities and defects in the original specification. There are a small number of backward incompatibilities from YANG version 1. This document also specifies the YANG mappings to the Network Configuration Protocol (NETCONF).</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="7950"/>
-        <seriesInfo name="DOI" value="10.17487/RFC7950"/>
-      </reference>
-      <reference anchor="RFC8342" target="https://www.rfc-editor.org/info/rfc8342">
-        <front>
-          <title>Network Management Datastore Architecture (NMDA)</title>
-          <author fullname="M. Bjorklund" initials="M." surname="Bjorklund"/>
-          <author fullname="J. Schoenwaelder" initials="J." surname="Schoenwaelder"/>
-          <author fullname="P. Shafer" initials="P." surname="Shafer"/>
-          <author fullname="K. Watsen" initials="K." surname="Watsen"/>
-          <author fullname="R. Wilton" initials="R." surname="Wilton"/>
-          <date month="March" year="2018"/>
-          <abstract>
-            <t>Datastores are a fundamental concept binding the data models written in the YANG data modeling language to network management protocols such as the Network Configuration Protocol (NETCONF) and RESTCONF. This document defines an architectural framework for datastores based on the experience gained with the initial simpler model, addressing requirements that were not well supported in the initial model. This document updates RFC 7950.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="8342"/>
-        <seriesInfo name="DOI" value="10.17487/RFC8342"/>
-      </reference>
-      <reference anchor="RFC8309">
-        <front>
-          <title>Service Models Explained</title>
-          <author fullname="Q. Wu" initials="Q." surname="Wu"/>
-          <author fullname="W. Liu" initials="W." surname="Liu"/>
-          <author fullname="A. Farrel" initials="A." surname="Farrel"/>
-          <date month="January" year="2018"/>
-          <abstract>
-            <t>The IETF has produced many modules in the YANG modeling language. The majority of these modules are used to construct data models to model devices or monolithic functions.</t>
-            <t>A small number of YANG modules have been defined to model services (for example, the Layer 3 Virtual Private Network Service Model (L3SM) produced by the L3SM working group and documented in RFC 8049).</t>
-            <t>This document describes service models as used within the IETF and also shows where a service model might fit into a software-defined networking architecture. Note that service models do not make any assumption of how a service is actually engineered and delivered for a customer; details of how network protocols and devices are engineered to deliver a service are captured in other modules that are not exposed through the interface between the customer and the provider.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="8309"/>
-        <seriesInfo name="DOI" value="10.17487/RFC8309"/>
-      </reference>
-      <reference anchor="RFC8299" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8299.xml">
-        <front>
-          <title>YANG Data Model for L3VPN Service Delivery</title>
-          <author fullname="Q. Wu" initials="Q." role="editor" surname="Wu"/>
-          <author fullname="S. Litkowski" initials="S." surname="Litkowski"/>
-          <author fullname="L. Tomotaki" initials="L." surname="Tomotaki"/>
-          <author fullname="K. Ogaki" initials="K." surname="Ogaki"/>
-          <date month="January" year="2018"/>
-          <abstract>
-            <t>This document defines a YANG data model that can be used for communication between customers and network operators and to deliver a Layer 3 provider-provisioned VPN service. This document is limited to BGP PE-based VPNs as described in RFCs 4026, 4110, and 4364. This model is intended to be instantiated at the management system to deliver the overall service. It is not a configuration model to be used directly on network elements. This model provides an abstracted view of the Layer 3 IP VPN service configuration components. It will be up to the management system to take this model as input and use specific configuration models to configure the different network elements to deliver the service. How the configuration of network elements is done is out of scope for this document.</t>
-            <t>This document obsoletes RFC 8049; it replaces the unimplementable module in that RFC with a new module with the same name that is not backward compatible. The changes are a series of small fixes to the YANG module and some clarifications to the text.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="8299"/>
-        <seriesInfo name="DOI" value="10.17487/RFC8299"/>
-      </reference>
-      <reference anchor="RFC9375">
-        <front>
-          <title>A YANG Data Model for Network and VPN Service Performance Monitoring</title>
-          <author fullname="B. Wu" initials="B." role="editor" surname="Wu"/>
-          <author fullname="Q. Wu" initials="Q." role="editor" surname="Wu"/>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="O. Gonzalez de Dios" initials="O." surname="Gonzalez de Dios"/>
-          <author fullname="B. Wen" initials="B." surname="Wen"/>
-          <date month="April" year="2023"/>
-          <abstract>
-            <t>The data model for network topologies defined in RFC 8345 introduces vertical layering relationships between networks that can be augmented to cover network and service topologies. This document defines a YANG module for performance monitoring (PM) of both underlay networks and overlay VPN services that can be used to monitor and manage network performance on the topology of both layers.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9375"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9375"/>
-      </reference>
-      <reference anchor="RFC9417">
-        <front>
-          <title>Service Assurance for Intent-Based Networking Architecture</title>
-          <author fullname="B. Claise" initials="B." surname="Claise"/>
-          <author fullname="J. Quilbeuf" initials="J." surname="Quilbeuf"/>
-          <author fullname="D. Lopez" initials="D." surname="Lopez"/>
-          <author fullname="D. Voyer" initials="D." surname="Voyer"/>
-          <author fullname="T. Arumugam" initials="T." surname="Arumugam"/>
-          <date month="July" year="2023"/>
-          <abstract>
-            <t>This document describes an architecture that provides some assurance that service instances are running as expected. As services rely upon multiple subservices provided by a variety of elements, including the underlying network devices and functions, getting the assurance of a healthy service is only possible with a holistic view of all involved elements. This architecture not only helps to correlate the service degradation with symptoms of a specific network component but, it also lists the services impacted by the failure or degradation of a specific network component.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9417"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9417"/>
-      </reference>
-      <reference anchor="RFC9418">
-        <front>
-          <title>A YANG Data Model for Service Assurance</title>
-          <author fullname="B. Claise" initials="B." surname="Claise"/>
-          <author fullname="J. Quilbeuf" initials="J." surname="Quilbeuf"/>
-          <author fullname="P. Lucente" initials="P." surname="Lucente"/>
-          <author fullname="P. Fasano" initials="P." surname="Fasano"/>
-          <author fullname="T. Arumugam" initials="T." surname="Arumugam"/>
-          <date month="July" year="2023"/>
-          <abstract>
-            <t>This document specifies YANG modules for representing assurance graphs. These graphs represent the assurance of a given service by decomposing it into atomic assurance elements called subservices. The companion document, "Service Assurance for Intent-Based Networking Architecture" (RFC 9417), presents an architecture for implementing the assurance of such services.</t>
-            <t>The YANG data models in this document conform to the Network Management Datastore Architecture (NMDA) defined in RFC 8342.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9418"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9418"/>
-      </reference>
-      <reference anchor="RFC9922">
-        <front>
-          <title>A Common YANG Data Model for Scheduling</title>
-          <author fullname="Q. Ma" initials="Q." role="editor" surname="Ma"/>
-          <author fullname="Q. Wu" initials="Q." surname="Wu"/>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="D. King" initials="D." surname="King"/>
-          <date month="March" year="2026"/>
-          <abstract>
-            <t>This document defines common types and groupings that are meant to be used for scheduling purposes, such as events, policies, services, or resources based on date and time. For the sake of better modularity, the YANG module includes a set of recurrence-related groupings with varying levels of representation (i.e., from basic to advanced) to accommodate a variety of requirements. It also defines groupings for validating requested schedules and reporting scheduling statuses.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9922"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9922"/>
-      </reference>
-      <reference anchor="RFC8466" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8466.xml">
-        <front>
-          <title>A YANG Data Model for Layer 2 Virtual Private Network (L2VPN) Service Delivery</title>
-          <author fullname="B. Wen" initials="B." surname="Wen"/>
-          <author fullname="G. Fioccola" initials="G." role="editor" surname="Fioccola"/>
-          <author fullname="C. Xie" initials="C." surname="Xie"/>
-          <author fullname="L. Jalil" initials="L." surname="Jalil"/>
-          <date month="October" year="2018"/>
-          <abstract>
-            <t>This document defines a YANG data model that can be used to configure a Layer 2 provider-provisioned VPN service. It is up to a management system to take this as an input and generate specific configuration models to configure the different network elements to deliver the service. How this configuration of network elements is done is out of scope for this document.</t>
-            <t>The YANG data model defined in this document includes support for point-to-point Virtual Private Wire Services (VPWSs) and multipoint Virtual Private LAN Services (VPLSs) that use Pseudowires signaled using the Label Distribution Protocol (LDP) and the Border Gateway Protocol (BGP) as described in RFCs 4761 and 6624.</t>
-            <t>The YANG data model defined in this document conforms to the Network Management Datastore Architecture defined in RFC 8342.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="8466"/>
-        <seriesInfo name="DOI" value="10.17487/RFC8466"/>
-      </reference>
-      <reference anchor="RFC9182" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9182.xml">
-        <front>
-          <title>A YANG Network Data Model for Layer 3 VPNs</title>
-          <author fullname="S. Barguil" initials="S." surname="Barguil"/>
-          <author fullname="O. Gonzalez de Dios" initials="O." role="editor" surname="Gonzalez de Dios"/>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="L. Munoz" initials="L." surname="Munoz"/>
-          <author fullname="A. Aguado" initials="A." surname="Aguado"/>
-          <date month="February" year="2022"/>
-          <abstract>
-            <t>As a complement to the Layer 3 Virtual Private Network Service Model (L3SM), which is used for communication between customers and service providers, this document defines an L3VPN Network Model (L3NM) that can be used for the provisioning of Layer 3 Virtual Private Network (L3VPN) services within a service provider network. The model provides a network-centric view of L3VPN services.</t>
-            <t>The L3NM is meant to be used by a network controller to derive the configuration information that will be sent to relevant network devices. The model can also facilitate communication between a service orchestrator and a network controller/orchestrator.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9182"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9182"/>
-      </reference>
-      <reference anchor="RFC9291" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9291.xml">
-        <front>
-          <title>A YANG Network Data Model for Layer 2 VPNs</title>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="O. Gonzalez de Dios" initials="O." role="editor" surname="Gonzalez de Dios"/>
-          <author fullname="S. Barguil" initials="S." surname="Barguil"/>
-          <author fullname="L. Munoz" initials="L." surname="Munoz"/>
-          <date month="September" year="2022"/>
-          <abstract>
-            <t>This document defines an L2VPN Network Model (L2NM) that can be used to manage the provisioning of Layer 2 Virtual Private Network (L2VPN) services within a network (e.g., a service provider network). The L2NM complements the L2VPN Service Model (L2SM) by providing a network-centric view of the service that is internal to a service provider. The L2NM is particularly meant to be used by a network controller to derive the configuration information that will be sent to relevant network devices.</t>
-            <t>Also, this document defines a YANG module to manage Ethernet segments and the initial versions of two IANA-maintained modules that include a set of identities of BGP Layer 2 encapsulation types and pseudowire types.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9291"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9291"/>
-      </reference>
-      <reference anchor="RFC9543">
-        <front>
-          <title>A Framework for Network Slices in Networks Built from IETF Technologies</title>
-          <author fullname="A. Farrel" initials="A." role="editor" surname="Farrel"/>
-          <author fullname="J. Drake" initials="J." role="editor" surname="Drake"/>
-          <author fullname="R. Rokui" initials="R." surname="Rokui"/>
-          <author fullname="S. Homma" initials="S." surname="Homma"/>
-          <author fullname="K. Makhijani" initials="K." surname="Makhijani"/>
-          <author fullname="L. Contreras" initials="L." surname="Contreras"/>
-          <author fullname="J. Tantsura" initials="J." surname="Tantsura"/>
-          <date month="March" year="2024"/>
-          <abstract>
-            <t>This document describes network slicing in the context of networks built from IETF technologies. It defines the term "IETF Network Slice" to describe this type of network slice and establishes the general principles of network slicing in the IETF context.</t>
-            <t>The document discusses the general framework for requesting and operating IETF Network Slices, the characteristics of an IETF Network Slice, the necessary system components and interfaces, and the mapping of abstract requests to more specific technologies. The document also discusses related considerations with monitoring and security.</t>
-            <t>This document also provides definitions of related terms to enable consistent usage in other IETF documents that describe or use aspects of IETF Network Slices.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9543"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9543"/>
-      </reference>
-      <reference anchor="draft-ietf-teas-ietf-network-slice-nbi-yang-26" target="https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-26">
-        <front>
-          <title>A YANG Data Model for the RFC 9543 Network Slice Service</title>
-          <author>
-            <organization/>
-          </author>
-          <date>n.d.</date>
-        </front>
-      </reference>
-      <reference anchor="RFC9408">
-        <front>
-          <title>A YANG Network Data Model for Service Attachment Points (SAPs)</title>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="O. Gonzalez de Dios" initials="O." surname="Gonzalez de Dios"/>
-          <author fullname="S. Barguil" initials="S." surname="Barguil"/>
-          <author fullname="Q. Wu" initials="Q." surname="Wu"/>
-          <author fullname="V. Lopez" initials="V." surname="Lopez"/>
-          <date month="June" year="2023"/>
-          <abstract>
-            <t>This document defines a YANG data model for representing an abstract view of the provider network topology that contains the points from which its services can be attached (e.g., basic connectivity, VPN, network slices). Also, the model can be used to retrieve the points where the services are actually being delivered to customers (including peer networks).</t>
-            <t>This document augments the 'ietf-network' data model defined in RFC 8345 by adding the concept of Service Attachment Points (SAPs). The SAPs are the network reference points to which network services, such as Layer 3 Virtual Private Network (L3VPN) or Layer 2 Virtual Private Network (L2VPN), can be attached. One or multiple services can be bound to the same SAP. Both User-to-Network Interface (UNI) and Network-to-Network Interface (NNI) are supported in the SAP data model.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="9408"/>
-        <seriesInfo name="DOI" value="10.17487/RFC9408"/>
-      </reference>
-      <reference anchor="RFC8969" xml:base="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8969.xml">
-        <front>
-          <title>A Framework for Automating Service and Network Management with YANG</title>
-          <author fullname="Q. Wu" initials="Q." role="editor" surname="Wu"/>
-          <author fullname="M. Boucadair" initials="M." role="editor" surname="Boucadair"/>
-          <author fullname="D. Lopez" initials="D." surname="Lopez"/>
-          <author fullname="C. Xie" initials="C." surname="Xie"/>
-          <author fullname="L. Geng" initials="L." surname="Geng"/>
-          <date month="January" year="2021"/>
-          <abstract>
-            <t>Data models provide a programmatic approach to represent services and networks. Concretely, they can be used to derive configuration information for network and service components, and state information that will be monitored and tracked. Data models can be used during the service and network management life cycle (e.g., service instantiation, service provisioning, service optimization, service monitoring, service diagnosing, and service assurance). Data models are also instrumental in the automation of network management, and they can provide closed-loop control for adaptive and deterministic service creation, delivery, and maintenance.</t>
-            <t>This document describes a framework for service and network management automation that takes advantage of YANG modeling technologies. This framework is drawn from a network operator perspective irrespective of the origin of a data model; thus, it can accommodate YANG modules that are developed outside the IETF.</t>
-          </abstract>
-        </front>
-        <seriesInfo name="RFC" value="8969"/>
-        <seriesInfo name="DOI" value="10.17487/RFC8969"/>
-      </reference>
+
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7950.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8199.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8299.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8309.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8342.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8466.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8969.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9182.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9291.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9375.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9408.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9417.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9418.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9543.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9834.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9922.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.tt-netmod-yang-config-templates.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml3/reference.I-D.ietf-teas-ietf-network-slice-nbi-yang"/>
+
       <reference anchor="NEMOPS" target="https://datatracker.ietf.org/doc/draft-ietf-nemops-workshop-report/">
         <front>
           <title>IAB Workshop Report: Next Era of Network Management Operations (NEMOPS)</title>
@@ -983,6 +723,22 @@ evaluated for inclusion.</t>
             <organization/>
           </author>
           <date>n.d.</date>
+        </front>
+      </reference>
+      <reference anchor="TMF640" target="https://www.tmforum.org/resources/specifications/tmf640-service-activation-and-configuration-api-user-guide-v4-0/">
+        <front>
+          <title>TMF640 Service Activation and Configuration API User Guide v4.0.1</title>
+          <author>
+            <organization>TM Forum</organization>
+          </author>
+        </front>
+      </reference>
+      <reference anchor="TMF641" target="https://www.tmforum.org/resources/specifications/tmf641-service-ordering-management-api-user-guide-v4-1-1/">
+        <front>
+        <title>TMF641 Service Ordering Management API User Guide v4.1.1</title>
+          <author>
+            <organization>TM Forum</organization>
+          </author>
         </front>
       </reference>
     </references>
