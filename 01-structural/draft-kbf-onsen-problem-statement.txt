@@ -1,0 +1,528 @@
+
+
+
+
+ONSEN Working Group                                           S. Barguil
+Internet-Draft                                                     Nokia
+Intended status: Informational                             K. Lambrechts
+Expires: 12 April 2027                                           Intwine
+                                                                  C. Xie
+                                                           China Telecom
+                                                          9 October 2026
+
+
+                        ONSEN Problem Statement
+                draft-kbf-onsen-problem-statement-latest
+
+Abstract
+
+   The IETF has published a number of YANG data models for automating
+   the provisioning and delivery of network and connectivity services,
+   including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and
+   Network Slicing models.  These models are intended to provided
+   abstracted representations of common operator services, exposing only
+   the necessary parameters for configuring and managing services.
+   These abstractions help to contain the complexity of service
+   provisioning within the necessary domains, making the implementation
+   of complex, multi-domain services easier to implement and manage.
+   However, operators have reported persistent challenges in
+   operationalizing these abstractions in a consistent, scalable, and
+   automatable manner.  This document describes the problem space for
+   the ONSEN Working Group, identifying the operational gaps and
+   deficiencies in existing IETF service and network abstraction models
+   that complicate, or prevent effective end-to-end automation.  The
+   problems documented here are initially drawn from operator
+   experience, and from the findings of the IAB NEMOPS Workshop.  It is
+   a living draft, not intended for publication as an RFC, and will be
+   updated with new problem descriptions as the ONSEN work proceeds.
+   This document does not propose solutions, protocols, or new data
+   models.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://sbarguil.github.io/ONSEN_Problem_Statement/draft-kbf-onsen-
+   problem-statement.html.  Status information for this document may be
+   found at https://datatracker.ietf.org/doc/draft-kbf-onsen-problem-
+   statement/.
+
+   Discussion of this document takes place on the ONSEN Working Group
+   mailing list (mailto:onsen@ietf.org), which is archived at
+   https://mailarchive.ietf.org/arch/browse/onsen/.  Subscribe at
+   https://www.ietf.org/mailman/listinfo/onsen/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/sbarguil/ONSEN_Problem_Statement.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 12 April 2027.
+
+Copyright Notice
+
+   Copyright (c) 2026 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Conventions and Definitions
+   3.  Structural LxNM/LxSM Problems
+     3.1.  Difficulty in Selecting and Composing Service Models
+     3.2.  Inconsistent Parameter Availability and Naming
+   4.  Limited Observability and Service Assurance
+   5.  OSS/BSS Interface and API Interoperability
+     5.1.  Northbound API Semantics
+     5.2.  TMF API-Based Semantics
+   6.  Insufficient Guidance for Implementing YANG-based Orchestration
+     6.1.  Other Southbound Management Interfaces
+   7.  Missing LxSM and LxNM Functionality
+     7.1.  On-Demand and Scheduled Service Operations
+   8.  Items for Future Study
+     8.1.  Quantum-Security Requirements in Service Models
+     8.2.  Secure Handling of Secrets in Orchestration Workflows
+     8.3.  Generic Abstraction-to-Underlay Mapping
+     8.4.  Absence of Reusable Service Configuration Constructs
+   9.  IANA Considerations
+   10. Security Considerations
+   11. Informative References
+   Authors' Addresses
+
+1.  Introduction
+
+   The IETF has published several YANG data models that are intended for
+   automating the provisioning and management of service provider
+   connectivity services.  These include models such as L3SM [RFC8299],
+   L3NM [RFC9182], L2SM [RFC8466], L2NM [RFC9291] and Service Attachment
+   Points (SAPs) [RFC9408].  A new YANG model for the Network Slice
+   Service [RFC9543], is currently being authored:
+   [I-D.ietf-teas-ietf-network-slice-nbi-yang].
+
+   While some of these abstractions have been deployed, operators report
+   persistent challenges in operationalizing them.  As highlighted by
+   the IAB NEMOPS Workshop [NEMOPS], these challenges are systemic and
+   operational in nature.  They are not confined to a specific
+   technology or service type, but reoccur across abstraction domains
+   and deployment environments.
+
+   In addition, despite the availability of numerous YANG data models -
+   covering configuration, assurance, and fault management - and the
+   ongoing effort to make these models coexist within a common framework
+   under the IETF umbrella, operators continue to face significant
+   challenges in operationalizing YANG-based service APIs in a
+   consistent, scalable, and interoperable manner.  While models such as
+   the L3SM, L2SM, L3NM, L2NM, AC/SAP abstractions and Network Slice
+   Service each address specific aspects of service delivery, it is not
+   always clear which models should be used together, in which
+   scenarios, or to what extent a given implementation actually supports
+   the full model.  The usage of these APIs remains fragmented - often
+   partially implemented - and difficult to automate end-to-end.  In
+   practice, APIs generated from similar YANG models often differ in
+   service semantics, and the lack of clear guidance on model
+   composition and interoperability complicates integration across
+   systems, vendors, and deployment environments.
+
+   The Operationalizing Network and SErvice abstractioNs (ONSEN) Working
+   Group is chartered to address this problem space by focusing on the
+   operational aspects of network and service abstractions.  It aims to
+   make it easier to implement and use the IETF's service and network
+   abstractions, with the goal of improving network automation,
+   operational efficiency, and interoperability.
+
+   This document defines the problem space for ONSEN.  It does not
+   propose solutions, protocols, or new data models.
+
+2.  Conventions and Definitions
+
+   The following terms are used in this document:
+
+   AC:  Attachment Circuit
+
+   Abstraction:  The process of defining simplified, high-level
+      constructs that represent network and service-level capabilities,
+      while hiding the details of their underlying realization.
+      Abstraction enables interaction between management and automation
+      systems without requiring direct exposure of device-specific
+      configurations or protocol behaviors.
+
+   BSS:  Business Support System
+
+   LxNM:  Layer x Network Model (L2NM or L3NM)
+
+   LxSM:  Layer x Service Model (L2SM or L3SM)
+
+   NEMOPS:  Next Era of Network Management Operations
+
+   ONSEN:  Operationalizing Network and SErvice abstractioNs
+
+   OSS:  Operation Support System
+
+   SLO:  Service Level Objective
+
+   Service Model Intent:  The desired service behavior expressed by an
+      operator through a service model (LxSM), as described in
+      [RFC8309].  This refers to the set of customer requirements —
+      connectivity, performance, availability — submitted to the
+      orchestration layer and expected to be maintained by the network
+      over time.  When this document uses the term "service intent", it
+      refers to Service Model Intent in this sense.
+
+3.  Structural LxNM/LxSM Problems
+
+   The following sections highlight structural problems observed in the
+   current LxNM and LxSM models, which impact their usability and
+   composability in real-world deployments.
+
+3.1.  Difficulty in Selecting and Composing Service Models
+
+   Operators report persistent difficulty in selecting the relevant
+   service model(s) for a given deployment scenario, and in applying
+   them in real-world deployments.  The L2SM [RFC8466], L3SM [RFC8299],
+   ACaaS [RFC9834], and NSS [I-D.ietf-teas-ietf-network-slice-nbi-yang]
+   all define service abstractions at a similar level in adjacent
+   domains.  Insufficient guidance exists on how to effectively use and
+   compose these service models in practice.  No implementation guidance
+   information exists on if, when, and how they should, or should not be
+   combined.
+
+3.2.  Inconsistent Parameter Availability and Naming
+
+   Very similar, if not identical, features and functionality across
+   different network and service models often use slightly different
+   parameters names, YANG data types, or do not provide the same level
+   of configuration detail.
+
+4.  Limited Observability and Service Assurance
+
+   Existing service and network models focus on configuration and
+   provide no standardised mechanism for reporting whether a service is
+   being delivered as ordered.  This gap applies both to discrete
+   operational state — whether the service is up and fault-free at a
+   given moment — and to historical SLO compliance — whether the service
+   has met its contracted performance targets over a given period.
+
+   SAIN ([RFC9417], [RFC9418]) addresses observability internally within
+   the provider domain through an assurance graph that enables operators
+   to troubleshoot outages.  It is not designed to be exposed to
+   customers or to the service model layer.  SAIN can contribute through
+   a feedback loop from the SAIN Controller to the Service Orchestrator,
+   which would then populate relevant state in LxSM/LxNM; however, that
+   interworking is not currently defined.
+
+   [RFC9375] provides raw performance monitoring data but does not
+   include a model for expressing the outcome of evaluating that data
+   against the SLOs set in the service model.
+
+   The gap is a customer-facing service delivery reporting layer that
+   does not currently exist in LxSM or LxNM.
+
+5.  OSS/BSS Interface and API Interoperability
+
+   YANG data models are commonly used as the basis for APIs that expose
+   service abstractions to external systems.  However, existing work
+   provides limited guidance on how these abstractions should be
+   exposed, versioned, or consumed in a predictable and interoperable
+   manner.
+
+5.1.  Northbound API Semantics
+
+   Orchestration and controller systems have widely adopted YANG as a
+   schema language, but a lack of equivalent standards for API semantics
+   on orchestrator northbound APIs has resulted in divergent
+   implementations and interoperability challenges.
+
+   Standardized semantics for service creation, modification, and
+   decommissioning would simplify the implementation of orchestrators
+   and controllers, and enable better interoperability across vendors
+   and deployments.
+
+5.2.  TMF API-Based Semantics
+
+   Some operators use [TMF640]/[TMF641] as the northbound API for
+   service ordering from their BSS.  There is no specification of how
+   these interfaces can be aligned with YANG service and network models.
+   Operators must either pay commercial OSS/BSS vendors to build bespoke
+   interfaces or build and maintain their own adaptation layer.  The
+   absence of a defined API creates integration complexity, lack of re-
+   useability, vendor lock-in risk, and inconsistent implementations
+   across deployments.
+
+6.  Insufficient Guidance for Implementing YANG-based Orchestration
+
+   With the YANG Data Store [RFC7950] and the NMDA architecture
+   [RFC8342] the IETF has standardized a clear operational model for
+   exposing configuration and operational state from an individual
+   NETCONF/RESTCONF server.
+
+   YANG has since gained widespread adoption as a schema language for
+   describing the data model at varous abstraction layers, above the
+   network devices themselves.  In other words, YANG is increasingly
+   used to define the schemas for OSS systems, orchestrators, and
+   controllers.  A prime example are the IETF LxSM and LxNM models.
+
+   A variety of Informational RFCs, including The YANG Module
+   Classification [RFC8199], Service Models Explained [RFC8309], and A
+   Framework for Automating Service and Network Management with YANG
+   [RFC8969] have advanced the classification of, and relationships
+   between YANG modules as well as the software components that
+   implement them.
+
+   Operators consistently report they require more precise guidelines,
+   and a much more concrete service stack.  This includes a requirement
+   for clear guidelines on how and when to combine IETF standardized
+   models with vendor models and user models at each layer.  Further
+   guidance is needed on the interactions between the Service and
+   Network Models.  Previous IETF work has attempted to define an exact
+   mapping between these layers, which was determined to be impractical,
+   yet guidance on how to manage these interactions is still needed.
+
+6.1.  Other Southbound Management Interfaces
+
+   Operators depend on a heterogeneous mix of network devices, and
+   network controllers, some of which are YANG model-driven, and others
+   that are not.  Vendor-specific APIs, and legacy management mechanisms
+   such as CLI and SNMP remain prevalent.  A mix of these interfaces is
+   common even within a single deployment.
+
+   Operators require a standardized approach to integrating non-YANG
+   modeled devices into YANG-model driven orchestration systems.  This
+   includes the ability to apply a YANG-modeled intent to non-NETCONF/
+   RESTCONF devices, and to collect telemetry data from non-YANG modeled
+   devices in a way that can be correlated with YANG modeled service
+   state and performance data.
+
+7.  Missing LxSM and LxNM Functionality
+
+   Operators who use the LxSM and LxNM models in real-world deployments
+   report that the models do not provide the constructs needed to
+   express the full range of service behaviors and operational
+   requirements.
+
+7.1.  On-Demand and Scheduled Service Operations
+
+   Existing YANG service and network models are primarily designed for
+   static, long-lived services.  They do not provide the constructs
+   needed to express service behaviors that vary over time, are
+   triggered on demand, or follow a defined schedule.  As operators
+   introduce services such as data-intensive workload transmission or
+   SD-WAN-like dynamic VPN capabilities, this gap becomes a concrete
+   operational blocker.
+
+   [RFC9922] defines a generic model for scheduling that could be bound
+   to LxSM service instances.  ONSEN can leverage this model to define
+   how dynamic scheduling can be applied to the LxSM service models.
+
+8.  Items for Future Study
+
+   The following problem areas were raised during the IETF126 ONSEN work
+   group meeting and subsequent mailing list exchanges.  They are
+   currently sufficiently developed or prioritised for inclusion in the
+   core problem statement.  They are documented here for completeness
+   and to solicit community input on whether and how they should be
+   addressed by ONSEN or other working groups.
+
+8.1.  Quantum-Security Requirements in Service Models
+
+   An increasing number of customers require long-term data
+   confidentiality and protection against future quantum-computing
+   threats.  Current service models do not provide a way to express
+   quantum-security requirements or capabilities.  It is not yet clear
+   whether this is best addressed through extensions to existing models
+   or through new model constructs.  This item is considered lower
+   priority relative to the core problems above and may be revisited in
+   a later revision.
+
+8.2.  Secure Handling of Secrets in Orchestration Workflows
+
+   Device-level configuration often requires credentials, authentication
+   keys, or other sensitive data.  There is currently no standardised
+   mechanism for referencing sensitive information securely across the
+   orchestration stack and resolving it only at the point of device
+   configuration.  Whether this belongs within the scope of ONSEN,
+   NETMOD, or another WG is an open question that requires further
+   discussion.
+
+8.3.  Generic Abstraction-to-Underlay Mapping
+
+   Operators repeatedly encounter the challenge of mapping service-layer
+   abstractions to underlying infrastructure resources in a generic,
+   technology-independent way.  Existing work addresses this problem in
+   specific contexts (e.g., TE-based approaches in TEAS) but no broadly
+   applicable mechanism exists.  The ONSEN charter defines the device
+   layer as the lowest layer in scope; mapping below the device layer is
+   therefore out of scope.  Further information from the community on
+   the exact problem being identified is needed before this item can be
+   evaluated for inclusion.
+
+8.4.  Absence of Reusable Service Configuration Constructs
+
+   The LxSM models do not provide templates or reusable constructs to
+   aid operators in reducing the input parameters required for common
+   site deployment patterns.  Operators must manually configure each
+   service instance, which increases the risk of misconfiguration and
+   reduces operational efficiency.
+
+   YANG Configuration Templates [I-D.tt-netmod-yang-config-templates],
+   being worked on in NETMOD already provide a generic solution that
+   addresses repetitive YANG configuration instances.
+
+9.  IANA Considerations
+
+   This memo includes no request to IANA.
+
+10.  Security Considerations
+
+   TODO
+
+11.  Informative References
+
+   [I-D.ietf-teas-ietf-network-slice-nbi-yang]
+              Wu, B., Dhody, D., Rokui, R., Saad, T., and J. Mullooly,
+              "A YANG Data Model for the RFC 9543 Network Slice
+              Service", Work in Progress, Internet-Draft, draft-ietf-
+              teas-ietf-network-slice-nbi-yang-26, 26 May 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
+              ietf-network-slice-nbi-yang-26>.
+
+   [I-D.tt-netmod-yang-config-templates]
+              Watsen, K., Ma, Q., and D. Rajaram, "YANG Configuration
+              Templates", Work in Progress, Internet-Draft, draft-tt-
+              netmod-yang-config-templates-04, 22 September 2026,
+              <https://datatracker.ietf.org/doc/html/draft-tt-netmod-
+              yang-config-templates-04>.
+
+   [NEMOPS]   "IAB Workshop Report: Next Era of Network Management
+              Operations (NEMOPS)", n.d.,
+              <https://datatracker.ietf.org/doc/draft-ietf-nemops-
+              workshop-report/>.
+
+   [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
+              RFC 7950, DOI 10.17487/RFC7950, August 2016,
+              <https://www.rfc-editor.org/info/rfc7950>.
+
+   [RFC8199]  Bogdanovic, D., Claise, B., and C. Moberg, "YANG Module
+              Classification", RFC 8199, DOI 10.17487/RFC8199, July
+              2017, <https://www.rfc-editor.org/info/rfc8199>.
+
+   [RFC8299]  Wu, Q., Ed., Litkowski, S., Tomotaki, L., and K. Ogaki,
+              "YANG Data Model for L3VPN Service Delivery", RFC 8299,
+              DOI 10.17487/RFC8299, January 2018,
+              <https://www.rfc-editor.org/info/rfc8299>.
+
+   [RFC8309]  Wu, Q., Liu, W., and A. Farrel, "Service Models
+              Explained", RFC 8309, DOI 10.17487/RFC8309, January 2018,
+              <https://www.rfc-editor.org/info/rfc8309>.
+
+   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
+              and R. Wilton, "Network Management Datastore Architecture
+              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
+              <https://www.rfc-editor.org/info/rfc8342>.
+
+   [RFC8466]  Wen, B., Fioccola, G., Ed., Xie, C., and L. Jalil, "A YANG
+              Data Model for Layer 2 Virtual Private Network (L2VPN)
+              Service Delivery", RFC 8466, DOI 10.17487/RFC8466, October
+              2018, <https://www.rfc-editor.org/info/rfc8466>.
+
+   [RFC8969]  Wu, Q., Ed., Boucadair, M., Ed., Lopez, D., Xie, C., and
+              L. Geng, "A Framework for Automating Service and Network
+              Management with YANG", RFC 8969, DOI 10.17487/RFC8969,
+              January 2021, <https://www.rfc-editor.org/info/rfc8969>.
+
+   [RFC9182]  Barguil, S., Gonzalez de Dios, O., Ed., Boucadair, M.,
+              Ed., Munoz, L., and A. Aguado, "A YANG Network Data Model
+              for Layer 3 VPNs", RFC 9182, DOI 10.17487/RFC9182,
+              February 2022, <https://www.rfc-editor.org/info/rfc9182>.
+
+   [RFC9291]  Boucadair, M., Ed., Gonzalez de Dios, O., Ed., Barguil,
+              S., and L. Munoz, "A YANG Network Data Model for Layer 2
+              VPNs", RFC 9291, DOI 10.17487/RFC9291, September 2022,
+              <https://www.rfc-editor.org/info/rfc9291>.
+
+   [RFC9375]  Wu, B., Ed., Wu, Q., Ed., Boucadair, M., Ed., Gonzalez de
+              Dios, O., and B. Wen, "A YANG Data Model for Network and
+              VPN Service Performance Monitoring", RFC 9375,
+              DOI 10.17487/RFC9375, April 2023,
+              <https://www.rfc-editor.org/info/rfc9375>.
+
+   [RFC9408]  Boucadair, M., Ed., Gonzalez de Dios, O., Barguil, S., Wu,
+              Q., and V. Lopez, "A YANG Network Data Model for Service
+              Attachment Points (SAPs)", RFC 9408, DOI 10.17487/RFC9408,
+              June 2023, <https://www.rfc-editor.org/info/rfc9408>.
+
+   [RFC9417]  Claise, B., Quilbeuf, J., Lopez, D., Voyer, D., and T.
+              Arumugam, "Service Assurance for Intent-Based Networking
+              Architecture", RFC 9417, DOI 10.17487/RFC9417, July 2023,
+              <https://www.rfc-editor.org/info/rfc9417>.
+
+   [RFC9418]  Claise, B., Quilbeuf, J., Lucente, P., Fasano, P., and T.
+              Arumugam, "A YANG Data Model for Service Assurance",
+              RFC 9418, DOI 10.17487/RFC9418, July 2023,
+              <https://www.rfc-editor.org/info/rfc9418>.
+
+   [RFC9543]  Farrel, A., Ed., Drake, J., Ed., Rokui, R., Homma, S.,
+              Makhijani, K., Contreras, L., and J. Tantsura, "A
+              Framework for Network Slices in Networks Built from IETF
+              Technologies", RFC 9543, DOI 10.17487/RFC9543, March 2024,
+              <https://www.rfc-editor.org/info/rfc9543>.
+
+   [RFC9834]  Boucadair, M., Ed., Roberts, R., Ed., Gonzalez de Dios,
+              O., Barguil, S., and B. Wu, "YANG Data Models for Bearers
+              and Attachment Circuits as a Service (ACaaS)", RFC 9834,
+              DOI 10.17487/RFC9834, September 2025,
+              <https://www.rfc-editor.org/info/rfc9834>.
+
+   [RFC9922]  Ma, Q., Ed., Wu, Q., Boucadair, M., Ed., and D. King, "A
+              Common YANG Data Model for Scheduling", RFC 9922,
+              DOI 10.17487/RFC9922, March 2026,
+              <https://www.rfc-editor.org/info/rfc9922>.
+
+   [TMF640]   TM Forum, "TMF640 Service Activation and Configuration API
+              User Guide v4.0.1",
+              <https://www.tmforum.org/resources/specifications/tmf640-
+              service-activation-and-configuration-api-user-guide-
+              v4-0/>.
+
+   [TMF641]   TM Forum, "TMF641 Service Ordering Management API User
+              Guide v4.1.1",
+              <https://www.tmforum.org/resources/specifications/tmf641-
+              service-ordering-management-api-user-guide-v4-1-1/>.
+
+Authors' Addresses
+
+   Samier Barguil
+   Nokia
+   Email: samier.barguil@nokia.com
+
+
+   Kris Lambrechts
+   Intwine
+   Email: kris@intwine.net
+
+
+   Chongfeng Xie
+   China Telecom
+   Email: xiechf@chinatelecom.cn
