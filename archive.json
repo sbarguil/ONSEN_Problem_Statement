@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-08T04:25:56.387307+00:00",
+  "timestamp": "2026-10-11T03:54:12.963847+00:00",
   "repo": "sbarguil/ONSEN_Problem_Statement",
   "labels": [
     {
@@ -76,6 +76,113 @@
       "mergeCommit": null,
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOTCmW7c8AAAABHg5_Ow",
+      "title": "01 Structural",
+      "url": "https://github.com/sbarguil/ONSEN_Problem_Statement/pull/2",
+      "state": "OPEN",
+      "author": "klambrec",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-10-09T10:33:20Z",
+      "updatedAt": "2026-10-09T10:46:30Z",
+      "baseRepository": "sbarguil/ONSEN_Problem_Statement",
+      "baseRefName": "main",
+      "baseRefOid": "926842a8a0f6c018d23a1898387c800b4d92733a",
+      "headRepository": "sbarguil/ONSEN_Problem_Statement",
+      "headRefName": "01-structural",
+      "headRefOid": "78e981bc1aef3c41bec05caa9684bbcbcbc8fa44",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOTCmW7c8AAAABRfkNYw",
+          "commit": {
+            "abbreviatedOid": "78e981b"
+          },
+          "author": "copilot-pull-request-reviewer",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "<!-- ccr-overview-v2 -->\n\n### \ud83d\udfe1 Changes recommended\n\nThe XML contains a broken reference include and several factual or wording errors.\n\n<details open>\n<summary><strong>11 open findings</strong></summary>\n\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/high-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/high-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/high-v2-light.png\" alt=\"High severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Add the missing .xml suffix to the XInclude](#discussion_r4229197052) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Use \u201cprovide\u201d instead of \u201cprovided\u201d](#discussion_r4229197104) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Remove the comma separating the subject and predicate](#discussion_r4229197140) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Use \u201crecur\u201d for repeatedly occurring challenges](#discussion_r4229197171) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Expand OSS as \u201cOperations Support System\u201d](#discussion_r4229197214) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Use \u201cparameter names\u201d instead of \u201cparameters names\u201d](#discussion_r4229197256) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Correct spelling to \u201creusability\u201d](#discussion_r4229197300) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Correct the inaccurate description of RFC 7950](#discussion_r4229197348) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Correct the typo in \u201cvarious\u201d](#discussion_r4229197373) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Make the subject agree with the plural verb](#discussion_r4229197408) \u00b7 New\n- <picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.svg\"><img src=\"https://github.githubassets.com/static/images/icons/copilot-code-review/low-v2-light.png\" alt=\"Low severity\" width=\"62\" height=\"18\" align=\"texttop\"></picture> [Add the missing negation about item readiness](#discussion_r4229197446) \u00b7 New\n</details>\n\n<details>\n<summary><strong>What changed in this PR</strong></summary>\n\nMigrates the ONSEN problem statement from Markdown to RFCXML while substantially reorganizing and expanding its problem analysis.\n\n**Changes:**\n- Replaces the Markdown source with RFCXML.\n- Restructures operational problems into focused sections.\n- Adds definitions, references, and future-study topics.\n\n| File | Description |\r\n| ---- | ----------- |\r\n| `draft-kbf-onsen-problem-statement.xml` | Adds the revised RFCXML draft. |\r\n| `draft-kbf-onsen-problem-statement.md` | Removes the former Markdown source. |\n</details>\n\n\ud83e\udde0 **Review effort:** Balanced\n\n---\n\n\ud83d\udca1 <a href=\"/sbarguil/ONSEN_Problem_Statement/new/main?filename=.github/skills/code-review/SKILL.md\" class=\"Link--inTextBlock\" target=\"_blank\" rel=\"noopener noreferrer\">Add a `code-review` agent skill</a> or configure MCP servers for context-aware, tailored reviews. <a href=\"https://docs.github.com/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review?tool=webui#mcp-servers-and-agent-skills\" class=\"Link--inTextBlock\" target=\"_blank\" rel=\"noopener noreferrer\">Learn more in the docs.</a>",
+          "createdAt": "2026-10-09T10:36:23Z",
+          "updatedAt": "2026-10-09T10:46:29Z",
+          "comments": [
+            {
+              "originalPosition": 707,
+              "body": "This XInclude omits the `.xml` suffix used by the bibxml3 resource and every neighboring include. As written, xml2rfc cannot resolve this reference when rendering the draft.",
+              "createdAt": "2026-10-09T10:36:23Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 44,
+              "body": "The infinitive is ungrammatical here; use \u201cprovide\u201d rather than \u201cprovided.\u201d",
+              "createdAt": "2026-10-09T10:36:24Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 88,
+              "body": "The comma incorrectly separates the subject from \u201cis currently being authored.\u201d",
+              "createdAt": "2026-10-09T10:36:24Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 94,
+              "body": "\u201cRecur\u201d is the correct verb for challenges that occur repeatedly.",
+              "createdAt": "2026-10-09T10:36:24Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 163,
+              "body": "OSS expands to \u201cOperations Support System,\u201d not \u201cOperation Support System.\u201d",
+              "createdAt": "2026-10-09T10:36:25Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 384,
+              "body": "\u201cParameters names\u201d has the noun and modifier reversed; the established phrase is \u201cparameter names.\u201d",
+              "createdAt": "2026-10-09T10:36:25Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 462,
+              "body": "The standard spelling is \u201creusability.\u201d",
+              "createdAt": "2026-10-09T10:36:25Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 474,
+              "body": "RFC 7950 defines the YANG 1.1 data modeling language, not a \u201cYANG Data Store.\u201d Misnaming the cited standard makes this architectural claim inaccurate.",
+              "createdAt": "2026-10-09T10:36:26Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 480,
+              "body": "Correct the typo in \u201cvarious.\u201d",
+              "createdAt": "2026-10-09T10:36:26Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 483,
+              "body": "The singular subject \u201cA prime example\u201d does not agree with \u201care\u201d or the two models; make the subject plural.",
+              "createdAt": "2026-10-09T10:36:26Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            },
+            {
+              "originalPosition": 627,
+              "body": "This says the items are sufficiently developed for the core statement, contradicting both the \u201cItems for Future Study\u201d heading and the following explanations that more input is needed. Add the missing negation.",
+              "createdAt": "2026-10-09T10:36:26Z",
+              "updatedAt": "2026-10-09T10:36:27Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
