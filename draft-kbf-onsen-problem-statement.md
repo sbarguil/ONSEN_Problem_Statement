@@ -71,6 +71,11 @@ informative:
       organization: TM Forum
     title: "TMF641 Service Ordering Management API User Guide v4.1.1"
     target: https://www.tmforum.org/resources/specifications/tmf641-service-ordering-management-api-user-guide-v4-1-1/
+  LxNM-Updates:
+    author:
+      organization: LxNM-Updates Contributors
+    title: "LxNM-Updates"
+    target: https://github.com/sbarguil/LxNM-Updates
 ...
 
 --- abstract
@@ -190,30 +195,53 @@ Service Model Intent:
   term "service intent", it refers to Service Model Intent in this
   sense.
 
+#  Missing LxSM and LxNM Functionality
+
+Operators who use the LxSM and LxNM models in real-world deployments
+report that the models do not provide the constructs needed to
+express the full range of service behaviors and operational
+requirements. This sections lists a number of YANG backward compatible
+enhancements to these models.
+
+## LxNM Updates
+
+The operator-driven LxNM updates effort [LxNM-Updates] captures
+concrete update requests and implementation feedback.
+
+## On-Demand and Scheduled Service Operations
+
+Existing YANG service and network models are primarily designed for
+static, long-lived services.  They do not provide the constructs
+needed to express service behaviors that vary over time, are
+triggered on demand, or follow a defined schedule.  As operators
+introduce services such as data-intensive workload transmission or
+SD-WAN-like dynamic VPN capabilities, this gap becomes a concrete
+operational blocker.
+
+[RFC9922] defines a generic model for scheduling that could be bound
+to LxSM service instances.  ONSEN can leverage this model to define
+how dynamic scheduling can be applied to the LxSM service models.
+
 # Structural LxNM/LxSM Problems
 
-The following sections highlight structural problems observed in the
-current LxNM and LxSM models, which impact their usability and
-composability in real-world deployments.
+Both during the NEMOPS workshop and as part of the ONSEN working group
+forming BoF session, operators have reported various difficulties which
+they experienced in implementing and using these models.
 
-## Difficulty in Selecting and Composing Service Models
+Some operators elected so use both the LxSM and LxNM models together in their deployments. They report challenges in integrating the two models effectively, due to differences in parameter naming, data types, and the lack of guidance on integration logic.
 
-Operators report persistent difficulty in selecting the relevant
+Some operators report difficulties in selecting the relevant
 service model(s) for a given deployment scenario, and in applying
 them in real-world deployments.  The L2SM [RFC8466], L3SM [RFC8299],
 ACaaS [RFC9834], and NSS [I-D.ietf-teas-ietf-network-slice-nbi-yang]
 all define service abstractions at a similar level in adjacent
 domains.  Insufficient guidance exists on how to effectively use and
-compose these service models in practice.  No implementation guidance
-information exists on if, when, and how they should, or should not be
-combined.
+compose these service models in practice.
 
-## Inconsistent Parameter Availability and Naming
-
-Very similar, if not identical, features and functionality across
-different network and service models often use slightly different
-parameters names, YANG data types, or do not provide the same level
-of configuration detail.
+Overall, the working group would benefit from collecting operator's
+concrete implementation experiences and best practices arround the
+LxNM and LxSM models, both successful and unsuccessful. Operators can
+learn from these experiences, and to assess whether structural (e.g., non-backward compatible) changes to the models are warranted.
 
 # Limited Observability and Service Assurance
 
@@ -314,27 +342,6 @@ RESTCONF devices, and to collect telemetry data from non-YANG modeled
 devices in a way that can be correlated with YANG modeled service
 state and performance data.
 
-#  Missing LxSM and LxNM Functionality
-
-Operators who use the LxSM and LxNM models in real-world deployments
-report that the models do not provide the constructs needed to
-express the full range of service behaviors and operational
-requirements.
-
-## On-Demand and Scheduled Service Operations
-
-Existing YANG service and network models are primarily designed for
-static, long-lived services.  They do not provide the constructs
-needed to express service behaviors that vary over time, are
-triggered on demand, or follow a defined schedule.  As operators
-introduce services such as data-intensive workload transmission or
-SD-WAN-like dynamic VPN capabilities, this gap becomes a concrete
-operational blocker.
-
-[RFC9922] defines a generic model for scheduling that could be bound
-to LxSM service instances.  ONSEN can leverage this model to define
-how dynamic scheduling can be applied to the LxSM service models.
-
 # Items for Future Study
 
 The following problem areas were raised during the IETF126 ONSEN work
@@ -388,6 +395,21 @@ reduces operational efficiency.
 YANG Configuration Templates [I-D.tt-netmod-yang-config-templates],
 being worked on in NETMOD already provide a generic solution that
 addresses repetitive YANG configuration instances.
+
+## Abstractions for Telco-Cloud Scenarios
+Cloud-native networking and distributed cloud infrastructure are
+reshaping how telecommunication services are deployed and operated.
+Telco-Cloud environments span central data centers, edge sites, and
+far-edge locations, and combine networking, compute, storage, and
+application resources.
+
+Emerging services require placement decisions that jointly consider
+network and compute characteristics, but current workflows often depend
+on multiple cloud managers, network controllers, monitoring systems,
+and inventory repositories. This complexity can slow admission control
+and service instantiation. Better abstractions can provide a consistent
+view of infrastructure capabilities so orchestration systems can make
+faster decisions without exposing implementation detail.
 
 # IANA Considerations
 
