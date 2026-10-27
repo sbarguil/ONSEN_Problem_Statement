@@ -197,21 +197,32 @@ Service Model Intent:
 
 # Problem Area Qualification Criteria
 
-The ONSEN problem space has been divided into five main areas.
-These areas were chosen to enable work in each area to advance
-independently as much as possible.
+The ONSEN problem space has been divided into five main areas. These
+areas were chosen to enable work in each area to advance independently
+as much as possible.
 
-* Missing LxSM and LxNM functionality: Small omissions/extensions to the existing versions of the LxNM and LxSM models which can be resolved with backward-compatible updates.
+- Missing LxSM and LxNM functionality: Minor omissions or extensions to
+the existing LxNM and LxSM models that can be resolved with
+backward-compatible updates. 
 
-* Structural LxNM/LxSM Problems: More significant, structural problems with the LxNM and/or LxSM.
+- Structural LxNM/LxSM Problems: More significant structural problems with
+the LxNM and/or LxSM models that may require deeper changes. 
 
-* Limited observability and service assurance: Missing approach and relevant model capabilities for operational state and service health.
+- Limited observability and service assurance: Absence of a standardized
+approach and the relevant model constructs for reporting operational
+state and service health.
 
-* OSS/BSS interface and API interoperability: Problems related to interworking between YANG based modeling and the APIs exposed by orchestrators.
+- OSS/BSS interface and API interoperability: Problems related to the
+interworking between YANG-based service models and the northbound APIs
+exposed by orchestrators toward OSS/BSS systems.
 
-* Insufficient guidance for YANG-based orchestration: Problems related to lack of information or examples on how to use the LxNM/LxSM in their existing forms.
+- Insufficient guidance for YANG-based orchestration: Problems arising
+from the lack of concrete guidance or examples on how to deploy and
+combine the LxNM and LxSM models in practice.
 
-Finally, the Items for Future Study section captures problems that are recognized but are not the primary focus of the current ONSEN work.
+Finally, the Items for Future Study section captures problem areas that
+are recognized by the WG but are not sufficiently developed or
+prioritized for inclusion in the current work.
 
 #  Missing LxSM and LxNM Functionality
 
