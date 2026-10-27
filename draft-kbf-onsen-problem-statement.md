@@ -206,7 +206,7 @@ the existing LxNM and LxSM models that can be resolved with
 backward-compatible updates.
 
 - Structural LxNM/LxSM Problems: More significant structural problems with
-the LxNM and/or LxSM models that may require deeper changes. 
+the LxNM and/or LxSM models that may require deeper changes.
 
 - Limited observability and service assurance: Absence of a standardized
 approach and the relevant model constructs for reporting operational
