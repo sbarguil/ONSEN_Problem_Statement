@@ -29,7 +29,7 @@ author:
  -
     fullname: Samier Barguil
     organization: Nokia
-    email: samier.barguil_giraldo@nokia.com
+    email: samier.barguil@nokia.com
  -
     fullname: Kris Lambrechts
     organization: Intwine
@@ -40,70 +40,102 @@ author:
     email: xiechf@chinatelecom.cn
 
 informative:
+  RFC8309:
   RFC8299:
+  RFC9375:
+  RFC9417:
+  RFC9418:
+  RFC9922:
   RFC8466:
   RFC9182:
   RFC9291:
   RFC9543:
-  draft-ietf-teas-ietf-network-slice-nbi-yang-26:
-    title: "A YANG Data Model for the RFC 9543 Network Slice Service"
-    target: https://datatracker.ietf.org/doc/html/draft-ietf-teas-ietf-network-slice-nbi-yang-26
+  I-D.ietf-teas-ietf-network-slice-nbi-yang:
+  I-D.tt-netmod-yang-config-templates:
   RFC9408:
   RFC8969:
+  RFC7950:
+  RFC8199:
+  RFC8342:
+  RFC9834:
   NEMOPS:
     title: "IAB Workshop Report: Next Era of Network Management Operations (NEMOPS)"
     target: https://datatracker.ietf.org/doc/draft-ietf-nemops-workshop-report/
-
+  TMF640:
+    author:
+      organization: TM Forum
+    title: "TMF640 Service Activation and Configuration API User Guide v4.0.1"
+    target: https://www.tmforum.org/resources/specifications/tmf640-service-activation-and-configuration-api-user-guide-v4-0/
+  TMF641:
+    author:
+      organization: TM Forum
+    title: "TMF641 Service Ordering Management API User Guide v4.1.1"
+    target: https://www.tmforum.org/resources/specifications/tmf641-service-ordering-management-api-user-guide-v4-1-1/
+  LxNM-Updates:
+    author:
+      organization: LxNM-Updates Contributors
+    title: "LxNM-Updates"
+    target: https://github.com/sbarguil/LxNM-Updates
 ...
 
 --- abstract
 
-The IETF has produced numerous YANG data models for automating the
-provisioning and delivery of network and connectivity services,
-including L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and Network
-Slicing models.  Despite their wide availability, operators report
-persistent challenges in operationalizing these abstractions in a
-consistent, scalable, and automatable manner.  This document
-describes the problem space for the ONSEN Working Group, identifying
-the operational gaps and deficiencies in existing IETF service and
-network abstraction models that prevent effective end-to-end
-automation.  The problems documented here are drawn from operator
-experience and from the findings of the IAB NEMOPS Workshop.  This
-document does not propose solutions, protocols, or new data models.
+   The IETF has published a number of YANG data models for automating
+   the provisioning and delivery of network and connectivity services,
+   including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and
+   Network Slicing models.  These models are intended to provided
+   abstracted representations of common operator services, exposing only
+   the necessary parameters for configuring and managing services.
+   These abstractions help to contain the complexity of service
+   provisioning within the necessary domains, making the implementation
+   of complex, multi-domain services easier to implement and manage.
+   However, operators have reported persistent challenges in
+   operationalizing these abstractions in a consistent, scalable, and
+   automatable manner.  This document describes the problem space for
+   the ONSEN Working Group, identifying the operational gaps and
+   deficiencies in existing IETF service and network abstraction models
+   that complicate, or prevent effective end-to-end automation.  The
+   problems documented here are initially drawn from operator
+   experience, and from the findings of the IAB NEMOPS Workshop.  It is
+   a living draft, not intended for publication as an RFC, and will be
+   updated with new problem descriptions as the ONSEN work proceeds.
+   This document does not propose solutions, protocols, or new data
+   models.
 
 
 --- middle
 
 # Introduction
 
-The IETF has produced several YANG data models that are instrumental for
-automating the provisioning and delivery of connectivity services, as
-described in {{RFC8969}}.  These include models such as L3SM
-{{RFC8299}}, L3NM {{RFC9182}}, L2SM {{RFC8466}}, L2NM
-{{RFC9291}} and Service Attachment Points (SAPs) {{RFC9408}}. Current
-IETF work adds on a YANG model for Network Slice Service {{RFC9543}}, in{{draft-ietf-teas-ietf-network-slice-nbi-yang-26}}.
+The IETF has published several YANG data models that are intended for
+automating the provisioning and management of service provider
+connectivity services.  These include models such as L3SM [RFC8299],
+L3NM [RFC9182], L2SM [RFC8466], L2NM [RFC9291] and Service Attachment
+Points (SAPs) [RFC9408].  A new YANG model for the Network Slice
+Service [RFC9543], is currently being authored:
+[I-D.ietf-teas-ietf-network-slice-nbi-yang].
 
 While some of these abstractions have been deployed, operators report
-persistent challenges in operationalizing them.  As highlighted by the
-IAB NEMOPS Workshop {{NEMOPS}}, these challenges are systemic and
-operational in nature.  They are not confined to a specific technology
-or service type, but recur across abstraction domains and deployment
-environments.
+persistent challenges in operationalizing them.  As highlighted by
+the IAB NEMOPS Workshop [NEMOPS], these challenges are systemic and
+operational in nature.  They are not confined to a specific
+technology or service type, but reoccur across abstraction domains
+and deployment environments.
 
 In addition, despite the availability of numerous YANG data models -
 covering configuration, assurance, and fault management - and the
 ongoing effort to make these models coexist within a common framework
 under the IETF umbrella, operators continue to face significant
-challenges in operationalizing YANG-based service APIs in a consistent,
-scalable, and interoperable manner. While models such as the L3SM,
-L2SM, L3NM, L2NM, AC/SAP abstractions and Network Slice Service each
-address specific aspects
-of service delivery, it is not always clear which models should be used
-together, in which scenarios, or to what extent a given implementation
-actually supports the full model. The usage of these APIs remains
-fragmented - often partially implemented - and difficult to automate
-end-to-end. In practice, APIs generated from similar YANG models often
-differ in service semantics, and the lack of clear guidance on model
+challenges in operationalizing YANG-based service APIs in a
+consistent, scalable, and interoperable manner.  While models such as
+the L3SM, L2SM, L3NM, L2NM, AC/SAP abstractions and Network Slice
+Service each address specific aspects of service delivery, it is not
+always clear which models should be used together, in which
+scenarios, or to what extent a given implementation actually supports
+the full model.  The usage of these APIs remains fragmented - often
+partially implemented - and difficult to automate end-to-end.  In
+practice, APIs generated from similar YANG models often differ in
+service semantics, and the lack of clear guidance on model
 composition and interoperability complicates integration across
 systems, vendors, and deployment environments.
 
@@ -123,7 +155,7 @@ solutions, protocols, or new data models.
 The following terms are used in this document:
 
 AC:
-: Attachment Circuit.
+: Attachment Circuit
 
 Abstraction:
 : The process of defining simplified, high-level constructs that
@@ -133,322 +165,154 @@ interaction between management and automation systems without
 requiring direct exposure of device-specific configurations or
 protocol behaviors.
 
+BSS:
+: Business Support System
+
 LxNM:
-: Layer x Network Model (L2NM or L3NM).
+: Layer x Network Model (L2NM or L3NM)
 
 LxSM:
-: Layer x Service Model (L2SM or L3SM).
+: Layer x Service Model (L2SM or L3SM)
 
 NEMOPS:
-: Next Era of Network Management Operations.
+: Next Era of Network Management Operations
 
 ONSEN:
-: Operationalizing Network and SErvice abstractioNs.
+: Operationalizing Network and SErvice abstractioNs
 
 OSS:
-: Operation Support Systems.
-
-
-# Background
-
-This section provides a brief overview of the existing IETF YANG model
-landscape relevant to the ONSEN problem space and the RFC 8969
-framework. It describes the key data models that form the foundation of
-this work, including the L3VPN and L2VPN Service Models (L3SM, L2SM),
-the L3VPN and L2VPN Network Models (L3NM, L2NM), and the Attachment
-Circuit (AC) and Service Attachment Point (SAP) abstractions. Together,
-these models define how services are specified, provisioned, and
-delivered across a provider's network.
-
-## The RFC8969 Framework
-
-The YANG Automation Framework provides a programmatic approach to
-representing services and networks through data models. It is designed
-to automate the management life cycle-including instantiation,
-provisioning, optimization, and monitoring-while enabling closed-loop
-control for adaptive service maintenance.
-
-The framework uses a layered approach to promote data
-reusability and prevent feature duplication across different management
-levels:
-
-- Service Models: These are customer-facing modules that define
-  high-level network services (e.g., L3VPN) independently of specific
-  technologies. They capture customer requirements such as
-  communication scope (pipe, hose, or funnel) and performance
-  guarantees.
-- Network Models: These describe network-level abstractions across
-  multiple devices, including topologies, resources, and protocols at
-  the link and network layers.
-- Device Models: Also known as Network Element models, these are
-  technology-specific modules (e.g., BGP, ACL, or interface management)
-  used to realize services on individual functions or hardware.
-
-The framework organizes automation into two primary procedural blocks:
-
-- Service Life-Cycle Management: This manages the end-to-end service
-from a technology-independent perspective.
-
-  - Service Exposure: Captures services offered to customers via model
-    catalogs.
-  - Service Creation/Modification: Validates resources and maps service
-    requests to specific network or device models.
-  - Service Assurance & Optimization: Uses telemetry to monitor
-    performance against Service Level Agreements (SLAs) and dynamically
-    adjusts configuration if objectives are not met.
-  - Service Diagnosis & Decommission: Provides OAM
-    (Operations, Administration, and Maintenance) for troubleshooting and
-    handles the release of resources when a service is terminated.
-
-- Service Fulfillment Management: Focused on the technical execution and
-  operational state at the device level.
-
-  - Intended Configuration Provision: Maps high-level service views into
-    detailed device settings such as VRF definitions, IP layers, and
-    QoS features.
-  - Configuration Validation: Ensures the intended configuration
-    successfully takes effect in the operational datastore.
-  - Monitoring & Fault Diagnostics: Aggregates operational states to
-    build network visibility and uses RPC (Remote Procedure Call)
-    commands for fault isolation.
-
-The framework translates end-to-end abstract views into domain-specific
-views (mapping) and then into specific device-level modules
-(decomposition). In practice, YANG Module Integration mechanisms such
-as Schema Mount allow multiple YANG modules to be combined into a
-tailored model for specific use cases. It also includes Closed-Loop
-Control: by correlating telemetry data with configuration data, the
-framework allows orchestrators to continuously adjust network resources
-to meet intended service parameters.
-
-The primary benefits of the framework are:
-
-- Vendor-Agnosticism: Enables unified management of multi-vendor
-  environments through standardized interfaces.
-- Operational Agility: Moves away from manual, device-specific
-  configuration toward network-wide provisioning.
-- Unified Orchestration: Allows orchestrators and controllers to manage
-  resources across different network domains and layers.
-
-## The Service Models (LxSM)
-
-The L3VPN Service Model (L3SM) and the L2VPN Service Model (L2SM) are
-customer-facing YANG data models used to define the characteristics of
-network services between a customer and a service provider. Both models
-act as abstracted interfaces for management systems (such as
-orchestrators) to automate the provisioning and management of VPN
-services.
-
-Defined in {{RFC8299}}, the L3SM is used to deliver Layer 3
-provider-provisioned VPN services, specifically limited to BGP PE-based
-VPNs.
-
-Defined in {{RFC8466}}, the L2SM is used to configure and manage Layer 2
-provider-provisioned VPN services. It supports point-to-point Virtual
-Private Wire Services (VPWS), multipoint Virtual Private LAN Services
-(VPLS), and Ethernet VPNs (EVPNs). Both models include parameters for
-bandwidth, MTU, QoS, BUM traffic, and availability.
-
-Neither model is intended for the direct configuration of network
-elements; instead, an orchestration layer takes these models as input
-and translates them into technology-specific device models (such as BGP
-or interface configurations).
-
-## The Network Models (LxNM)
-
-The L3VPN Network Model (L3NM) and the L2VPN Network Model (L2NM) are
-network-centric YANG data models designed to manage VPN services within
-a service provider's network. While the Service Models focus on the
-customer's requirements, these Network Models provide an internal,
-resource-facing view used by controllers to automate technical
-configurations across multiple devices. Both models preserve specific
-parameters for traffic management, covering bandwidth, MTU, QoS, and
-BUM traffic.
-
-Defined in {{RFC9182}}, the L3NM is used for the internal provisioning
-of Layer 3 VPN services, specifically focusing on BGP PE-based VPNs and
-Multicast VPNs.
-
-Defined in {{RFC9291}}, the L2NM is the network-centric counterpart to
-the L2SM, providing the internal view required to instantiate Layer 2
-services. It covers a wide range of L2VPNs, including VPLS, VPWS, and
-various EVPN flavors (EVPN over MPLS, VXLAN, and PBB-EVPN).
-
-Unlike customer-facing service models, these models can expose internal
-operational states and performance metrics to help controllers
-continuously adjust the network to meet SLAs.
-
-## Attachment Circuits (AC) and Service Attachment Points (SAP)
-
-In the context of the YANG Automation Framework, Attachment Circuits
-(ACs) and Service Attachment Points (SAPs) are fundamental abstractions
-used to define how customer networks connect to a provider's network
-and where services are delivered.
-
-An Attachment Circuit, as defined in {{RFC9408}}, is a physical or
-logical channel that connects a Customer Edge (CE) device to a Provider
-Edge (PE) device.
-
-A Service Attachment Point is an abstract network reference point -
-typically the PE side of an AC - where network services are actually
-delivered or "grafted" to the customer. The SAP Network Model {
-{RFC9408}} provides an abstract view of the provider's topology,
-exposing only the nodes and interfaces where services can be attached.
-
-# Operational Problems with Service and Network Abstractions
-
-This section identifies the core operational problems that motivate
-the ONSEN Working Group. Each problem is described in terms of its
-operational impact and why it cannot be resolved by implementing
-automation of the existing LxNM/LxSM models in their current forms.
-
-## Fragmented Operational Lifecycles
-
-Operational workflows associated with service abstractions - service
-instantiation, monitoring, modification, troubleshooting, and
-decommissioning - are often fragmented and inconsistently handled.
-
-### Difficulty Integrating Different Management Domains
-
-Despite the availability of numerous YANG data models, operators
-depend on a heterogeneous mix of models, vendor-specific APIs, and
-legacy mechanisms (CLI, SNMP), even within a single deployment.
-
-### Differing Lifecycle Semantics Across Abstractions
-
-Lifecycle actions initiated through YANG-based service APIs often
-require coordination across orchestration systems, controllers, and
-device configurations, but these components are rarely aligned in
-terms of lifecycle semantics or data models.
-
-### No Native Exposure of Lifecycle Attributes
-
-Existing service and network abstractions lack native constructs to
-express lifecycle attributes such as activation time, duration,
-expiration, or rollback behavior. Transient service intents must
-therefore be tracked and enforced outside the abstraction
-framework.
-
-### Limited Support for Dynamic Lifecycle Management
-Existing service and network abstractions are primarily designed for
-static, long-lived services. They provide limited support for dynamic
-lifecycle management, such as on-demand service instantiation,
-dynamic bandwidth adjustment, or temporary service suspension.
-Operators must implement custom lifecycle management logic outside the
-abstraction framework, which increases operational complexity and
-reduces automation reliability.
-
-### Lack of Templates for Common Lifecycle Patterns
-The LxSM models do not provide templates or reusable constructs to aid
-operators in reducing the input parameters required for common site
-deployment patterns. Operators must manually configure each service
-instance, which increases the risk of misconfiguration and reduces
-operational efficiency.
-
-### Operational Silos
-
-Configuration management and the collection of statistics /
-telemetry data continue to exist as separate silos in both the
-organizational chart and technology stacks/APIs.
-
-## Inconsistent Models at the Same Abstraction Layer
-
-### Inconsistent Parameter Availability and Naming
-Very similar, if not identical, features and functionality across
-different models at the same abstraction layer are often using
-slightly different parameters names, a different YANG data type
-or is not configurable to the same level of detail.
-
-### Cannot Combine Service Instances Across LxSM Models
-An operator offering a diverse set of services (L3VPN, L2VPN, internet
-access, etc.) cannot use the LxSM models to offer a combination of
-these services through a consistent representation on the same
-orchestrator.
-
-### LxSM and Network Slice Service Relationship
-The published LxSM models and {{draft-ietf-teas-ietf-network-slice-nbi-yang-26}}
-act as Service Models with a similar level of abstraction. Operators
-need guidance on the use cases for both model sets, and when one should
-be used versus the other or whether both can, and should be, combined
-for a given deployment scenarios.
-
-## Misalignment Between Abstraction Layers
-
-Service abstractions are realized through a combination of
-service-level models, network-level models, control-plane behavior,
-and management interfaces.  These layers are often developed
-independently, with limited coordination across working groups or
-operational domains.
-
-### No Clear Mapping From Service to Network Models
-Some service abstractions do not have a clear mapping to underlying
-network models, making it difficult to implement and automate
-end-to-end service provisioning.
-
-### No Clear Mapping From Network to Service Models
-The Network Models (LxNM) expose parameters that are have no equivalent
-in the Service Models (LxSM), making it difficult to implement a
-consistent mapping.
-
-### Different Control-Plane Behaviors Across Vendors
-Control-plane behaviors (vendor differentiators) that are difficult to
-correlate with service-level intent.
-
-### Inconsistent Service Semantics
-
-Abstraction models frequently rely on metrics, attributes, or
-parameters whose semantics vary across vendors, models, implementations, or
-consumption contexts.  Concepts such as cost, availability, or
-performance may be represented using different definitions, units,
-scopes, or update frequencies.
-
-- APIs derived from similar intentions differ in service semantics
-  across vendors and deployments, complicating integration for
-  operators and OSS/BSS systems.
-
-- The lack of consistent guidance on how abstractions should be
-  modeled, exposed, and consumed results in APIs that vary
-  significantly across vendors and deployments.
-
-- Inconsistent semantics complicate integration between systems and
-  undermine the reliability of automation, typically addressed
-  through custom logic or manual processes that reduce portability
-  and interoperability.
-
-## Limited Observability and Feedback
-
-Existing abstractions primarily focus on configuration and offer
-limited standardized mechanisms for reporting whether requested
-behaviors have been successfully applied or remain valid over time.
-
-- Operators have limited ability to validate whether service intent is
-  being met over time or to correlate operational state across
-  abstraction layers. Operational considerations such as alarms,
-  notifications, and state changes triggered by service updates are
-  not comprehensively addressed in the existing Service and Network
-  Models, further hindering end-to-end observability.
-
-- The lack of consistent feedback undermines closed-loop automation
-  and complicates troubleshooting, particularly in multi-vendor and
-  multi-domain environments.
-
-- This lack of feedback assurance increases reliance on manual
-  monitoring and intervention.
-
-### Lack of Operational State in LxSM and LxNM Models
-
-Some of the LxSM and LxNM models provide operational state
-information, but this is not consistent across models, and the
-information provided is often insufficient for operators to
-determine whether the service is functioning as intended.
-
-For example, the L3SM model does not provide any operational state
-information, while the L2SM model provides some operational state
-information, but it is limited to the status of the service and
-does not include e.g. details on SLO violations or other operational
-metrics that would be useful for troubleshooting and monitoring.
-
-## OSS/BSS Interface and API Interoperability
+: Operation Support System
+
+SLO:
+: Service Level Objective
+
+Service Model Intent:
+: The desired service behavior expressed by an operator through a
+  service model (LxSM), as described in {{RFC8309}}.  This refers to
+  the set of customer requirements — connectivity, performance,
+  availability — submitted to the orchestration layer and expected to
+  be maintained by the network over time.  When this document uses the
+  term "service intent", it refers to Service Model Intent in this
+  sense.
+
+# Problem Area Qualification Criteria
+
+The ONSEN problem space has been divided into five main areas. These
+areas were chosen to enable work in each area to advance independently
+as much as possible.
+
+- Missing LxSM and LxNM functionality: Minor omissions or extensions to
+the existing LxNM and LxSM models that can be resolved with
+backward-compatible updates.
+
+- Structural LxNM/LxSM Problems: More significant structural problems with
+the LxNM and/or LxSM models that may require deeper changes.
+
+- Limited observability and service assurance: Absence of a standardized
+approach and the relevant model constructs for reporting operational
+state and service health.
+
+- OSS/BSS interface and API interoperability: Problems related to the
+interworking between YANG-based service models and the northbound APIs
+exposed by orchestrators toward OSS/BSS systems.
+
+- Insufficient guidance for YANG-based orchestration: Problems arising
+from the lack of concrete guidance or examples on how to deploy and
+combine the LxNM and LxSM models in practice.
+
+Finally, the Items for Future Study section captures problem areas that
+are recognized by the WG but are not sufficiently developed or
+prioritized for inclusion in the current work.
+
+#  Missing LxSM and LxNM Functionality
+
+Operators who use the LxSM and LxNM models in real-world deployments
+report that the models do not provide the constructs needed to
+express the full range of service behaviors and operational
+requirements. This sections lists a number of YANG backward compatible
+enhancements to these models.
+
+## LxNM Updates
+
+The operator-driven LxNM updates effort [LxNM-Updates] captures
+concrete update requests and implementation feedback.
+
+## On-Demand and Scheduled Service Operations
+
+Existing YANG service and network models are primarily designed for
+static, long-lived services.  They do not provide the constructs
+needed to express service behaviors that vary over time, are
+triggered on demand, or follow a defined schedule.  As operators
+introduce services such as data-intensive workload transmission or
+SD-WAN-like dynamic VPN capabilities, this gap becomes a concrete
+operational blocker.
+
+[RFC9922] defines a generic model for scheduling that could be bound
+to LxSM service instances.  ONSEN can leverage this model to define
+how dynamic scheduling can be applied to the LxSM service models.
+
+# Structural LxNM/LxSM Problems
+
+Both during the NEMOPS workshop and as part of the ONSEN working group
+forming BoF session, operators have reported various difficulties which
+they experienced in implementing and using these models.
+
+The RFC 8969 framework {{RFC8969}} proposes a hierarchical three-layer
+approach: Service, Network, and Device, intended to promote reusability
+and prevent feature duplication across management layers. Operators who
+followed this hierarchical approach and elected to deploy both LxSM and
+LxNM together did so in alignment with that architecture. They report
+challenges in integrating the two models effectively, due to differences
+in parameter naming, data types, and the lack of guidance on integration
+logic.
+
+In the absence of standardized integration guidance, operators have
+resolved these challenges by implementing bespoke adaptation logic outside
+the abstraction framework. The consequence is that each such deployment
+produces a custom, closed integration layer that is tightly coupled to a
+specific vendor stack or orchestrator implementation. These solutions are
+difficult to share, extend, or migrate, and reproduce the same integration
+effort across independent deployments.
+
+Some operators report difficulties in selecting the relevant
+service model(s) for a given deployment scenario, and in applying
+them in real-world deployments.  The L2SM [RFC8466], L3SM [RFC8299],
+ACaaS [RFC9834], and NSS [I-D.ietf-teas-ietf-network-slice-nbi-yang]
+all define service abstractions at a similar level in adjacent
+domains.  Insufficient guidance exists on how to effectively use and
+compose these service models in practice.
+
+Overall, the working group would benefit from collecting operator's
+concrete implementation experiences and best practices arround the
+LxNM and LxSM models, both successful and unsuccessful. Other operators
+can learn from these experiences, and the working group can assess whether
+structural (e.g., non-backward compatible) changes to the models are warranted.
+
+# Limited Observability and Service Assurance
+
+Existing service and network models focus on configuration and
+provide no standardised mechanism for reporting whether a service is
+being delivered as ordered.  This gap applies both to discrete
+operational state — whether the service is up and fault-free at a
+given moment — and to historical SLO compliance — whether the service
+has met its contracted performance targets over a given period.
+
+SAIN ([RFC9417], [RFC9418]) addresses observability internally within
+the provider domain through an assurance graph that enables operators
+to troubleshoot outages.  It is not designed to be exposed to
+customers or to the service model layer.  SAIN can contribute through
+a feedback loop from the SAIN Controller to the Service Orchestrator,
+which would then populate relevant state in LxSM/LxNM; however, that
+interworking is not currently defined.
+
+[RFC9375] provides raw performance monitoring data but does not
+include a model for expressing the outcome of evaluating that data
+against the SLOs set in the service model.
+
+The gap is a customer-facing service delivery reporting layer that
+does not currently exist in LxSM or LxNM.
+
+#  OSS/BSS Interface and API Interoperability
 
 YANG data models are commonly used as the basis for APIs that expose
 service abstractions to external systems.  However, existing work
@@ -456,67 +320,141 @@ provides limited guidance on how these abstractions should be
 exposed, versioned, or consumed in a predictable and interoperable
 manner.
 
-### TMF 640/641 APIs and YANG Model Alignment
-Some operators adopt TMF640/641 as APIs for service ordering from
-their BSS, but how these interfaces can be aligned with
-service/network YANG models is not specified.  Operators face the
-challenge of either paying commercial OSS/BSS providers to create
-bespoke interfaces or building an adaptation layer themselves.
+## Northbound API Semantics
 
-### Divergence Between YANG Models and Generated APIs
-APIs generated from similar YANG models often differ in service
-semantics, complicating integration across systems, vendors, and
-deployment environments.
+Orchestration and controller systems have widely adopted YANG as a
+schema language, but a lack of equivalent standards for API semantics
+on orchestrator northbound APIs has resulted in divergent
+implementations and interoperability challenges.
 
-## Lack of Architectural Guidance and Documentation
+Standardized semantics for service creation, modification, and
+decommissioning would simplify the implementation of orchestrators
+and controllers, and enable better interoperability across vendors
+and deployments.
 
-A recurring theme from the NEMOPS discussions is the absence of
-architectural documentation and operational guidance explaining how
-existing abstractions, models, protocols, and tools are intended to
-work together as a system.
+## TMF API-Based Semantics
 
-- Operators express difficulty understanding which abstractions to
-  use, how they should be combined, and how responsibilities are
-  divided across layers and working groups.
+Some operators use [TMF640]/[TMF641] as the northbound API for
+service ordering from their BSS.  There is no specification of how
+these interfaces can be aligned with YANG service and network models.
+Operators must either pay commercial OSS/BSS vendors to build bespoke
+interfaces or build and maintain their own adaptation layer.  The
+absence of a defined API creates integration complexity, lack of re-
+useability, vendor lock-in risk, and inconsistent implementations
+across deployments.
 
-- The absence of cohesive guidance leads to divergent
-  interpretations and inconsistent deployments.
+#  Insufficient Guidance for Implementing YANG-based Orchestration
 
+With the YANG Data Store [RFC7950] and the NMDA architecture
+[RFC8342] the IETF has standardized a clear operational model for
+exposing configuration and operational state from an individual
+NETCONF/RESTCONF server.
 
-# Evidence from the IAB NEMOPS Workshop
+YANG has since gained widespread adoption as a schema language for
+describing the data model at varous abstraction layers, above the
+network devices themselves.  In other words, YANG is increasingly
+used to define the schemas for OSS systems, orchestrators, and
+controllers.  A prime example are the IETF LxSM and LxNM models.
 
-This section summarizes the relevant findings of the IAB NEMOPS
-Workshop {{NEMOPS}} that corroborate the problems identified in
-Section 4.
+A variety of Informational RFCs, including The YANG Module
+Classification [RFC8199], Service Models Explained [RFC8309], and A
+Framework for Automating Service and Network Management with YANG
+[RFC8969] have advanced the classification of, and relationships
+between YANG modules as well as the software components that
+implement them.
 
-- Despite significant progress in protocol development and data
-  modeling, operational workflows remain fragmented and difficult to
-  automate end-to-end.
+Operators consistently report they require more precise guidelines,
+and a much more concrete service stack.  This includes a requirement
+for clear guidelines on how and when to combine IETF standardized
+models with vendor models and user models at each layer.  Further
+guidance is needed on the interactions between the Service and
+Network Models.  Previous IETF work has attempted to define an exact
+mapping between these layers, which was determined to be impractical,
+yet guidance on how to manage these interactions is still needed.
 
-- Model-driven network management is generally successful, yet
-  insufficient on its own to address higher-level operational needs.
+## Other Southbound Management Interfaces
 
-- Gaps between device-level and service-level abstractions: existing
-  models often lack the semantic alignment and contextual information
-  required by orchestration and OSS/BSS systems.
+Operators depend on a heterogeneous mix of network devices, and
+network controllers, some of which are YANG model-driven, and others
+that are not.  Vendor-specific APIs, and legacy management mechanisms
+such as CLI and SNMP remain prevalent.  A mix of these interfaces is
+common even within a single deployment.
 
-- Operators must perform extensive model mapping, data
-  transformation, and system-specific integration outside the scope
-  of standardized abstractions.
+Operators require a standardized approach to integrating non-YANG
+modeled devices into YANG-model driven orchestration systems.  This
+includes the ability to apply a YANG-modeled intent to non-NETCONF/
+RESTCONF devices, and to collect telemetry data from non-YANG modeled
+devices in a way that can be correlated with YANG modeled service
+state and performance data.
 
-- Limited ability to validate whether service intent is being met
-  over time or to correlate operational state across abstraction
-  layers.
+# Items for Future Study
 
-- Additional operator-reported challenges to be added here from contributors.
+The following problem areas were raised during the IETF126 ONSEN work
+group meeting and subsequent mailing list exchanges.  They are
+currently insufficiently developed or prioritised for inclusion in the
+core problem statement.  They are documented here for completeness
+and to solicit community input on whether and how they should be
+addressed by ONSEN or other working groups.
 
+## Quantum-Security Requirements in Service Models
 
-# Operator Experiences
+An increasing number of customers require long-term data
+confidentiality and protection against future quantum-computing
+threats.  Current service models do not provide a way to express
+quantum-security requirements or capabilities.  It is not yet clear
+whether this is best addressed through extensions to existing models
+or through new model constructs.  This item is considered lower
+priority relative to the core problems above and may be revisited in
+a later revision.
 
-TODO
+## Secure Handling of Secrets in Orchestration Workflows
 
-This section documents operational problems reported directly by
-network operators.  To be populated by operator contributors.
+Device-level configuration often requires credentials, authentication
+keys, or other sensitive data.  There is currently no standardised
+mechanism for referencing sensitive information securely across the
+orchestration stack and resolving it only at the point of device
+configuration.  Whether this belongs within the scope of ONSEN,
+NETMOD, or another WG is an open question that requires further
+discussion.
+
+## Generic Abstraction-to-Underlay Mapping
+
+Operators repeatedly encounter the challenge of mapping service-layer
+abstractions to underlying infrastructure resources in a generic,
+technology-independent way.  Existing work addresses this problem in
+specific contexts (e.g., TE-based approaches in TEAS) but no broadly
+applicable mechanism exists.  The ONSEN charter defines the device
+layer as the lowest layer in scope; mapping below the device layer is
+therefore out of scope.  Further information from the community on
+the exact problem being identified is needed before this item can be
+evaluated for inclusion.
+
+## Absence of Reusable Service Configuration Constructs
+
+The LxSM models do not provide templates or reusable constructs to
+aid operators in reducing the input parameters required for common
+site deployment patterns.  Operators must manually configure each
+service instance, which increases the risk of misconfiguration and
+reduces operational efficiency.
+
+YANG Configuration Templates [I-D.tt-netmod-yang-config-templates],
+being worked on in NETMOD already provide a generic solution that
+addresses repetitive YANG configuration instances.
+
+## Abstractions for Telco-Cloud Scenarios
+Cloud-native networking and distributed cloud infrastructure are
+reshaping how telecommunication services are deployed and operated.
+Telco-Cloud environments span central data centers, edge sites, and
+far-edge locations, and combine networking, compute, storage, and
+application resources.
+
+Emerging services require placement decisions that jointly consider
+network and compute characteristics, but current workflows often depend
+on multiple cloud managers, network controllers, monitoring systems,
+and inventory repositories. This complexity can slow admission control
+and service instantiation. Better abstractions can provide a consistent
+view of infrastructure capabilities so orchestration systems can make
+faster decisions without exposing implementation detail.
 
 # IANA Considerations
 
