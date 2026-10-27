@@ -203,7 +203,7 @@ as much as possible.
 
 - Missing LxSM and LxNM functionality: Minor omissions or extensions to
 the existing LxNM and LxSM models that can be resolved with
-backward-compatible updates. 
+backward-compatible updates.
 
 - Structural LxNM/LxSM Problems: More significant structural problems with
 the LxNM and/or LxSM models that may require deeper changes. 
