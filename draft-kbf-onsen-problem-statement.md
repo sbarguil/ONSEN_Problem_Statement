@@ -195,6 +195,24 @@ Service Model Intent:
   term "service intent", it refers to Service Model Intent in this
   sense.
 
+# Problem Area Qualification Criteria
+
+The ONSEN problem space has been divided into five main areas.
+These areas were chosen to enable work in each area to advance
+independently as much as possible.
+
+* Missing LxSM and LxNM functionality: Small omissions/extensions to the existing versions of the LxNM and LxSM models which can be resolved with backward-compatible updates.
+
+* Structural LxNM/LxSM Problems: More significant, structural problems with the LxNM and/or LxSM.
+
+* Limited observability and service assurance: Missing approach and relevant model capabilities for operational state and service health.
+
+* OSS/BSS interface and API interoperability: Problems related to interworking between YANG based modeling and the APIs exposed by orchestrators.
+
+* Insufficient guidance for YANG-based orchestration: Problems related to lack of information or examples on how to use the LxNM/LxSM in their existing forms.
+
+Finally, the Items for Future Study section captures problems that are recognized but are not the primary focus of the current ONSEN work.
+
 #  Missing LxSM and LxNM Functionality
 
 Operators who use the LxSM and LxNM models in real-world deployments
@@ -228,7 +246,22 @@ Both during the NEMOPS workshop and as part of the ONSEN working group
 forming BoF session, operators have reported various difficulties which
 they experienced in implementing and using these models.
 
-Some operators elected so use both the LxSM and LxNM models together in their deployments. They report challenges in integrating the two models effectively, due to differences in parameter naming, data types, and the lack of guidance on integration logic.
+The RFC 8969 framework {{RFC8969}} proposes a hierarchical three-layer
+approach: Service, Network, and Device, intended to promote reusability
+and prevent feature duplication across management layers. Operators who
+followed this hierarchical approach and elected to deploy both LxSM and
+LxNM together did so in alignment with that architecture. They report
+challenges in integrating the two models effectively, due to differences
+in parameter naming, data types, and the lack of guidance on integration
+logic.
+
+In the absence of standardized integration guidance, operators have
+resolved these challenges by implementing bespoke adaptation logic outside
+the abstraction framework. The consequence is that each such deployment
+produces a custom, closed integration layer that is tightly coupled to a
+specific vendor stack or orchestrator implementation. These solutions are
+difficult to share, extend, or migrate, and reproduce the same integration
+effort across independent deployments.
 
 Some operators report difficulties in selecting the relevant
 service model(s) for a given deployment scenario, and in applying
@@ -240,8 +273,9 @@ compose these service models in practice.
 
 Overall, the working group would benefit from collecting operator's
 concrete implementation experiences and best practices arround the
-LxNM and LxSM models, both successful and unsuccessful. Operators can
-learn from these experiences, and to assess whether structural (e.g., non-backward compatible) changes to the models are warranted.
+LxNM and LxSM models, both successful and unsuccessful. Other operators
+can learn from these experiences, and the working group can assess whether
+structural (e.g., non-backward compatible) changes to the models are warranted.
 
 # Limited Observability and Service Assurance
 
@@ -346,7 +380,7 @@ state and performance data.
 
 The following problem areas were raised during the IETF126 ONSEN work
 group meeting and subsequent mailing list exchanges.  They are
-currently sufficiently developed or prioritised for inclusion in the
+currently insufficiently developed or prioritised for inclusion in the
 core problem statement.  They are documented here for completeness
 and to solicit community input on whether and how they should be
 addressed by ONSEN or other working groups.
