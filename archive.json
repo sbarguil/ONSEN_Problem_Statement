@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-27T03:38:46.732971+00:00",
+  "timestamp": "2026-10-29T04:18:32.457772+00:00",
   "repo": "sbarguil/ONSEN_Problem_Statement",
   "labels": [
     {
@@ -56,26 +56,136 @@
       "id": "PR_kwDOTCmW7c8AAAABFoyveQ",
       "title": "01 editorial",
       "url": "https://github.com/sbarguil/ONSEN_Problem_Statement/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "sbarguil",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-09-29T06:09:56Z",
-      "updatedAt": "2026-10-26T20:31:23Z",
+      "updatedAt": "2026-10-27T23:28:19Z",
       "baseRepository": "sbarguil/ONSEN_Problem_Statement",
       "baseRefName": "main",
       "baseRefOid": "926842a8a0f6c018d23a1898387c800b4d92733a",
       "headRepository": "sbarguil/ONSEN_Problem_Statement",
       "headRefName": "01-editorial",
-      "headRefOid": "d0cecd53d5d1a4a890121e1318c478a490d80adc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "headRefOid": "7b1317c2324c8565c8de8a9b51a5e0b50dfe8229",
+      "closedAt": "2026-10-27T23:28:19Z",
+      "mergedAt": "2026-10-27T23:28:19Z",
+      "mergedBy": "sbarguil",
+      "mergeCommit": {
+        "oid": "7ee2015dc1166fcf9794de2b4d49eb11e14bd3b0"
+      },
+      "comments": [
+        {
+          "author": "klambrec",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@sbarguil For me the current text is good to go for a -01 publication, please do have another look as well!",
+          "createdAt": "2026-10-27T12:01:58Z",
+          "updatedAt": "2026-10-27T12:01:58Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOTCmW7c8AAAABUX3zbw",
+          "commit": {
+            "abbreviatedOid": "d0cecd5"
+          },
+          "author": "sbarguil",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T04:21:30Z",
+          "updatedAt": "2026-10-27T04:21:35Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "The RFC 8969 framework {{RFC8969}} defines a hierarchical three-layer model \u2014 Service, Network, and Device \u2014 intended to promote reusability and prevent feature duplication across management layers. Operators who followed this hierarchical approach and elected to deploy both LxSM and LxNM together did so in alignment with that architecture. They report challenges in integrating the two models effectively, due to differences in parameter naming, data types, and the lack of guidance on integration logic.\n\nIn the absence of standardized integration guidance, operators have resolved these challenges by implementing bespoke adaptation logic outside the abstraction framework. The consequence is that each such deployment produces a custom, closed integration layer that is tightly coupled to a specific vendor stack or orchestrator implementation. These solutions are difficult to share, extend, or migrate, and reproduce the same integration effort across independent deployments.",
+              "createdAt": "2026-10-27T04:21:30Z",
+              "updatedAt": "2026-10-27T04:21:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOTCmW7c8AAAABUcL_kg",
+          "commit": {
+            "abbreviatedOid": "d0cecd5"
+          },
+          "author": "klambrec",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T12:01:09Z",
+          "updatedAt": "2026-10-27T12:01:09Z",
+          "comments": [
+            {
+              "originalPosition": 53,
+              "body": "Adapted this text.",
+              "createdAt": "2026-10-27T12:01:09Z",
+              "updatedAt": "2026-10-27T12:01:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOTCmW7c8AAAABUk3KhA",
+          "commit": {
+            "abbreviatedOid": "3e6eed5"
+          },
+          "author": "github-actions",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T23:26:12Z",
+          "updatedAt": "2026-10-27T23:26:12Z",
+          "comments": [
+            {
+              "originalPosition": 510,
+              "body": "````suggestion\nthe LxNM and/or LxSM models that may require deeper changes.\n````",
+              "createdAt": "2026-10-27T23:26:12Z",
+              "updatedAt": "2026-10-27T23:26:12Z"
+            },
+            {
+              "originalPosition": 507,
+              "body": "````suggestion\nbackward-compatible updates.\n````",
+              "createdAt": "2026-10-27T23:26:12Z",
+              "updatedAt": "2026-10-27T23:26:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOTCmW7c8AAAABUk348A",
+          "commit": {
+            "abbreviatedOid": "38d647f"
+          },
+          "author": "github-actions",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T23:27:48Z",
+          "updatedAt": "2026-10-27T23:27:48Z",
+          "comments": [
+            {
+              "originalPosition": 510,
+              "body": "````suggestion\nthe LxNM and/or LxSM models that may require deeper changes.\n````",
+              "createdAt": "2026-10-27T23:27:48Z",
+              "updatedAt": "2026-10-27T23:27:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOTCmW7c8AAAABUk36AA",
+          "commit": {
+            "abbreviatedOid": "7b1317c"
+          },
+          "author": "sbarguil",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "LGM",
+          "createdAt": "2026-10-27T23:27:49Z",
+          "updatedAt": "2026-10-27T23:27:49Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 2,
