@@ -83,7 +83,7 @@ informative:
    The IETF has published a number of YANG data models for automating
    the provisioning and delivery of network and connectivity services,
    including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and
-   Network Slicing models.  These models are intended to provided
+   Network Slicing models.  These models are intended to provide
    abstracted representations of common operator services, exposing only
    the necessary parameters for configuring and managing services.
    These abstractions help to contain the complexity of service
@@ -112,7 +112,7 @@ automating the provisioning and management of service provider
 connectivity services.  These include models such as L3SM [RFC8299],
 L3NM [RFC9182], L2SM [RFC8466], L2NM [RFC9291] and Service Attachment
 Points (SAPs) [RFC9408].  A new YANG model for the Network Slice
-Service [RFC9543], is currently being authored:
+Service [RFC9543] is currently being authored:
 [I-D.ietf-teas-ietf-network-slice-nbi-yang].
 
 While some of these abstractions have been deployed, operators report
@@ -229,7 +229,7 @@ prioritized for inclusion in the current work.
 Operators who use the LxSM and LxNM models in real-world deployments
 report that the models do not provide the constructs needed to
 express the full range of service behaviors and operational
-requirements. This sections lists a number of YANG backward compatible
+requirements. This section lists a number of YANG backward compatible
 enhancements to these models.
 
 ## LxNM Updates
@@ -254,7 +254,7 @@ how dynamic scheduling can be applied to the LxSM service models.
 # Structural LxNM/LxSM Problems
 
 Both during the NEMOPS workshop and as part of the ONSEN working group
-forming BoF session, operators have reported various difficulties which
+formation BoF, operators have reported various difficulties which
 they experienced in implementing and using these models.
 
 The RFC 8969 framework [RFC8969] proposes a hierarchical three-layer
