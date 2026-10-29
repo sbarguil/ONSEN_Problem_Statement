@@ -284,7 +284,7 @@ domains.  Insufficient guidance exists on how to effectively use and
 compose these service models in practice.
 
 Overall, the working group would benefit from collecting operator's
-concrete implementation experiences and best practices arround the
+concrete implementation experiences and best practices around the
 LxNM and LxSM models, both successful and unsuccessful. Other operators
 can learn from these experiences, and the working group can assess whether
 structural (e.g., non-backward compatible) changes to the models are warranted.
