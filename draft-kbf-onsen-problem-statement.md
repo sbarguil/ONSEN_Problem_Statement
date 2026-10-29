@@ -80,28 +80,29 @@ informative:
 
 --- abstract
 
-   The IETF has published a number of YANG data models for automating
-   the provisioning and delivery of network and connectivity services,
-   including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and
-   Network Slicing models.  These models are intended to provide
-   abstracted representations of common operator services, exposing only
-   the necessary parameters for configuring and managing services.
-   These abstractions help to contain the complexity of service
-   provisioning within the necessary domains, making the implementation
-   of complex, multi-domain services easier to implement and manage.
-   However, operators have reported persistent challenges in
-   operationalizing these abstractions in a consistent, scalable, and
-   automatable manner.  This document describes the problem space for
-   the ONSEN Working Group, identifying the operational gaps and
-   deficiencies in existing IETF service and network abstraction models
-   that complicate, or prevent effective end-to-end automation.  The
-   problems documented here are initially drawn from operator
-   experience, and from the findings of the IAB NEMOPS Workshop.  It is
-   a living draft, not intended for publication as an RFC, and will be
-   updated with new problem descriptions as the ONSEN work proceeds.
-   This document does not propose solutions, protocols, or new data
-   models.
+The IETF has published a number of YANG data models for automating
+the provisioning and delivery of network and connectivity services,
+including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and
+Network Slicing models.  These models are intended to provided
+abstracted representations of common operator services, exposing only
+the necessary parameters for configuring and managing services.
+These abstractions help to contain the complexity of service
+provisioning within the necessary domains, making the implementation
+of complex, multi-domain services easier to implement and manage.
 
+However, operators have reported persistent challenges in
+operationalizing these abstractions in a consistent, scalable, and
+automatable manner.  This document describes the problem space for
+the ONSEN Working Group, identifying the operational gaps and
+deficiencies in existing IETF service and network abstraction models
+that complicate, or prevent effective end-to-end automation.  The
+problems documented here are initially drawn from operator
+experience, and from the findings of the IAB NEMOPS Workshop.
+
+It is a living draft, not intended for publication as an RFC, and
+will be updated with new problem descriptions as the ONSEN work
+proceeds.  This document does not propose solutions, protocols, or
+new data models.
 
 --- middle
 
