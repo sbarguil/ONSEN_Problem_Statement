@@ -5,10 +5,10 @@
 ONSEN Working Group                                           S. Barguil
 Internet-Draft                                                     Nokia
 Intended status: Informational                             K. Lambrechts
-Expires: 30 April 2027                                           Intwine
+Expires: 2 May 2027                                              Intwine
                                                                   C. Xie
                                                            China Telecom
-                                                         27 October 2026
+                                                         29 October 2026
 
 
                         ONSEN Problem Statement
@@ -71,7 +71,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 April 2027.
+   This Internet-Draft will expire on 2 May 2027.
 
 Copyright Notice
 
@@ -283,7 +283,7 @@ Table of Contents
    these service models in practice.
 
    Overall, the working group would benefit from collecting operator's
-   concrete implementation experiences and best practices arround the
+   concrete implementation experiences and best practices around the
    LxNM and LxSM models, both successful and unsuccessful.  Other
    operators can learn from these experiences, and the working group can
    assess whether structural (e.g., non-backward compatible) changes to
@@ -340,8 +340,8 @@ Table of Contents
    these interfaces can be aligned with YANG service and network models.
    Operators must either pay commercial OSS/BSS vendors to build bespoke
    interfaces or build and maintain their own adaptation layer.  The
-   absence of a defined API creates integration complexity, lack of re-
-   useability, vendor lock-in risk, and inconsistent implementations
+   absence of a defined API creates integration complexity, lack of
+   reuseability, vendor lock-in risk, and inconsistent implementations
    across deployments.
 
 8.  Insufficient Guidance for Implementing YANG-based Orchestration
@@ -352,7 +352,7 @@ Table of Contents
    NETCONF/RESTCONF server.
 
    YANG has since gained widespread adoption as a schema language for
-   describing the data model at varous abstraction layers, above the
+   describing the data model at various abstraction layers, above the
    network devices themselves.  In other words, YANG is increasingly
    used to define the schemas for OSS systems, orchestrators, and
    controllers.  A prime example are the IETF LxSM and LxNM models.
