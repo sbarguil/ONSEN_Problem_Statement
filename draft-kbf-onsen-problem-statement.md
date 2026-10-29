@@ -83,7 +83,7 @@ informative:
 The IETF has published a number of YANG data models for automating
 the provisioning and delivery of network and connectivity services,
 including the L2SM, L3SM, L2NM, L3NM, Attachment Circuits, and
-Network Slicing models.  These models are intended to provided
+Network Slicing models.  These models are intended to provide
 abstracted representations of common operator services, exposing only
 the necessary parameters for configuring and managing services.
 These abstractions help to contain the complexity of service
@@ -113,7 +113,7 @@ automating the provisioning and management of service provider
 connectivity services.  These include models such as L3SM [RFC8299],
 L3NM [RFC9182], L2SM [RFC8466], L2NM [RFC9291] and Service Attachment
 Points (SAPs) [RFC9408].  A new YANG model for the Network Slice
-Service [RFC9543] is currently being authored:
+Service [RFC9543], is currently being authored:
 [I-D.ietf-teas-ietf-network-slice-nbi-yang].
 
 While some of these abstractions have been deployed, operators report
@@ -182,7 +182,7 @@ ONSEN:
 : Operationalizing Network and SErvice abstractioNs
 
 OSS:
-: Operation Support System
+: Operations Support System
 
 SLO:
 : Service Level Objective
@@ -190,8 +190,8 @@ SLO:
 Service Model Intent:
 : The desired service behavior expressed by an operator through a
   service model (LxSM), as described in {{RFC8309}}.  This refers to
-  the set of customer requirements — connectivity, performance,
-  availability — submitted to the orchestration layer and expected to
+  the set of customer requirements -- connectivity, performance,
+  availability -- submitted to the orchestration layer and expected to
   be maintained by the network over time.  When this document uses the
   term "service intent", it refers to Service Model Intent in this
   sense.
@@ -255,10 +255,10 @@ how dynamic scheduling can be applied to the LxSM service models.
 # Structural LxNM/LxSM Problems
 
 Both during the NEMOPS workshop and as part of the ONSEN working group
-formation BoF, operators have reported various difficulties which
+forming BoF session, operators have reported various difficulties which
 they experienced in implementing and using these models.
 
-The RFC 8969 framework [RFC8969] proposes a hierarchical three-layer
+The RFC 8969 framework {{RFC8969}} proposes a hierarchical three-layer
 approach: Service, Network, and Device, intended to promote reusability
 and prevent feature duplication across management layers. Operators who
 followed this hierarchical approach and elected to deploy both LxSM and
@@ -284,7 +284,7 @@ domains.  Insufficient guidance exists on how to effectively use and
 compose these service models in practice.
 
 Overall, the working group would benefit from collecting operator's
-concrete implementation experiences and best practices around the
+concrete implementation experiences and best practices arround the
 LxNM and LxSM models, both successful and unsuccessful. Other operators
 can learn from these experiences, and the working group can assess whether
 structural (e.g., non-backward compatible) changes to the models are warranted.
@@ -294,8 +294,8 @@ structural (e.g., non-backward compatible) changes to the models are warranted.
 Existing service and network models focus on configuration and
 provide no standardised mechanism for reporting whether a service is
 being delivered as ordered.  This gap applies both to discrete
-operational state — whether the service is up and fault-free at a
-given moment — and to historical SLO compliance — whether the service
+operational state -- whether the service is up and fault-free at a
+given moment -- and to historical SLO compliance -- whether the service
 has met its contracted performance targets over a given period.
 
 SAIN ([RFC9417], [RFC9418]) addresses observability internally within
