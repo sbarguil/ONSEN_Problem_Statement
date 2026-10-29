@@ -257,7 +257,7 @@ Both during the NEMOPS workshop and as part of the ONSEN working group
 forming BoF session, operators have reported various difficulties which
 they experienced in implementing and using these models.
 
-The RFC 8969 framework {{RFC8969}} proposes a hierarchical three-layer
+The RFC 8969 framework [RFC8969] proposes a hierarchical three-layer
 approach: Service, Network, and Device, intended to promote reusability
 and prevent feature duplication across management layers. Operators who
 followed this hierarchical approach and elected to deploy both LxSM and
@@ -283,7 +283,7 @@ domains.  Insufficient guidance exists on how to effectively use and
 compose these service models in practice.
 
 Overall, the working group would benefit from collecting operator's
-concrete implementation experiences and best practices arround the
+concrete implementation experiences and best practices around the
 LxNM and LxSM models, both successful and unsuccessful. Other operators
 can learn from these experiences, and the working group can assess whether
 structural (e.g., non-backward compatible) changes to the models are warranted.
@@ -339,8 +339,8 @@ service ordering from their BSS.  There is no specification of how
 these interfaces can be aligned with YANG service and network models.
 Operators must either pay commercial OSS/BSS vendors to build bespoke
 interfaces or build and maintain their own adaptation layer.  The
-absence of a defined API creates integration complexity, lack of re-
-useability, vendor lock-in risk, and inconsistent implementations
+absence of a defined API creates integration complexity, lack of
+reuseability, vendor lock-in risk, and inconsistent implementations
 across deployments.
 
 #  Insufficient Guidance for Implementing YANG-based Orchestration
@@ -351,7 +351,7 @@ exposing configuration and operational state from an individual
 NETCONF/RESTCONF server.
 
 YANG has since gained widespread adoption as a schema language for
-describing the data model at varous abstraction layers, above the
+describing the data model at various abstraction layers, above the
 network devices themselves.  In other words, YANG is increasingly
 used to define the schemas for OSS systems, orchestrators, and
 controllers.  A prime example are the IETF LxSM and LxNM models.
